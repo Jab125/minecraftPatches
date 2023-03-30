@@ -1,0 +1,38 @@
+--- a/net/minecraft/world/MobSpawnerEntry.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/MobSpawnerEntry.java	2023-03-30 21:03:20
+@@ -9,16 +9,16 @@
+ import net.minecraft.util.collection.DataPool;
+ import net.minecraft.util.dynamic.Range;
+ 
+-public record MobSpawnerEntry(NbtCompound entity, Optional<MobSpawnerEntry.CustomSpawnRules> customSpawnRules) {
++public record MobSpawnerEntry(NbtCompound nbtCompound, Optional<MobSpawnerEntry.CustomSpawnRules> customSpawnRules) {
+    public static final String ENTITY_KEY = "entity";
+-   public static final Codec<MobSpawnerEntry> CODEC = RecordCodecBuilder.create((instance) -> instance.group(NbtCompound.CODEC.fieldOf("entity").forGetter((entry) -> entry.entity), MobSpawnerEntry.CustomSpawnRules.CODEC.optionalFieldOf("custom_spawn_rules").forGetter((entry) -> entry.customSpawnRules)).apply(instance, MobSpawnerEntry::new));
++   public static final Codec<MobSpawnerEntry> CODEC = RecordCodecBuilder.create((instance) -> instance.group(NbtCompound.CODEC.fieldOf("entity").forGetter((entry) -> entry.nbtCompound), MobSpawnerEntry.CustomSpawnRules.CODEC.optionalFieldOf("custom_spawn_rules").forGetter((entry) -> entry.customSpawnRules)).apply(instance, MobSpawnerEntry::new));
+    public static final Codec<DataPool<MobSpawnerEntry>> DATA_POOL_CODEC = DataPool.createEmptyAllowedCodec(CODEC);
+ 
+    public MobSpawnerEntry() {
+       this(new NbtCompound(), Optional.empty());
+    }
+ 
+-   public MobSpawnerEntry(NbtCompound nbtCompound, Optional<MobSpawnerEntry.CustomSpawnRules> optional) {
++   public MobSpawnerEntry(NbtCompound nbtCompound, Optional<MobSpawnerEntry.CustomSpawnRules> customSpawnRules) {
+       if (nbtCompound.contains("id")) {
+          Identifier identifier = Identifier.tryParse(nbtCompound.getString("id"));
+          if (identifier != null) {
+@@ -28,12 +28,12 @@
+          }
+       }
+ 
+-      this.entity = nbtCompound;
+-      this.customSpawnRules = optional;
++      this.nbtCompound = nbtCompound;
++      this.customSpawnRules = customSpawnRules;
+    }
+ 
+    public NbtCompound getNbt() {
+-      return this.entity;
++      return this.nbtCompound;
+    }
+ 
+    public Optional<MobSpawnerEntry.CustomSpawnRules> getCustomSpawnRules() {

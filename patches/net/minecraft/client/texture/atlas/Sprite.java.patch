@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/texture/atlas/Sprite.java	2023-03-30 19:29:28
++++ b/net/minecraft/client/texture/atlas/Sprite.java	2023-03-30 19:29:44
+@@ -63,7 +63,7 @@
+    public void close() {
+       int i = this.regionCount.decrementAndGet();
+       if (i <= 0) {
+-         NativeImage nativeImage = (NativeImage)this.image.getAndSet((Object)null);
++         NativeImage nativeImage = (NativeImage)this.image.getAndSet(null);
+          if (nativeImage != null) {
+             nativeImage.close();
+          }

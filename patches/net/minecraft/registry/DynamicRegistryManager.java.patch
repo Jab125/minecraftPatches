@@ -1,0 +1,35 @@
+--- a/net/minecraft/registry/DynamicRegistryManager.java	1970-01-12 08:58:04
++++ b/net/minecraft/registry/DynamicRegistryManager.java	2023-03-30 20:05:23
+@@ -29,8 +29,8 @@
+    static DynamicRegistryManager.Immutable of(final Registry<? extends Registry<?>> registries) {
+       return new DynamicRegistryManager.Immutable() {
+          public <T> Optional<Registry<T>> getOptional(RegistryKey<? extends Registry<? extends T>> key) {
+-            Registry<Registry<T>> registry = registries;
+-            return registry.getOrEmpty(key);
++            Registry<Registry<T>> registry = (Registry<Registry<T>>) registries;
++            return registry.getOrEmpty((RegistryKey<Registry<T>>) key);
+          }
+ 
+          public Stream<DynamicRegistryManager.Entry<?>> streamAllRegistries() {
+@@ -58,13 +58,12 @@
+    }
+ 
+    public static record Entry<T>(RegistryKey<? extends Registry<T>> key, Registry<T> value) {
+-      final Registry<T> value;
+ 
+       private static <T, R extends Registry<? extends T>> DynamicRegistryManager.Entry<T> of(Map.Entry<? extends RegistryKey<? extends Registry<?>>, R> entry) {
+          return of((RegistryKey)entry.getKey(), (Registry)entry.getValue());
+       }
+ 
+-      private static <T> DynamicRegistryManager.Entry<T> of(RegistryKey<? extends Registry<?>> key, Registry<?> value) {
++      private static <T> DynamicRegistryManager.Entry<T> of(RegistryKey<? extends Registry<T>> key, Registry<T> value) {
+          return new DynamicRegistryManager.Entry<>(key, value);
+       }
+ 
+@@ -99,4 +98,4 @@
+          return this.registries.entrySet().stream().map(DynamicRegistryManager.Entry::of);
+       }
+    }
+-}
++}
+\ No newline at end of file

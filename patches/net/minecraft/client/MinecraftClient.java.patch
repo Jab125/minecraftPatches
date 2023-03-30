@@ -1,0 +1,29 @@
+--- a/net/minecraft/client/MinecraftClient.java	2023-03-30 19:29:27
++++ b/net/minecraft/client/MinecraftClient.java	2023-03-30 19:29:45
+@@ -845,7 +845,7 @@
+                }, () -> {
+                   this.worldRenderer.reload();
+                   this.resourceReloadLogger.finish();
+-                  completableFuture.complete((Object)null);
++                  completableFuture.complete(null);
+                }), true));
+             return completableFuture;
+          }
+@@ -1045,7 +1045,7 @@
+       if (this.resourceReloadFuture != null && !(this.overlay instanceof SplashOverlay)) {
+          CompletableFuture<Void> completableFuture = this.resourceReloadFuture;
+          this.resourceReloadFuture = null;
+-         this.reloadResources().thenRun(() -> completableFuture.complete((Object)null));
++         this.reloadResources().thenRun(() -> completableFuture.complete(null));
+       }
+ 
+       Runnable runnable;
+@@ -1927,7 +1927,7 @@
+ 
+    public void startIntegratedServer(String levelName, LevelStorage.Session session, ResourcePackManager dataPackManager, SaveLoader saveLoader, boolean newWorld) {
+       this.disconnect();
+-      this.worldGenProgressTracker.set((Object)null);
++      this.worldGenProgressTracker.set(null);
+       Instant instant = Instant.now();
+ 
+       try {

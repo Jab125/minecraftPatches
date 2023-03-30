@@ -1,0 +1,16 @@
+--- a/net/minecraft/util/StringIdentifiable.java	1970-01-12 08:58:04
++++ b/net/minecraft/util/StringIdentifiable.java	2023-03-30 19:40:07
+@@ -23,10 +23,10 @@
+    }
+ 
+    static <E extends Enum<E> & StringIdentifiable> StringIdentifiable.Codec<E> createCodec(Supplier<E[]> enumValues, Function<String, String> valueNameTransformer) {
+-      E[] enums = (Enum[])enumValues.get();
++      E[] enums = (E[])enumValues.get();
+       if (enums.length > 16) {
+-         Map<String, E> map = (Map)Arrays.stream(enums).collect(Collectors.toMap((enum_) -> (String)valueNameTransformer.apply(((StringIdentifiable)enum_).asString()), (enum_) -> enum_));
+-         return new StringIdentifiable.Codec<>(enums, (id) -> id == null ? null : (Enum)map.get(id));
++         Map<String, E> map = Arrays.stream(enums).collect(Collectors.toMap((enum_) -> (String)valueNameTransformer.apply(((StringIdentifiable)enum_).asString()), (enum_) -> enum_));
++         return new StringIdentifiable.Codec<>(enums, (id) -> id == null ? null : map.get(id));
+       } else {
+          return new StringIdentifiable.Codec<>(enums, (id) -> {
+             for(E enum_ : enums) {

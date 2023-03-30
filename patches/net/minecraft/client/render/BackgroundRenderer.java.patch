@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/render/BackgroundRenderer.java	2023-03-30 19:29:28
++++ b/net/minecraft/client/render/BackgroundRenderer.java	2023-03-30 19:29:45
+@@ -195,7 +195,7 @@
+    @Nullable
+    private static BackgroundRenderer.StatusEffectFogModifier getFogModifier(Entity entity, float tickDelta) {
+       if (entity instanceof LivingEntity livingEntity) {
+-         return (BackgroundRenderer.StatusEffectFogModifier)FOG_MODIFIERS.stream().filter((modifier) -> modifier.shouldApply(livingEntity, tickDelta)).findFirst().orElse((Object)null);
++         return (BackgroundRenderer.StatusEffectFogModifier)FOG_MODIFIERS.stream().filter((modifier) -> modifier.shouldApply(livingEntity, tickDelta)).findFirst().orElse(null);
+       } else {
+          return null;
+       }

@@ -1,0 +1,21 @@
+--- a/net/minecraft/client/texture/atlas/UnstitchAtlasSource.java	1970-01-12 08:58:04
++++ b/net/minecraft/client/texture/atlas/UnstitchAtlasSource.java	2023-03-30 19:24:03
+@@ -56,11 +56,6 @@
+ 
+    @Environment(EnvType.CLIENT)
+    static record Region(Identifier sprite, double x, double y, double width, double height) {
+-      final Identifier sprite;
+-      final double x;
+-      final double y;
+-      final double width;
+-      final double height;
+       public static final Codec<UnstitchAtlasSource.Region> CODEC = RecordCodecBuilder.create((instance) -> instance.group(Identifier.CODEC.fieldOf("sprite").forGetter(UnstitchAtlasSource.Region::sprite), Codec.DOUBLE.fieldOf("x").forGetter(UnstitchAtlasSource.Region::x), Codec.DOUBLE.fieldOf("y").forGetter(UnstitchAtlasSource.Region::y), Codec.DOUBLE.fieldOf("width").forGetter(UnstitchAtlasSource.Region::width), Codec.DOUBLE.fieldOf("height").forGetter(UnstitchAtlasSource.Region::height)).apply(instance, UnstitchAtlasSource.Region::new));
+    }
+ 
+@@ -103,4 +98,4 @@
+          this.sprite.close();
+       }
+    }
+-}
++}
+\ No newline at end of file

@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/texture/SpriteLoader.java	2023-03-30 19:29:26
++++ b/net/minecraft/client/texture/SpriteLoader.java	2023-03-30 19:29:45
+@@ -91,7 +91,7 @@
+       if (l > 0) {
+          completableFuture = CompletableFuture.runAsync(() -> map.values().forEach((sprite) -> sprite.getContents().generateMipmaps(l)), executor);
+       } else {
+-         completableFuture = CompletableFuture.completedFuture((Object)null);
++         completableFuture = CompletableFuture.completedFuture(null);
+       }
+ 
+       return new SpriteLoader.StitchResult(o, p, l, sprite, map, completableFuture);

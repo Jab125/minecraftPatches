@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/boss/WitherEntity.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/boss/WitherEntity.java	2023-03-30 20:42:01
+@@ -475,7 +475,7 @@
+    }
+ 
+    public int getTrackedEntityId(int headIndex) {
+-      return this.dataTracker.get((TrackedData)TRACKED_ENTITY_IDS.get(headIndex));
++      return (int) this.dataTracker.get((TrackedData)TRACKED_ENTITY_IDS.get(headIndex));
+    }
+ 
+    public void setTrackedEntityId(int headIndex, int id) {

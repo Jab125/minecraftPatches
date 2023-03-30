@@ -1,0 +1,17 @@
+--- a/net/minecraft/item/ItemGroup.java	1970-01-12 08:58:04
++++ b/net/minecraft/item/ItemGroup.java	2023-03-30 19:23:16
+@@ -196,7 +196,6 @@
+    }
+ 
+    public static record DisplayContext(FeatureSet enabledFeatures, boolean hasPermissions, RegistryWrapper.WrapperLookup lookup) {
+-      final FeatureSet enabledFeatures;
+ 
+       public boolean doesNotMatch(FeatureSet enabledFeatures, boolean hasPermissions, RegistryWrapper.WrapperLookup lookup) {
+          return !this.enabledFeatures.equals(enabledFeatures) || this.hasPermissions != hasPermissions || this.lookup != lookup;
+@@ -287,4 +286,4 @@
+       HOTBAR,
+       SEARCH;
+    }
+-}
++}
+\ No newline at end of file

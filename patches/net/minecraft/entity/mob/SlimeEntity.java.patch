@@ -1,0 +1,22 @@
+--- a/net/minecraft/entity/mob/SlimeEntity.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/mob/SlimeEntity.java	2023-03-30 20:42:01
+@@ -61,8 +61,8 @@
+       this.goalSelector.add(2, new SlimeEntity.FaceTowardTargetGoal(this));
+       this.goalSelector.add(3, new SlimeEntity.RandomLookGoal(this));
+       this.goalSelector.add(5, new SlimeEntity.MoveGoal(this));
+-      this.targetSelector.add(1, new ActiveTargetGoal(this, PlayerEntity.class, 10, true, false, (livingEntity) -> Math.abs(livingEntity.getY() - this.getY()) <= 4.0D));
+-      this.targetSelector.add(3, new ActiveTargetGoal(this, IronGolemEntity.class, true));
++      this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, (livingEntity) -> Math.abs(livingEntity.getY() - this.getY()) <= 4.0D));
++      this.targetSelector.add(3, new ActiveTargetGoal<>(this, IronGolemEntity.class, true));
+    }
+ 
+    protected void initDataTracker() {
+@@ -169,7 +169,7 @@
+    }
+ 
+    public EntityType<? extends SlimeEntity> getType() {
+-      return super.getType();
++      return (EntityType<? extends SlimeEntity>) super.getType();
+    }
+ 
+    public void remove(Entity.RemovalReason reason) {

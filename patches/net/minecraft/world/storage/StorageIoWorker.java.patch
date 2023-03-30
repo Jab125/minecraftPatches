@@ -1,0 +1,35 @@
+--- a/net/minecraft/world/storage/StorageIoWorker.java	2023-03-30 19:29:27
++++ b/net/minecraft/world/storage/StorageIoWorker.java	2023-03-30 19:29:44
+@@ -149,12 +149,12 @@
+       return sync ? completableFuture.thenCompose((void_) -> this.run(() -> {
+             try {
+                this.storage.sync();
+-               return Either.left((Object)null);
++               return Either.left(null);
+             } catch (Exception var2) {
+                LOGGER.warn("Failed to synchronize chunks", var2);
+                return Either.right(var2);
+             }
+-         })) : completableFuture.thenCompose((void_) -> this.run(() -> Either.left((Object)null)));
++         })) : completableFuture.thenCompose((void_) -> this.run(() -> Either.left(null)));
+    }
+ 
+    public CompletableFuture<Void> scanChunk(ChunkPos pos, NbtScanner scanner) {
+@@ -169,7 +169,7 @@
+                this.storage.scanChunk(pos, scanner);
+             }
+ 
+-            return Either.left((Object)null);
++            return Either.left(null);
+          } catch (Exception var4) {
+             LOGGER.warn("Failed to bulk scan chunk {}", pos, var4);
+             return Either.right(var4);
+@@ -204,7 +204,7 @@
+    private void write(ChunkPos pos, StorageIoWorker.Result result) {
+       try {
+          this.storage.write(pos, result.nbt);
+-         result.future.complete((Object)null);
++         result.future.complete(null);
+       } catch (Exception var4) {
+          LOGGER.error("Failed to store chunk {}", pos, var4);
+          result.future.completeExceptionally(var4);

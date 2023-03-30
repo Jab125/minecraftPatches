@@ -1,0 +1,61 @@
+--- a/net/minecraft/server/world/ChunkHolder.java	2023-03-30 19:29:26
++++ b/net/minecraft/server/world/ChunkHolder.java	2023-03-30 19:29:45
+@@ -52,7 +52,7 @@
+    private volatile CompletableFuture<Either<WorldChunk, ChunkHolder.Unloaded>> accessibleFuture = UNLOADED_WORLD_CHUNK_FUTURE;
+    private volatile CompletableFuture<Either<WorldChunk, ChunkHolder.Unloaded>> tickingFuture = UNLOADED_WORLD_CHUNK_FUTURE;
+    private volatile CompletableFuture<Either<WorldChunk, ChunkHolder.Unloaded>> entityTickingFuture = UNLOADED_WORLD_CHUNK_FUTURE;
+-   private CompletableFuture<Chunk> savingFuture = CompletableFuture.completedFuture((Object)null);
++   private CompletableFuture<Chunk> savingFuture = CompletableFuture.completedFuture(null);
+    @Nullable
+    private final AtomicStack<ChunkHolder.MultithreadAction> actionStack = null;
+    private int lastTickLevel;
+@@ -68,7 +68,7 @@
+    private final ChunkHolder.PlayersWatchingChunkProvider playersWatchingChunkProvider;
+    private boolean accessible;
+    private boolean noLightingUpdates;
+-   private CompletableFuture<Void> field_26930 = CompletableFuture.completedFuture((Object)null);
++   private CompletableFuture<Void> field_26930 = CompletableFuture.completedFuture(null);
+ 
+    public ChunkHolder(ChunkPos pos, int level, HeightLimitView world, LightingProvider lightingProvider, ChunkHolder.LevelUpdateListener levelUpdateListener, ChunkHolder.PlayersWatchingChunkProvider playersWatchingChunkProvider) {
+       this.pos = pos;
+@@ -107,15 +107,15 @@
+    @Nullable
+    public WorldChunk getWorldChunk() {
+       CompletableFuture<Either<WorldChunk, ChunkHolder.Unloaded>> completableFuture = this.getTickingFuture();
+-      Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)completableFuture.getNow((Object)null);
+-      return either == null ? null : (WorldChunk)either.left().orElse((Object)null);
++      Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)completableFuture.getNow(null);
++      return either == null ? null : (WorldChunk)either.left().orElse(null);
+    }
+ 
+    @Nullable
+    public WorldChunk method_41205() {
+       CompletableFuture<Either<WorldChunk, ChunkHolder.Unloaded>> completableFuture = this.getAccessibleFuture();
+-      Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)completableFuture.getNow((Object)null);
+-      return either == null ? null : (WorldChunk)either.left().orElse((Object)null);
++      Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)completableFuture.getNow(null);
++      return either == null ? null : (WorldChunk)either.left().orElse(null);
+    }
+ 
+    @Nullable
+@@ -165,9 +165,9 @@
+    }
+ 
+    public void markForLightUpdate(LightType lightType, int y) {
+-      Either<Chunk, ChunkHolder.Unloaded> either = (Either)this.getValidFutureFor(ChunkStatus.FEATURES).getNow((Object)null);
++      Either<Chunk, ChunkHolder.Unloaded> either = (Either)this.getValidFutureFor(ChunkStatus.FEATURES).getNow(null);
+       if (either != null) {
+-         Chunk chunk = (Chunk)either.left().orElse((Object)null);
++         Chunk chunk = (Chunk)either.left().orElse(null);
+          if (chunk != null) {
+             chunk.setNeedsSaving(true);
+             WorldChunk worldChunk = this.getWorldChunk();
+@@ -321,7 +321,7 @@
+       CompletableFuture<Void> completableFuture2 = new CompletableFuture();
+       completableFuture2.thenRunAsync(() -> threadedAnvilChunkStorage.onChunkStatusChange(this.pos, levelType), executor);
+       this.field_26930 = completableFuture2;
+-      completableFuture.thenAccept((either) -> either.ifLeft((worldChunk) -> completableFuture2.complete((Object)null)));
++      completableFuture.thenAccept((either) -> either.ifLeft((worldChunk) -> completableFuture2.complete(null)));
+    }
+ 
+    private void method_31408(ThreadedAnvilChunkStorage threadedAnvilChunkStorage, ChunkHolder.LevelType levelType) {

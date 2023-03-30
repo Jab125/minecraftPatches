@@ -1,0 +1,23 @@
+--- a/net/minecraft/world/gen/chunk/ChunkGenerator.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/gen/chunk/ChunkGenerator.java	2023-03-30 20:15:22
+@@ -273,9 +273,9 @@
+          long l = chunkRandom.setPopulationSeed(world.getSeed(), blockPos.getX(), blockPos.getZ());
+          Set<RegistryEntry<Biome>> set = new ObjectArraySet();
+          ChunkPos.stream(chunkSectionPos.toChunkPos(), 1).forEach((chunkPosx) -> {
+-            Chunk chunk = world.getChunk(chunkPosx.x, chunkPosx.z);
++            Chunk chunk2 = world.getChunk(chunkPosx.x, chunkPosx.z);
+ 
+-            for(ChunkSection chunkSection : chunk.getSectionArray()) {
++            for(ChunkSection chunkSection : chunk2.getSectionArray()) {
+                chunkSection.getBiomeContainer().forEachValue(set::add);
+             }
+ 
+@@ -290,7 +290,7 @@
+             for(int k = 0; k < j; ++k) {
+                int m = 0;
+                if (structureAccessor.shouldGenerateStructures()) {
+-                  for(Structure structure : (List)map.getOrDefault(k, Collections.emptyList())) {
++                  for(Structure structure : map.getOrDefault(k, Collections.emptyList())) {
+                      chunkRandom.setDecoratorSeed(l, m, k);
+                      Supplier<String> supplier = () -> (String)registry.getKey(structure).map(Object::toString).orElseGet(structure::toString);
+ 

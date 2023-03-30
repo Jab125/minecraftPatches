@@ -1,0 +1,13 @@
+--- a/net/minecraft/client/gui/EditBox.java	1970-01-12 08:58:04
++++ b/net/minecraft/client/gui/EditBox.java	2023-03-30 19:23:38
+@@ -361,8 +361,6 @@
+ 
+    @Environment(EnvType.CLIENT)
+    protected static record Substring(int beginIndex, int endIndex) {
+-      final int beginIndex;
+-      final int endIndex;
+       static final EditBox.Substring EMPTY = new EditBox.Substring(0, 0);
+    }
+-}
++}
+\ No newline at end of file

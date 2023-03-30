@@ -1,0 +1,11 @@
+--- a/net/minecraft/recipe/RecipeSerializer.java	1970-01-12 08:58:04
++++ b/net/minecraft/recipe/RecipeSerializer.java	2023-03-30 21:03:20
+@@ -36,7 +36,7 @@
+ 
+    T read(Identifier id, PacketByteBuf buf);
+ 
+-   void write(PacketByteBuf buf, T recipe);
++   <T extends Recipe<?>> void write(PacketByteBuf buf, T recipe);
+ 
+    static <S extends RecipeSerializer<T>, T extends Recipe<?>> S register(String id, S serializer) {
+       return Registry.register(Registries.RECIPE_SERIALIZER, id, serializer);

@@ -1,0 +1,14 @@
+--- a/net/minecraft/world/biome/Biome.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/biome/Biome.java	2023-03-30 19:23:38
+@@ -343,9 +343,6 @@
+    }
+ 
+    static record Weather(boolean hasPrecipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall) {
+-      final float temperature;
+-      final Biome.TemperatureModifier temperatureModifier;
+-      final float downfall;
+       public static final MapCodec<Biome.Weather> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(Codec.BOOL.fieldOf("has_precipitation").forGetter((weather) -> weather.hasPrecipitation), Codec.FLOAT.fieldOf("temperature").forGetter((weather) -> weather.temperature), Biome.TemperatureModifier.CODEC.optionalFieldOf("temperature_modifier", Biome.TemperatureModifier.NONE).forGetter((weather) -> weather.temperatureModifier), Codec.FLOAT.fieldOf("downfall").forGetter((weather) -> weather.downfall)).apply(instance, Biome.Weather::new));
+    }
+-}
++}
+\ No newline at end of file

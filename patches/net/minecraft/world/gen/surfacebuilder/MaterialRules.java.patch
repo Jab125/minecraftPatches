@@ -1,0 +1,48 @@
+--- a/net/minecraft/world/gen/surfacebuilder/MaterialRules.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/gen/surfacebuilder/MaterialRules.java	2023-03-30 19:24:35
+@@ -133,9 +133,6 @@
+    }
+ 
+    static record AboveYMaterialCondition(YOffset anchor, int surfaceDepthMultiplier, boolean addStoneDepth) implements MaterialRules.MaterialCondition {
+-      final YOffset anchor;
+-      final int surfaceDepthMultiplier;
+-      final boolean addStoneDepth;
+       static final CodecHolder<MaterialRules.AboveYMaterialCondition> CODEC = CodecHolder.of(RecordCodecBuilder.mapCodec((instance) -> instance.group(YOffset.OFFSET_CODEC.fieldOf("anchor").forGetter(MaterialRules.AboveYMaterialCondition::anchor), Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(MaterialRules.AboveYMaterialCondition::surfaceDepthMultiplier), Codec.BOOL.fieldOf("add_stone_depth").forGetter(MaterialRules.AboveYMaterialCondition::addStoneDepth)).apply(instance, MaterialRules.AboveYMaterialCondition::new)));
+ 
+       public CodecHolder<? extends MaterialRules.MaterialCondition> codec() {
+@@ -503,8 +500,6 @@
+    }
+ 
+    static record NoiseThresholdMaterialCondition(RegistryKey<DoublePerlinNoiseSampler.NoiseParameters> noise, double minThreshold, double maxThreshold) implements MaterialRules.MaterialCondition {
+-      final double minThreshold;
+-      final double maxThreshold;
+       static final CodecHolder<MaterialRules.NoiseThresholdMaterialCondition> CODEC = CodecHolder.of(RecordCodecBuilder.mapCodec((instance) -> instance.group(RegistryKey.createCodec(RegistryKeys.NOISE_PARAMETERS).fieldOf("noise").forGetter(MaterialRules.NoiseThresholdMaterialCondition::noise), Codec.DOUBLE.fieldOf("min_threshold").forGetter(MaterialRules.NoiseThresholdMaterialCondition::minThreshold), Codec.DOUBLE.fieldOf("max_threshold").forGetter(MaterialRules.NoiseThresholdMaterialCondition::maxThreshold)).apply(instance, MaterialRules.NoiseThresholdMaterialCondition::new)));
+ 
+       public CodecHolder<? extends MaterialRules.MaterialCondition> codec() {
+@@ -598,9 +593,6 @@
+    }
+ 
+    static record StoneDepthMaterialCondition(int offset, boolean addSurfaceDepth, int secondaryDepthRange, VerticalSurfaceType surfaceType) implements MaterialRules.MaterialCondition {
+-      final int offset;
+-      final boolean addSurfaceDepth;
+-      final int secondaryDepthRange;
+       static final CodecHolder<MaterialRules.StoneDepthMaterialCondition> CODEC = CodecHolder.of(RecordCodecBuilder.mapCodec((instance) -> instance.group(Codec.INT.fieldOf("offset").forGetter(MaterialRules.StoneDepthMaterialCondition::offset), Codec.BOOL.fieldOf("add_surface_depth").forGetter(MaterialRules.StoneDepthMaterialCondition::addSurfaceDepth), Codec.INT.fieldOf("secondary_depth_range").forGetter(MaterialRules.StoneDepthMaterialCondition::secondaryDepthRange), VerticalSurfaceType.CODEC.fieldOf("surface_type").forGetter(MaterialRules.StoneDepthMaterialCondition::surfaceType)).apply(instance, MaterialRules.StoneDepthMaterialCondition::new)));
+ 
+       public CodecHolder<? extends MaterialRules.MaterialCondition> codec() {
+@@ -705,9 +697,6 @@
+    }
+ 
+    static record WaterMaterialCondition(int offset, int surfaceDepthMultiplier, boolean addStoneDepth) implements MaterialRules.MaterialCondition {
+-      final int offset;
+-      final int surfaceDepthMultiplier;
+-      final boolean addStoneDepth;
+       static final CodecHolder<MaterialRules.WaterMaterialCondition> CODEC = CodecHolder.of(RecordCodecBuilder.mapCodec((instance) -> instance.group(Codec.INT.fieldOf("offset").forGetter(MaterialRules.WaterMaterialCondition::offset), Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(MaterialRules.WaterMaterialCondition::surfaceDepthMultiplier), Codec.BOOL.fieldOf("add_stone_depth").forGetter(MaterialRules.WaterMaterialCondition::addStoneDepth)).apply(instance, MaterialRules.WaterMaterialCondition::new)));
+ 
+       public CodecHolder<? extends MaterialRules.MaterialCondition> codec() {
+@@ -728,4 +717,4 @@
+          return new WaterPredicate();
+       }
+    }
+-}
++}
+\ No newline at end of file

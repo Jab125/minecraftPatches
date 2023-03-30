@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/report/DynamicRegistriesProvider.java	2023-03-30 19:29:27
++++ b/net/minecraft/data/report/DynamicRegistriesProvider.java	2023-03-30 19:29:44
+@@ -45,7 +45,7 @@
+ 
+    private static <E> CompletableFuture<?> writeToPath(Path path, DataWriter cache, DynamicOps<JsonElement> json, Encoder<E> encoder, E value) {
+       Optional<JsonElement> optional = encoder.encodeStart(json, value).resultOrPartial((error) -> LOGGER.error("Couldn't serialize element {}: {}", path, error));
+-      return optional.isPresent() ? DataProvider.writeToPath(cache, (JsonElement)optional.get(), path) : CompletableFuture.completedFuture((Object)null);
++      return optional.isPresent() ? DataProvider.writeToPath(cache, (JsonElement)optional.get(), path) : CompletableFuture.completedFuture(null);
+    }
+ 
+    public String getName() {

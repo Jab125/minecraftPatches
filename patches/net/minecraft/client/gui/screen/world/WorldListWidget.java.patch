@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screen/world/WorldListWidget.java	2023-03-30 19:29:28
++++ b/net/minecraft/client/gui/screen/world/WorldListWidget.java	2023-03-30 19:29:45
+@@ -95,7 +95,7 @@
+    @Nullable
+    private List<LevelSummary> tryGet() {
+       try {
+-         return (List)this.levelsFuture.getNow((Object)null);
++         return (List)this.levelsFuture.getNow(null);
+       } catch (CancellationException | CompletionException var2) {
+          return null;
+       }

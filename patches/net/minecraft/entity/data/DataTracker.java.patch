@@ -1,0 +1,27 @@
+--- a/net/minecraft/entity/data/DataTracker.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/data/DataTracker.java	2023-03-30 21:03:20
+@@ -203,7 +203,7 @@
+       if (!Objects.equals(from.handler(), to.data.getType())) {
+          throw new IllegalStateException(String.format(Locale.ROOT, "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)", to.data.getId(), this.trackedEntity, to.value, to.value.getClass(), from.value, from.value.getClass()));
+       } else {
+-         to.set(from.value);
++         to.set((T) from.value);
+       }
+    }
+ 
+@@ -253,8 +253,6 @@
+    }
+ 
+    public static record SerializedEntry<T>(int id, TrackedDataHandler<T> handler, T value) {
+-      final int id;
+-      final T value;
+ 
+       public static <T> DataTracker.SerializedEntry<T> of(TrackedData<T> data, T value) {
+          TrackedDataHandler<T> trackedDataHandler = data.getType();
+@@ -286,4 +284,4 @@
+          return new DataTracker.SerializedEntry<>(id, handler, handler.read(buf));
+       }
+    }
+-}
++}
+\ No newline at end of file

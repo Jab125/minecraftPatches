@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/passive/CamelEntity.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/passive/CamelEntity.java	2023-03-30 20:22:55
+@@ -136,7 +136,7 @@
+ 
+    protected void mobTick() {
+       this.world.getProfiler().push("camelBrain");
+-      Brain<?> brain = this.getBrain();
++      Brain<CamelEntity> brain = (Brain<CamelEntity>) this.getBrain();
+       brain.tick((ServerWorld)this.world, this);
+       this.world.getProfiler().pop();
+       this.world.getProfiler().push("camelActivityUpdate");

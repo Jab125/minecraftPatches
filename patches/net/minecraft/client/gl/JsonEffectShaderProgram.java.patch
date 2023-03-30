@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gl/JsonEffectShaderProgram.java	2023-03-30 19:29:25
++++ b/net/minecraft/client/gl/JsonEffectShaderProgram.java	2023-03-30 19:29:44
+@@ -354,7 +354,7 @@
+       JsonObject jsonObject = JsonHelper.asObject(json, "sampler");
+       String string = JsonHelper.getString(jsonObject, "name");
+       if (!JsonHelper.hasString(jsonObject, "file")) {
+-         this.samplerBinds.put(string, (Object)null);
++         this.samplerBinds.put(string, null);
+          this.samplerNames.add(string);
+       } else {
+          this.samplerNames.add(string);

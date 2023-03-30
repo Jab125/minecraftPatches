@@ -1,0 +1,18 @@
+--- a/net/minecraft/util/math/noise/DoublePerlinNoiseSampler.java	1970-01-12 08:58:04
++++ b/net/minecraft/util/math/noise/DoublePerlinNoiseSampler.java	2023-03-30 19:23:30
+@@ -95,8 +95,6 @@
+    }
+ 
+    public static record NoiseParameters(int firstOctave, DoubleList amplitudes) {
+-      final int firstOctave;
+-      final DoubleList amplitudes;
+       public static final Codec<DoublePerlinNoiseSampler.NoiseParameters> CODEC = RecordCodecBuilder.create((instance) -> instance.group(Codec.INT.fieldOf("firstOctave").forGetter(DoublePerlinNoiseSampler.NoiseParameters::firstOctave), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(DoublePerlinNoiseSampler.NoiseParameters::amplitudes)).apply(instance, DoublePerlinNoiseSampler.NoiseParameters::new));
+       public static final Codec<RegistryEntry<DoublePerlinNoiseSampler.NoiseParameters>> REGISTRY_ENTRY_CODEC = RegistryElementCodec.of(RegistryKeys.NOISE_PARAMETERS, CODEC);
+ 
+@@ -108,4 +106,4 @@
+          this(firstOctave, Util.make(new DoubleArrayList(amplitudes), (doubleArrayList) -> doubleArrayList.add(0, firstAmplitude)));
+       }
+    }
+-}
++}
+\ No newline at end of file

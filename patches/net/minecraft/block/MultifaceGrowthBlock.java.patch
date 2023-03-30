@@ -1,0 +1,11 @@
+--- a/net/minecraft/block/MultifaceGrowthBlock.java	2023-03-30 19:29:24
++++ b/net/minecraft/block/MultifaceGrowthBlock.java	2023-03-30 19:29:45
+@@ -148,7 +148,7 @@
+       World world = ctx.getWorld();
+       BlockPos blockPos = ctx.getBlockPos();
+       BlockState blockState = world.getBlockState(blockPos);
+-      return (BlockState)Arrays.stream(ctx.getPlacementDirections()).map((direction) -> this.withDirection(blockState, world, blockPos, direction)).filter(Objects::nonNull).findFirst().orElse((Object)null);
++      return (BlockState)Arrays.stream(ctx.getPlacementDirections()).map((direction) -> this.withDirection(blockState, world, blockPos, direction)).filter(Objects::nonNull).findFirst().orElse(null);
+    }
+ 
+    public boolean canGrowWithDirection(BlockView world, BlockState state, BlockPos pos, Direction direction) {

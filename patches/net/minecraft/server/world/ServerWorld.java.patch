@@ -1,0 +1,20 @@
+--- a/net/minecraft/server/world/ServerWorld.java	1970-01-12 08:58:04
++++ b/net/minecraft/server/world/ServerWorld.java	2023-03-30 20:15:22
+@@ -365,7 +365,7 @@
+ 
+    private void wakeSleepingPlayers() {
+       this.sleepManager.clearSleeping();
+-      ((List)this.players.stream().filter(LivingEntity::isSleeping).collect(Collectors.toList())).forEach((player) -> player.wakeUp(false, false));
++      (this.players.stream().filter(LivingEntity::isSleeping).collect(Collectors.toList())).forEach((player) -> player.wakeUp(false, false));
+    }
+ 
+    public void tickChunk(WorldChunk chunk, int randomTickSpeed) {
+@@ -1402,7 +1402,7 @@
+             object2IntOpenHashMap.addTo(string, 1);
+          }
+ 
+-         return (String)object2IntOpenHashMap.object2IntEntrySet().stream().sorted(Comparator.comparing(Object2IntMap.Entry::getIntValue).reversed()).limit(5L).map((entry) -> (String)entry.getKey() + ":" + entry.getIntValue()).collect(Collectors.joining(","));
++         return object2IntOpenHashMap.object2IntEntrySet().stream().sorted(Comparator.<Object2IntMap.Entry<String>, Integer>comparing(Object2IntMap.Entry::getIntValue).reversed()).limit(5L).map((entry) -> (String)entry.getKey() + ":" + entry.getIntValue()).collect(Collectors.joining(","));
+       } catch (Exception var6) {
+          return "";
+       }

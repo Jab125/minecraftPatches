@@ -1,0 +1,20 @@
+--- a/net/minecraft/entity/LivingEntity.java	2023-03-30 19:29:26
++++ b/net/minecraft/entity/LivingEntity.java	2023-03-30 20:18:24
+@@ -1376,7 +1376,7 @@
+       return this.experienceDroppingDisabled;
+    }
+ 
+-   protected Vec3d getAttackPos() {
++   public Vec3d getAttackPos() {
+       Entity var2 = this.getVehicle();
+       if (var2 instanceof AttackPosOffsettingMount attackPosOffsettingMount) {
+          return this.getPos().add(0.0D, attackPosOffsettingMount.getPassengerAttackYOffset(), 0.0D);
+@@ -3129,7 +3129,7 @@
+ 
+    @Nullable
+    public Direction getSleepingDirection() {
+-      BlockPos blockPos = (BlockPos)this.getSleepingPosition().orElse((Object)null);
++      BlockPos blockPos = (BlockPos)this.getSleepingPosition().orElse(null);
+       return blockPos != null ? BedBlock.getDirection(this.world, blockPos) : null;
+    }
+ 

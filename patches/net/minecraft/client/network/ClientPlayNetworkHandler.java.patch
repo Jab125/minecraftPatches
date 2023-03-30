@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/network/ClientPlayNetworkHandler.java	1970-01-12 08:58:04
++++ b/net/minecraft/client/network/ClientPlayNetworkHandler.java	2023-03-30 19:23:16
+@@ -2419,6 +2419,5 @@
+ 
+    @Environment(EnvType.CLIENT)
+    static record QueuedPacket(Packet<ServerPlayPacketListener> packet, BooleanSupplier sendCondition, long expirationTime) {
+-      final Packet<ServerPlayPacketListener> packet;
+    }
+-}
++}
+\ No newline at end of file

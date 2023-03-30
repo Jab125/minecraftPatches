@@ -1,0 +1,14 @@
+--- a/net/minecraft/entity/mob/PiglinBruteBrain.java	2023-03-30 19:29:27
++++ b/net/minecraft/entity/mob/PiglinBruteBrain.java	2023-03-30 19:29:44
+@@ -79,9 +79,9 @@
+ 
+    protected static void tick(PiglinBruteEntity piglinBrute) {
+       Brain<PiglinBruteEntity> brain = piglinBrute.getBrain();
+-      Activity activity = (Activity)brain.getFirstPossibleNonCoreActivity().orElse((Object)null);
++      Activity activity = (Activity)brain.getFirstPossibleNonCoreActivity().orElse(null);
+       brain.resetPossibleActivities(ImmutableList.of(Activity.FIGHT, Activity.IDLE));
+-      Activity activity2 = (Activity)brain.getFirstPossibleNonCoreActivity().orElse((Object)null);
++      Activity activity2 = (Activity)brain.getFirstPossibleNonCoreActivity().orElse(null);
+       if (activity != activity2) {
+          playSoundIfAngry(piglinBrute);
+       }

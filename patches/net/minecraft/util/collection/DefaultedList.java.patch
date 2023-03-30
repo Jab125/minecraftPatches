@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/collection/DefaultedList.java	1970-01-12 08:58:04
++++ b/net/minecraft/util/collection/DefaultedList.java	2023-03-30 20:15:22
+@@ -25,7 +25,7 @@
+       Validate.notNull(defaultValue);
+       Object[] objects = new Object[size];
+       Arrays.fill(objects, defaultValue);
+-      return new DefaultedList<>(Arrays.asList(objects), defaultValue);
++      return (DefaultedList<E>) new DefaultedList<>(Arrays.asList(objects), defaultValue);
+    }
+ 
+    @SafeVarargs

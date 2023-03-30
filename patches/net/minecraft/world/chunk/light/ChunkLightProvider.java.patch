@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/chunk/light/ChunkLightProvider.java	2023-03-30 19:29:24
++++ b/net/minecraft/world/chunk/light/ChunkLightProvider.java	2023-03-30 19:29:44
+@@ -69,7 +69,7 @@
+ 
+    private void clearChunkCache() {
+       Arrays.fill(this.cachedChunkPositions, ChunkPos.MARKER);
+-      Arrays.fill(this.cachedChunks, (Object)null);
++      Arrays.fill(this.cachedChunks, null);
+    }
+ 
+    protected BlockState getStateForLighting(long pos, @Nullable MutableInt opacity) {

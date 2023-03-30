@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/mob/ZombifiedPiglinEntity.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/mob/ZombifiedPiglinEntity.java	2023-03-30 20:42:01
+@@ -71,7 +71,7 @@
+       this.goalSelector.add(2, new ZombieAttackGoal(this, 1.0D, false));
+       this.goalSelector.add(7, new WanderAroundFarGoal(this, 1.0D));
+       this.targetSelector.add(1, (new RevengeGoal(this)).setGroupRevenge());
+-      this.targetSelector.add(2, new ActiveTargetGoal(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
++      this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
+       this.targetSelector.add(3, new UniversalAngerGoal<>(this, true));
+    }
+ 

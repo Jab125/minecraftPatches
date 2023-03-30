@@ -1,0 +1,12 @@
+--- a/net/minecraft/recipe/ShapelessRecipe.java	1970-01-12 08:58:04
++++ b/net/minecraft/recipe/ShapelessRecipe.java	2023-03-30 21:09:37
+@@ -118,7 +118,8 @@
+          return new ShapelessRecipe(identifier, string, craftingRecipeCategory, itemStack, defaultedList);
+       }
+ 
+-      public void write(PacketByteBuf packetByteBuf, ShapelessRecipe shapelessRecipe) {
++      public void write(PacketByteBuf packetByteBuf, Recipe recipe) {
++         ShapelessRecipe shapelessRecipe = (ShapelessRecipe)recipe;
+          packetByteBuf.writeString(shapelessRecipe.group);
+          packetByteBuf.writeEnumConstant(shapelessRecipe.category);
+          packetByteBuf.writeVarInt(shapelessRecipe.input.size());

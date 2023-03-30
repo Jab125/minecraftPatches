@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/chunk/FlatChunkGeneratorConfig.java	2023-03-30 19:29:24
++++ b/net/minecraft/world/gen/chunk/FlatChunkGeneratorConfig.java	2023-03-30 19:29:45
+@@ -135,7 +135,7 @@
+          for(int i = 0; i < list.size(); ++i) {
+             BlockState blockState = (BlockState)list.get(i);
+             if (!Heightmap.Type.MOTION_BLOCKING.getBlockPredicate().test(blockState)) {
+-               list.set(i, (Object)null);
++               list.set(i, null);
+                builder.feature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, PlacedFeatures.createEntry(Feature.FILL_LAYER, new FillLayerFeatureConfig(i, blockState)));
+             }
+          }

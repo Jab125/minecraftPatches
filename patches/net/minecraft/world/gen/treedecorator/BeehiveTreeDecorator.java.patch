@@ -1,0 +1,14 @@
+--- a/net/minecraft/world/gen/treedecorator/BeehiveTreeDecorator.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/gen/treedecorator/BeehiveTreeDecorator.java	2023-03-30 21:03:20
+@@ -43,9 +43,9 @@
+             if (!optional.isEmpty()) {
+                generator.replace((BlockPos)optional.get(), Blocks.BEE_NEST.getDefaultState().with(BeehiveBlock.FACING, BEE_NEST_FACE));
+                generator.getWorld().getBlockEntity((BlockPos)optional.get(), BlockEntityType.BEEHIVE).ifPresent((blockEntity) -> {
+-                  int i = 2 + random.nextInt(2);
++                  int i2 = 2 + random.nextInt(2);
+ 
+-                  for(int j = 0; j < i; ++j) {
++                  for(int j = 0; j < i2; ++j) {
+                      NbtCompound nbtCompound = new NbtCompound();
+                      nbtCompound.putString("id", Registries.ENTITY_TYPE.getId(EntityType.BEE).toString());
+                      blockEntity.addBee(nbtCompound, random.nextInt(599), false);

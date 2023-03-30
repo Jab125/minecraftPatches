@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/ai/brain/sensor/PiglinSpecificSensor.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/ai/brain/sensor/PiglinSpecificSensor.java	2023-03-30 20:43:47
+@@ -81,7 +81,7 @@
+          }
+       }
+ 
+-      for(LivingEntity livingEntity2 : (List)brain.getOptionalRegisteredMemory(MemoryModuleType.MOBS).orElse(ImmutableList.of())) {
++      for(LivingEntity livingEntity2 : brain.getOptionalRegisteredMemory(MemoryModuleType.MOBS).orElse(ImmutableList.of())) {
+          if (livingEntity2 instanceof AbstractPiglinEntity abstractPiglinEntity) {
+             if (abstractPiglinEntity.isAdult()) {
+                list2.add(abstractPiglinEntity);

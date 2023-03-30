@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/poi/PointOfInterestType.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/poi/PointOfInterestType.java	2023-03-30 20:42:01
+@@ -9,7 +9,7 @@
+    public static final Predicate<RegistryEntry<PointOfInterestType>> NONE = (type) -> false;
+ 
+    public PointOfInterestType {
+-      set = Set.copyOf(set);
++      blockStates = Set.copyOf(blockStates);
+    }
+ 
+    public boolean contains(BlockState state) {

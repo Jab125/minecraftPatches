@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/EntityType.java	2023-03-30 19:29:25
++++ b/net/minecraft/entity/EntityType.java	2023-03-30 19:29:44
+@@ -551,7 +551,7 @@
+          }
+ 
+          return entity;
+-      }).orElse((Object)null);
++      }).orElse(null);
+    }
+ 
+    public static Stream<Entity> streamFromNbt(final List<? extends NbtElement> entityNbtList, final World world) {

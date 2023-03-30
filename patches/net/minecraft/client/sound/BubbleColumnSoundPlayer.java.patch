@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/sound/BubbleColumnSoundPlayer.java	2023-03-30 19:29:26
++++ b/net/minecraft/client/sound/BubbleColumnSoundPlayer.java	2023-03-30 19:29:44
+@@ -22,7 +22,7 @@
+ 
+    public void tick() {
+       World world = this.player.world;
+-      BlockState blockState = (BlockState)world.getStatesInBoxIfLoaded(this.player.getBoundingBox().expand(0.0D, (double)-0.4F, 0.0D).contract(1.0E-6D)).filter((state) -> state.isOf(Blocks.BUBBLE_COLUMN)).findFirst().orElse((Object)null);
++      BlockState blockState = (BlockState)world.getStatesInBoxIfLoaded(this.player.getBoundingBox().expand(0.0D, (double)-0.4F, 0.0D).contract(1.0E-6D)).filter((state) -> state.isOf(Blocks.BUBBLE_COLUMN)).findFirst().orElse(null);
+       if (blockState != null) {
+          if (!this.hasPlayedForCurrentColumn && !this.firstTick && blockState.isOf(Blocks.BUBBLE_COLUMN) && !this.player.isSpectator()) {
+             boolean bl = blockState.get(BubbleColumnBlock.DRAG);

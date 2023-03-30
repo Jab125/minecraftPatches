@@ -1,0 +1,70 @@
+--- a/net/minecraft/entity/ai/brain/Brain.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/ai/brain/Brain.java	2023-03-30 20:42:01
+@@ -66,14 +66,14 @@
+             map.entries().forEach((pair) -> {
+                DataResult<MemoryModuleType<?>> dataResult = Registries.MEMORY_MODULE_TYPE.getCodec().parse(ops, pair.getFirst());
+                DataResult<? extends Brain.MemoryEntry<?>> dataResult2 = dataResult.flatMap((memoryType) -> this.parse(memoryType, ops, (T)pair.getSecond()));
+-               mutableObject.setValue(((DataResult)mutableObject.getValue()).apply2(ImmutableList.Builder::add, dataResult2));
++               mutableObject.setValue((mutableObject.getValue()).apply2(ImmutableList.Builder::add, dataResult2));
+             });
+-            ImmutableList<Brain.MemoryEntry<?>> immutableList = (ImmutableList)((DataResult)mutableObject.getValue()).resultOrPartial(Brain.LOGGER::error).map(ImmutableList.Builder::build).orElseGet(ImmutableList::of);
++            ImmutableList<Brain.MemoryEntry<?>> immutableList = (mutableObject.getValue()).resultOrPartial(Brain.LOGGER::error).map(ImmutableList.Builder::build).orElseGet(ImmutableList::of);
+             return DataResult.success(new Brain(memoryModules, sensors, immutableList, mutableObject::getValue));
+          }
+ 
+          private <T, U> DataResult<Brain.MemoryEntry<U>> parse(MemoryModuleType<U> memoryType, DynamicOps<T> ops, T value) {
+-            return ((DataResult)memoryType.getCodec().map(DataResult::success).orElseGet(() -> DataResult.error(() -> "No codec for memory: " + memoryType))).flatMap((codec) -> codec.parse(ops, value)).map((data) -> new Brain.MemoryEntry<>(memoryType, Optional.of(data)));
++            return (memoryType.getCodec().map(DataResult::success).orElseGet(() -> DataResult.error(() -> "No codec for memory: " + memoryType))).flatMap((codec) -> codec.parse(ops, value)).map((data) -> new Brain.MemoryEntry<>(memoryType, Optional.of(data)));
+          }
+ 
+          public <T> RecordBuilder<T> encode(Brain<E> brain, DynamicOps<T> dynamicOps, RecordBuilder<T> recordBuilder) {
+@@ -154,18 +154,18 @@
+    }
+ 
+    public <U> Optional<U> getOptionalRegisteredMemory(MemoryModuleType<U> type) {
+-      Optional<? extends Memory<?>> optional = (Optional)this.memories.get(type);
++      Optional<? extends Memory<?>> optional = this.memories.get(type);
+       if (optional == null) {
+          throw new IllegalStateException("Unregistered memory fetched: " + type);
+       } else {
+-         return optional.map(Memory::getValue);
++         return optional.map(memory -> (U) memory.getValue());
+       }
+    }
+ 
+    @Nullable
+    public <U> Optional<U> getOptionalMemory(MemoryModuleType<U> type) {
+-      Optional<? extends Memory<?>> optional = (Optional)this.memories.get(type);
+-      return optional == null ? null : optional.map(Memory::getValue);
++      Optional<? extends Memory<?>> optional = this.memories.get(type);
++      return optional == null ? null : optional.map(memory -> (U) memory.getValue());
+    }
+ 
+    public <U> long getMemoryExpiry(MemoryModuleType<U> type) {
+@@ -401,7 +401,7 @@
+          for(Map.Entry<Activity, Set<Task<? super E>>> entry : map.entrySet()) {
+             Activity activity = (Activity)entry.getKey();
+             if (this.possibleActivities.contains(activity)) {
+-               for(Task<? super E> task : (Set)entry.getValue()) {
++               for(Task<? super E> task : entry.getValue()) {
+                   if (task.getStatus() == MultiTickTask.Status.STOPPED) {
+                      task.tryStarting(world, entity, l);
+                   }
+@@ -425,7 +425,7 @@
+       if (!this.requiredActivityMemories.containsKey(activity)) {
+          return false;
+       } else {
+-         for(Pair<MemoryModuleType<?>, MemoryModuleState> pair : (Set)this.requiredActivityMemories.get(activity)) {
++         for(Pair<MemoryModuleType<?>, MemoryModuleState> pair : this.requiredActivityMemories.get(activity)) {
+             MemoryModuleType<?> memoryModuleType = (MemoryModuleType)pair.getFirst();
+             MemoryModuleState memoryModuleState = (MemoryModuleState)pair.getSecond();
+             if (!this.isMemoryInState(memoryModuleType, memoryModuleState)) {
+@@ -458,7 +458,7 @@
+       private final MemoryModuleType<U> type;
+       private final Optional<? extends Memory<U>> data;
+ 
+-      static <U> Brain.MemoryEntry<U> of(MemoryModuleType<U> type, Optional<? extends Memory<?>> data) {
++      static <U> Brain.MemoryEntry<U> of(MemoryModuleType<U> type, Optional<? extends Memory<U>> data) {
+          return new Brain.MemoryEntry<>(type, data);
+       }
+ 

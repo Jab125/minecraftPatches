@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/dev/NbtProvider.java	2023-03-30 19:29:28
++++ b/net/minecraft/data/dev/NbtProvider.java	2023-03-30 19:29:44
+@@ -64,7 +64,7 @@
+                return var4;
+             } catch (IOException var8) {
+                LOGGER.error("Failed to read structure input directory", var8);
+-               return CompletableFuture.completedFuture((Object)null);
++               return CompletableFuture.completedFuture(null);
+             }
+          }, Util.getMainWorkerExecutor()).thenCompose((future) -> future));
+       }

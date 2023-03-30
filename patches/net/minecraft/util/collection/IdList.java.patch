@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/collection/IdList.java	2023-03-30 19:29:27
++++ b/net/minecraft/util/collection/IdList.java	2023-03-30 19:29:44
+@@ -29,7 +29,7 @@
+       this.idMap.put(value, id);
+ 
+       while(this.list.size() <= id) {
+-         this.list.add((Object)null);
++         this.list.add(null);
+       }
+ 
+       this.list.set(id, value);

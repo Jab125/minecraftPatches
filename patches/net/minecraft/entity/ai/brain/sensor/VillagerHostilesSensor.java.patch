@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/ai/brain/sensor/VillagerHostilesSensor.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/ai/brain/sensor/VillagerHostilesSensor.java	2023-03-30 20:43:47
+@@ -6,7 +6,7 @@
+ import net.minecraft.entity.ai.brain.MemoryModuleType;
+ 
+ public class VillagerHostilesSensor extends NearestVisibleLivingEntitySensor {
+-   private static final ImmutableMap<EntityType<?>, Float> SQUARED_DISTANCES_FOR_DANGER = ImmutableMap.builder().put(EntityType.DROWNED, 8.0F).put(EntityType.EVOKER, 12.0F).put(EntityType.HUSK, 8.0F).put(EntityType.ILLUSIONER, 12.0F).put(EntityType.PILLAGER, 15.0F).put(EntityType.RAVAGER, 12.0F).put(EntityType.VEX, 8.0F).put(EntityType.VINDICATOR, 10.0F).put(EntityType.ZOGLIN, 10.0F).put(EntityType.ZOMBIE, 8.0F).put(EntityType.ZOMBIE_VILLAGER, 8.0F).build();
++   private static final ImmutableMap<EntityType<?>, Float> SQUARED_DISTANCES_FOR_DANGER = ImmutableMap.<EntityType<?>, Float>builder().put(EntityType.DROWNED, 8.0F).put(EntityType.EVOKER, 12.0F).put(EntityType.HUSK, 8.0F).put(EntityType.ILLUSIONER, 12.0F).put(EntityType.PILLAGER, 15.0F).put(EntityType.RAVAGER, 12.0F).put(EntityType.VEX, 8.0F).put(EntityType.VINDICATOR, 10.0F).put(EntityType.ZOGLIN, 10.0F).put(EntityType.ZOMBIE, 8.0F).put(EntityType.ZOMBIE_VILLAGER, 8.0F).build();
+ 
+    protected boolean matches(LivingEntity entity, LivingEntity target) {
+       return this.isHostile(target) && this.isCloseEnoughForDanger(entity, target);

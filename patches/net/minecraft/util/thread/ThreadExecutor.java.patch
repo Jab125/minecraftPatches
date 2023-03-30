@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/thread/ThreadExecutor.java	2023-03-30 19:29:26
++++ b/net/minecraft/util/thread/ThreadExecutor.java	2023-03-30 19:29:45
+@@ -63,7 +63,7 @@
+          return this.submitAsync(task);
+       } else {
+          task.run();
+-         return CompletableFuture.completedFuture((Object)null);
++         return CompletableFuture.completedFuture(null);
+       }
+    }
+ 

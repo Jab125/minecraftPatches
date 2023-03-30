@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/realms/gui/RealmsWorldSlotButton.java	2023-03-30 19:29:27
++++ b/net/minecraft/client/realms/gui/RealmsWorldSlotButton.java	2023-03-30 19:29:45
+@@ -97,7 +97,7 @@
+ 
+    private Pair<Text, Text> getActionPromptAndMessage(RealmsServer server, String text, boolean empty, boolean minigame, RealmsWorldSlotButton.Action action) {
+       if (action == RealmsWorldSlotButton.Action.NOTHING) {
+-         return Pair.of((Object)null, Text.literal(text));
++         return Pair.of(null, Text.literal(text));
+       } else {
+          Text text2;
+          if (minigame) {

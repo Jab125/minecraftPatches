@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/heightprovider/WeightedListHeightProvider.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/gen/heightprovider/WeightedListHeightProvider.java	2023-03-30 21:03:20
+@@ -7,7 +7,7 @@
+ import net.minecraft.world.gen.HeightContext;
+ 
+ public class WeightedListHeightProvider extends HeightProvider {
+-   public static final Codec<WeightedListHeightProvider> WEIGHTED_LIST_CODEC = RecordCodecBuilder.create((instance) -> instance.group(DataPool.createCodec(HeightProvider.CODEC).fieldOf("distribution").forGetter((weightedListHeightProvider) -> weightedListHeightProvider.weightedList)).apply(instance, WeightedListHeightProvider::new));
++   public static final Codec<WeightedListHeightProvider> WEIGHTED_LIST_CODEC = RecordCodecBuilder.create((instance) -> instance.group(DataPool.createDataCodec(HeightProvider.CODEC).fieldOf("distribution").forGetter((weightedListHeightProvider) -> weightedListHeightProvider.weightedList)).apply(instance, WeightedListHeightProvider::new));
+    private final DataPool<HeightProvider> weightedList;
+ 
+    public WeightedListHeightProvider(DataPool<HeightProvider> weightedList) {

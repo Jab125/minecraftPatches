@@ -1,0 +1,11 @@
+--- a/net/minecraft/block/pattern/BlockPatternBuilder.java	2023-03-30 19:29:25
++++ b/net/minecraft/block/pattern/BlockPatternBuilder.java	2023-03-30 19:29:44
+@@ -38,7 +38,7 @@
+ 
+                for(char c : string.toCharArray()) {
+                   if (!this.charMap.containsKey(c)) {
+-                     this.charMap.put(c, (Object)null);
++                     this.charMap.put(c, null);
+                   }
+                }
+             }

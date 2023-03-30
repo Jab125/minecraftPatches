@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/event/listener/Vibration.java	2023-03-30 19:29:27
++++ b/net/minecraft/world/event/listener/Vibration.java	2023-03-30 19:29:45
+@@ -14,7 +14,7 @@
+ import org.jetbrains.annotations.Nullable;
+ 
+ public record Vibration(GameEvent gameEvent, float distance, Vec3d pos, @Nullable UUID uuid, @Nullable UUID projectileOwnerUuid, @Nullable Entity entity) {
+-   public static final Codec<Vibration> CODEC = RecordCodecBuilder.create((instance) -> instance.group(Registries.GAME_EVENT.getCodec().fieldOf("game_event").forGetter(Vibration::gameEvent), Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(Vibration::distance), Vec3d.CODEC.fieldOf("pos").forGetter(Vibration::pos), Uuids.INT_STREAM_CODEC.optionalFieldOf("source").forGetter((vibration) -> Optional.ofNullable(vibration.uuid())), Uuids.INT_STREAM_CODEC.optionalFieldOf("projectile_owner").forGetter((vibration) -> Optional.ofNullable(vibration.projectileOwnerUuid()))).apply(instance, (event, distance, pos, uuid, projectileOwnerUuid) -> new Vibration(event, distance, pos, (UUID)uuid.orElse((Object)null), (UUID)projectileOwnerUuid.orElse((Object)null))));
++   public static final Codec<Vibration> CODEC = RecordCodecBuilder.create((instance) -> instance.group(Registries.GAME_EVENT.getCodec().fieldOf("game_event").forGetter(Vibration::gameEvent), Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(Vibration::distance), Vec3d.CODEC.fieldOf("pos").forGetter(Vibration::pos), Uuids.INT_STREAM_CODEC.optionalFieldOf("source").forGetter((vibration) -> Optional.ofNullable(vibration.uuid())), Uuids.INT_STREAM_CODEC.optionalFieldOf("projectile_owner").forGetter((vibration) -> Optional.ofNullable(vibration.projectileOwnerUuid()))).apply(instance, (event, distance, pos, uuid, projectileOwnerUuid) -> new Vibration(event, distance, pos, (UUID)uuid.orElse(null), (UUID)projectileOwnerUuid.orElse(null))));
+ 
+    public Vibration(GameEvent gameEvent, float distance, Vec3d pos, @Nullable UUID uuid, @Nullable UUID projectileOwnerUuid) {
+       this(gameEvent, distance, pos, uuid, projectileOwnerUuid, (Entity)null);

@@ -1,0 +1,10 @@
+--- a/net/minecraft/entity/ai/goal/EscapeDangerGoal.java	2023-03-30 19:29:27
++++ b/net/minecraft/entity/ai/goal/EscapeDangerGoal.java	2023-03-30 19:29:44
+@@ -79,6 +79,6 @@
+    @Nullable
+    protected BlockPos locateClosestWater(BlockView world, Entity entity, int rangeX) {
+       BlockPos blockPos = entity.getBlockPos();
+-      return !world.getBlockState(blockPos).getCollisionShape(world, blockPos).isEmpty() ? null : (BlockPos)BlockPos.findClosest(entity.getBlockPos(), rangeX, 1, (pos) -> world.getFluidState(pos).isIn(FluidTags.WATER)).orElse((Object)null);
++      return !world.getBlockState(blockPos).getCollisionShape(world, blockPos).isEmpty() ? null : (BlockPos)BlockPos.findClosest(entity.getBlockPos(), rangeX, 1, (pos) -> world.getFluidState(pos).isIn(FluidTags.WATER)).orElse(null);
+    }
+ }

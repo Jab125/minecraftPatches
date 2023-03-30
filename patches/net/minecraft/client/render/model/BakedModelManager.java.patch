@@ -1,0 +1,15 @@
+--- a/net/minecraft/client/render/model/BakedModelManager.java	1970-01-12 08:58:04
++++ b/net/minecraft/client/render/model/BakedModelManager.java	2023-03-30 19:23:52
+@@ -244,10 +244,5 @@
+ 
+    @Environment(EnvType.CLIENT)
+    static record BakingResult(ModelLoader modelLoader, BakedModel missingModel, Map<BlockState, BakedModel> modelCache, Map<Identifier, SpriteAtlasManager.AtlasPreparation> atlasPreparations, CompletableFuture<Void> readyForUpload) {
+-      final ModelLoader modelLoader;
+-      final BakedModel missingModel;
+-      final Map<BlockState, BakedModel> modelCache;
+-      final Map<Identifier, SpriteAtlasManager.AtlasPreparation> atlasPreparations;
+-      final CompletableFuture<Void> readyForUpload;
+    }
+-}
++}
+\ No newline at end of file

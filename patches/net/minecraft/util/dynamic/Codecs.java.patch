@@ -1,0 +1,62 @@
+--- a/net/minecraft/util/dynamic/Codecs.java	2023-03-30 19:29:25
++++ b/net/minecraft/util/dynamic/Codecs.java	2023-03-30 21:09:37
+@@ -19,6 +19,7 @@
+ import com.mojang.serialization.MapCodec;
+ import com.mojang.serialization.MapLike;
+ import com.mojang.serialization.RecordBuilder;
++import com.mojang.serialization.codecs.EitherCodec;
+ import com.mojang.serialization.codecs.RecordCodecBuilder;
+ import it.unimi.dsi.fastutil.floats.FloatArrayList;
+ import it.unimi.dsi.fastutil.floats.FloatList;
+@@ -111,7 +112,7 @@
+    public static final Function<Optional<Long>, OptionalLong> OPTIONAL_OF_LONG_TO_OPTIONAL_LONG = (optional) -> (OptionalLong)optional.map(OptionalLong::of).orElseGet(OptionalLong::empty);
+    public static final Function<OptionalLong, Optional<Long>> OPTIONAL_LONG_TO_OPTIONAL_OF_LONG = (optionalLong) -> optionalLong.isPresent() ? Optional.of(optionalLong.getAsLong()) : Optional.empty();
+    public static final Codec<BitSet> BIT_SET = Codec.LONG_STREAM.xmap((stream) -> BitSet.valueOf(stream.toArray()), (set) -> Arrays.stream(set.toLongArray()));
+-   private static final Codec<Property> GAME_PROFILE_PROPERTY = RecordCodecBuilder.create((instance) -> instance.group(Codec.STRING.fieldOf("name").forGetter(Property::getName), Codec.STRING.fieldOf("value").forGetter(Property::getValue), Codec.STRING.optionalFieldOf("signature").forGetter((property) -> Optional.ofNullable(property.getSignature()))).apply(instance, (key, value, signature) -> new Property(key, value, (String)signature.orElse((Object)null))));
++   private static final Codec<Property> GAME_PROFILE_PROPERTY = RecordCodecBuilder.create((instance) -> instance.group(Codec.STRING.fieldOf("name").forGetter(Property::getName), Codec.STRING.fieldOf("value").forGetter(Property::getValue), Codec.STRING.optionalFieldOf("signature").forGetter((property) -> Optional.ofNullable(property.getSignature()))).apply(instance, (key, value, signature) -> new Property(key, value, (String)signature.orElse(null))));
+    @VisibleForTesting
+    public static final Codec<PropertyMap> GAME_PROFILE_PROPERTY_MAP = Codec.either(Codec.unboundedMap(Codec.STRING, Codec.STRING.listOf()), GAME_PROFILE_PROPERTY.listOf()).xmap((either) -> {
+       PropertyMap propertyMap = new PropertyMap();
+@@ -128,7 +129,7 @@
+       });
+       return propertyMap;
+    }, (properties) -> com.mojang.datafixers.util.Either.right(properties.values().stream().toList()));
+-   public static final Codec<GameProfile> GAME_PROFILE = RecordCodecBuilder.create((instance) -> instance.group(Codec.mapPair(Uuids.CODEC.xmap(Optional::of, (optional) -> (UUID)optional.orElse((Object)null)).optionalFieldOf("id", Optional.empty()), Codec.STRING.xmap(Optional::of, (optional) -> (String)optional.orElse((Object)null)).optionalFieldOf("name", Optional.empty())).flatXmap(Codecs::createGameProfileFromPair, Codecs::createPairFromGameProfile).forGetter(Function.identity()), GAME_PROFILE_PROPERTY_MAP.optionalFieldOf("properties", new PropertyMap()).forGetter(GameProfile::getProperties)).apply(instance, (profile, properties) -> {
++   public static final Codec<GameProfile> GAME_PROFILE = RecordCodecBuilder.create((instance) -> instance.group(Codec.mapPair(Uuids.CODEC.xmap(Optional::of, (optional) -> (UUID)optional.orElse(null)).optionalFieldOf("id", Optional.empty()), Codec.STRING.xmap(Optional::of, (optional) -> (String)optional.orElse(null)).optionalFieldOf("name", Optional.empty())).flatXmap(Codecs::createGameProfileFromPair, Codecs::createPairFromGameProfile).forGetter(Function.identity()), GAME_PROFILE_PROPERTY_MAP.optionalFieldOf("properties", new PropertyMap()).forGetter(GameProfile::getProperties)).apply(instance, (profile, properties) -> {
+          properties.forEach((key, property) -> profile.getProperties().put(key, property));
+          return profile;
+       }));
+@@ -142,11 +143,11 @@
+       Codec<I> codec2 = Codec.list(codec).comapFlatMap((list) -> Util.toArray(list, 2).flatMap((listx) -> {
+             P object = (P)listx.get(0);
+             P object2 = (P)listx.get(1);
+-            return (DataResult)combineFunction.apply(object, object2);
++            return combineFunction.apply(object, object2);
+          }), (pair) -> ImmutableList.of(leftFunction.apply(pair), rightFunction.apply(pair)));
+-      Codec<I> codec3 = RecordCodecBuilder.create((instance) -> instance.group(codec.fieldOf(leftFieldName).forGetter(Pair::getFirst), codec.fieldOf(rightFieldName).forGetter(Pair::getSecond)).apply(instance, Pair::of)).comapFlatMap((pair) -> (DataResult)combineFunction.apply(pair.getFirst(), pair.getSecond()), (pair) -> Pair.of(leftFunction.apply(pair), rightFunction.apply(pair)));
+-      Codec<I> codec4 = (new Codecs.Either(codec2, codec3)).xmap((either) -> either.map((object) -> object, (object) -> object), com.mojang.datafixers.util.Either::left);
+-      return Codec.either(codec, codec4).comapFlatMap((either) -> (DataResult)either.map((object) -> (DataResult)combineFunction.apply(object, object), DataResult::success), (pair) -> {
++      Codec<I> codec3 = RecordCodecBuilder.<Pair<P, P>>create((instance) -> instance.group(codec.fieldOf(leftFieldName).forGetter(Pair::getFirst), codec.fieldOf(rightFieldName).forGetter(Pair::getSecond)).apply(instance, Pair::of)).comapFlatMap((pair) -> combineFunction.apply(pair.getFirst(), pair.getSecond()), (pair) -> Pair.of(leftFunction.apply(pair), rightFunction.apply(pair)));
++      Codec<I> codec4 = (new Codecs.Either<>(codec2, codec3)).xmap((either) -> either.map((object) -> object, (object) -> object), com.mojang.datafixers.util.Either::left);
++      return new EitherCodec<>(codec, codec4).comapFlatMap((either) -> (DataResult)either.map((object) -> (DataResult)combineFunction.apply(object, object), DataResult::success), (pair) -> {
+          P object = (P)leftFunction.apply(pair);
+          P object2 = (P)rightFunction.apply(pair);
+          return Objects.equals(object, object2) ? com.mojang.datafixers.util.Either.left(object) : com.mojang.datafixers.util.Either.right(pair);
+@@ -311,7 +312,7 @@
+ 
+    private static DataResult<GameProfile> createGameProfileFromPair(Pair<Optional<UUID>, Optional<String>> pair) {
+       try {
+-         return DataResult.success(new GameProfile((UUID)((Optional)pair.getFirst()).orElse((Object)null), (String)((Optional)pair.getSecond()).orElse((Object)null)));
++         return DataResult.success(new GameProfile((UUID)((Optional)pair.getFirst()).orElse(null), (String)((Optional)pair.getSecond()).orElse(null)));
+       } catch (Throwable var2) {
+          return DataResult.error(var2::getMessage);
+       }
+@@ -377,7 +378,7 @@
+ 
+    static record Lazy<A>(Supplier<Codec<A>> delegate) implements Codec<A> {
+       Lazy {
+-         Supplier<Codec<A>> var2 = Suppliers.memoize(supplier::get);
++         delegate = Suppliers.memoize(delegate::get);
+       }
+ 
+       public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> ops, T input) {

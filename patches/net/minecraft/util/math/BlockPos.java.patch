@@ -1,0 +1,20 @@
+--- a/net/minecraft/util/math/BlockPos.java	1970-01-12 08:58:04
++++ b/net/minecraft/util/math/BlockPos.java	2023-03-30 20:24:57
+@@ -330,12 +330,12 @@
+                if (this.index == l) {
+                   return (BlockPos)this.endOfData();
+                } else {
+-                  int i = this.index % i;
+-                  int j = this.index / i;
+-                  int k = j % j;
+-                  int l = j / j;
++                  int i2 = this.index % i;
++                  int j2 = this.index / i;
++                  int k = j2 % j;
++                  int l2 = j2 / j;
+                   ++this.index;
+-                  return this.pos.set(startX + i, startY + k, startZ + l);
++                  return this.pos.set(startX + i2, startY + k, startZ + l2);
+                }
+             }
+          };

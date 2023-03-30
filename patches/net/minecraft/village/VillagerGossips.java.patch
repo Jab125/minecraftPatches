@@ -1,0 +1,46 @@
+--- a/net/minecraft/village/VillagerGossips.java	1970-01-12 08:58:04
++++ b/net/minecraft/village/VillagerGossips.java	2023-03-30 20:46:27
+@@ -152,7 +152,7 @@
+    }
+ 
+    public void deserialize(Dynamic<?> dynamic) {
+-      VillagerGossips.GossipEntry.LIST_CODEC.decode(dynamic).resultOrPartial((error) -> LOGGER.warn("Failed to deserialize gossips: {}", error)).stream().flatMap((pair) -> ((List)pair.getFirst()).stream()).forEach((entry) -> this.getReputationFor(entry.target).associatedGossip.put(entry.type, entry.value));
++      VillagerGossips.GossipEntry.LIST_CODEC.decode(dynamic).resultOrPartial((error) -> LOGGER.warn("Failed to deserialize gossips: {}", error)).stream().flatMap((pair) -> ((List)pair.getFirst()).stream()).forEach((entry0) -> {GossipEntry entry = (GossipEntry) entry0; this.getReputationFor((entry.target)).associatedGossip.put(entry.type, entry.value);});
+    }
+ 
+    private static int max(int left, int right) {
+@@ -165,9 +165,6 @@
+    }
+ 
+    static record GossipEntry(UUID target, VillageGossipType type, int value) {
+-      final UUID target;
+-      final VillageGossipType type;
+-      final int value;
+       public static final Codec<VillagerGossips.GossipEntry> CODEC = RecordCodecBuilder.create((instance) -> instance.group(Uuids.INT_STREAM_CODEC.fieldOf("Target").forGetter(VillagerGossips.GossipEntry::target), VillageGossipType.CODEC.fieldOf("Type").forGetter(VillagerGossips.GossipEntry::type), Codecs.POSITIVE_INT.fieldOf("Value").forGetter(VillagerGossips.GossipEntry::value)).apply(instance, VillagerGossips.GossipEntry::new));
+       public static final Codec<List<VillagerGossips.GossipEntry>> LIST_CODEC = CODEC.listOf();
+ 
+@@ -177,7 +174,7 @@
+    }
+ 
+    static class Reputation {
+-      final Object2IntMap<VillageGossipType> associatedGossip = new Object2IntOpenHashMap();
++      final Object2IntMap<VillageGossipType> associatedGossip = new Object2IntOpenHashMap<>();
+ 
+       public int getValueFor(Predicate<VillageGossipType> gossipTypeFilter) {
+          return this.associatedGossip.object2IntEntrySet().stream().filter((entry) -> gossipTypeFilter.test((VillageGossipType)entry.getKey())).mapToInt((entry) -> entry.getIntValue() * ((VillageGossipType)entry.getKey()).multiplier).sum();
+@@ -191,7 +188,7 @@
+          ObjectIterator<Object2IntMap.Entry<VillageGossipType>> objectIterator = this.associatedGossip.object2IntEntrySet().iterator();
+ 
+          while(objectIterator.hasNext()) {
+-            Object2IntMap.Entry<VillageGossipType> entry = (Object2IntMap.Entry)objectIterator.next();
++            Object2IntMap.Entry<VillageGossipType> entry = (Object2IntMap.Entry<VillageGossipType>)objectIterator.next();
+             int i = entry.getIntValue() - ((VillageGossipType)entry.getKey()).decay;
+             if (i < 2) {
+                objectIterator.remove();
+@@ -222,4 +219,4 @@
+          this.associatedGossip.removeInt(gossipType);
+       }
+    }
+-}
++}
+\ No newline at end of file

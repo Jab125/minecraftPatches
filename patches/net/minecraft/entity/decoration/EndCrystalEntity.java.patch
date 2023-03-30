@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/decoration/EndCrystalEntity.java	2023-03-30 19:29:28
++++ b/net/minecraft/entity/decoration/EndCrystalEntity.java	2023-03-30 19:29:45
+@@ -121,7 +121,7 @@
+ 
+    @Nullable
+    public BlockPos getBeamTarget() {
+-      return (BlockPos)((Optional)this.getDataTracker().get(BEAM_TARGET)).orElse((Object)null);
++      return (BlockPos)((Optional)this.getDataTracker().get(BEAM_TARGET)).orElse(null);
+    }
+ 
+    public void setShowBottom(boolean showBottom) {

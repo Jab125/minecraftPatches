@@ -1,0 +1,12 @@
+--- a/net/minecraft/recipe/ShapedRecipe.java	1970-01-12 08:58:04
++++ b/net/minecraft/recipe/ShapedRecipe.java	2023-03-30 21:09:37
+@@ -310,7 +310,8 @@
+          return new ShapedRecipe(identifier, string, craftingRecipeCategory, i, j, defaultedList, itemStack, bl);
+       }
+ 
+-      public void write(PacketByteBuf packetByteBuf, ShapedRecipe shapedRecipe) {
++      public void write(PacketByteBuf packetByteBuf, Recipe recipe) {
++         ShapedRecipe shapedRecipe = (ShapedRecipe)recipe;
+          packetByteBuf.writeVarInt(shapedRecipe.width);
+          packetByteBuf.writeVarInt(shapedRecipe.height);
+          packetByteBuf.writeString(shapedRecipe.group);

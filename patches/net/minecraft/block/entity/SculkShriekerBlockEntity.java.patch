@@ -1,0 +1,11 @@
+--- a/net/minecraft/block/entity/SculkShriekerBlockEntity.java	1970-01-12 08:58:04
++++ b/net/minecraft/block/entity/SculkShriekerBlockEntity.java	2023-03-30 20:15:22
+@@ -71,7 +71,7 @@
+       }
+ 
+       if (nbt.contains("listener", 10)) {
+-         VibrationListener.createCodec(this).parse(new Dynamic(NbtOps.INSTANCE, nbt.getCompound("listener"))).resultOrPartial(LOGGER::error).ifPresent((vibrationListener) -> this.vibrationListener = vibrationListener);
++         VibrationListener.createCodec(this).parse(new Dynamic(NbtOps.INSTANCE, nbt.getCompound("listener"))).resultOrPartial(a -> LOGGER.error((String) a)).ifPresent((vibrationListener) -> this.vibrationListener = (VibrationListener) vibrationListener);
+       }
+ 
+    }

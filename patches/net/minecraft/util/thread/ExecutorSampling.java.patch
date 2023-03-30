@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/thread/ExecutorSampling.java	2023-03-30 19:29:28
++++ b/net/minecraft/util/thread/ExecutorSampling.java	2023-03-30 19:29:44
+@@ -16,7 +16,7 @@
+    }
+ 
+    public void add(SampleableExecutor executor) {
+-      this.activeExecutors.put(executor, (Object)null);
++      this.activeExecutors.put(executor, null);
+    }
+ 
+    public List<Sampler> createSamplers() {

@@ -1,0 +1,52 @@
+--- a/net/minecraft/server/world/ServerChunkManager.java	2023-03-30 19:29:25
++++ b/net/minecraft/server/world/ServerChunkManager.java	2023-03-30 19:29:44
+@@ -159,11 +159,11 @@
+          if (chunkHolder == null) {
+             return null;
+          } else {
+-            Either<Chunk, ChunkHolder.Unloaded> either = (Either)chunkHolder.getValidFutureFor(ChunkStatus.FULL).getNow((Object)null);
++            Either<Chunk, ChunkHolder.Unloaded> either = (Either)chunkHolder.getValidFutureFor(ChunkStatus.FULL).getNow(null);
+             if (either == null) {
+                return null;
+             } else {
+-               Chunk chunk2 = (Chunk)either.left().orElse((Object)null);
++               Chunk chunk2 = (Chunk)either.left().orElse(null);
+                if (chunk2 != null) {
+                   this.putInCache(l, chunk2, ChunkStatus.FULL);
+                   if (chunk2 instanceof WorldChunk) {
+@@ -179,8 +179,8 @@
+ 
+    private void initChunkCaches() {
+       Arrays.fill(this.chunkPosCache, ChunkPos.MARKER);
+-      Arrays.fill(this.chunkStatusCache, (Object)null);
+-      Arrays.fill(this.chunkCache, (Object)null);
++      Arrays.fill(this.chunkStatusCache, null);
++      Arrays.fill(this.chunkCache, null);
+    }
+ 
+    public CompletableFuture<Either<Chunk, ChunkHolder.Unloaded>> getChunkFutureSyncOnMainThread(int chunkX, int chunkZ, ChunkStatus leastStatus, boolean create) {
+@@ -278,7 +278,7 @@
+       } else if (!this.world.shouldTickBlocksInChunk(pos)) {
+          return false;
+       } else {
+-         Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)chunkHolder.getTickingFuture().getNow((Object)null);
++         Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)chunkHolder.getTickingFuture().getNow(null);
+          return either != null && either.left().isPresent();
+       }
+    }
+@@ -496,8 +496,6 @@
+    }
+ 
+    static record ChunkWithHolder(WorldChunk chunk, ChunkHolder holder) {
+-      final WorldChunk chunk;
+-      final ChunkHolder holder;
+    }
+ 
+    final class MainThreadExecutor extends ThreadExecutor<Runnable> {
+@@ -535,4 +533,4 @@
+          }
+       }
+    }
+-}
++}
+\ No newline at end of file

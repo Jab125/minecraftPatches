@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/updater/WorldUpdater.java	2023-03-30 19:29:27
++++ b/net/minecraft/world/updater/WorldUpdater.java	2023-03-30 19:29:44
+@@ -125,7 +125,7 @@
+                   boolean bl2 = false;
+ 
+                   try {
+-                     NbtCompound nbtCompound = (NbtCompound)((Optional)versionedChunkStorage.getNbt(chunkPos).join()).orElse((Object)null);
++                     NbtCompound nbtCompound = (NbtCompound)((Optional)versionedChunkStorage.getNbt(chunkPos).join()).orElse(null);
+                      if (nbtCompound != null) {
+                         int i = VersionedChunkStorage.getDataVersion(nbtCompound);
+                         ChunkGenerator chunkGenerator = ((DimensionOptions)this.dimensionOptionsRegistry.getOrThrow(RegistryKeys.toDimensionKey(registryKey3))).chunkGenerator();

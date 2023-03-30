@@ -1,0 +1,17 @@
+--- a/net/minecraft/datafixer/fix/StructuresToConfiguredStructuresFix.java	1970-01-12 08:58:04
++++ b/net/minecraft/datafixer/fix/StructuresToConfiguredStructuresFix.java	2023-03-30 19:23:16
+@@ -111,7 +111,6 @@
+    }
+ 
+    static record Mapping(Map<String, String> biomeMapping, String fallback) {
+-      final String fallback;
+ 
+       public static StructuresToConfiguredStructuresFix.Mapping create(String mapping) {
+          return new StructuresToConfiguredStructuresFix.Mapping(Map.of(), mapping);
+@@ -131,4 +130,4 @@
+          return builder.build();
+       }
+    }
+-}
++}
+\ No newline at end of file

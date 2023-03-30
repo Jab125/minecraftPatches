@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/render/debug/ChunkLoadingDebugRenderer.java	2023-03-30 19:29:27
++++ b/net/minecraft/client/render/debug/ChunkLoadingDebugRenderer.java	2023-03-30 19:29:45
+@@ -46,7 +46,7 @@
+       }
+ 
+       if (this.loadingData != null) {
+-         Map<ChunkPos, String> map = (Map)this.loadingData.serverStates.getNow((Object)null);
++         Map<ChunkPos, String> map = (Map)this.loadingData.serverStates.getNow(null);
+          double e = this.client.gameRenderer.getCamera().getPos().y * 0.85D;
+ 
+          for(Map.Entry<ChunkPos, String> entry : this.loadingData.clientStates.entrySet()) {

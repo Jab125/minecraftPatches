@@ -1,0 +1,11 @@
+--- a/net/minecraft/structure/processor/StructureProcessorRule.java	2023-03-30 19:29:26
++++ b/net/minecraft/structure/processor/StructureProcessorRule.java	2023-03-30 19:29:44
+@@ -34,7 +34,7 @@
+       this.locationPredicate = locationPredicate;
+       this.positionPredicate = positionPredicate;
+       this.outputState = outputState;
+-      this.outputNbt = (NbtCompound)nbt.orElse((Object)null);
++      this.outputNbt = (NbtCompound)nbt.orElse(null);
+    }
+ 
+    public boolean test(BlockState input, BlockState currentState, BlockPos originalPos, BlockPos currentPos, BlockPos pivot, Random random) {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/texture/AsyncTexture.java	2023-03-30 19:29:25
++++ b/net/minecraft/client/texture/AsyncTexture.java	2023-03-30 19:29:44
+@@ -31,7 +31,7 @@
+    }
+ 
+    public CompletableFuture<Void> getLoadCompleteFuture() {
+-      return this.future == null ? CompletableFuture.completedFuture((Object)null) : this.future.thenApply((texture) -> null);
++      return this.future == null ? CompletableFuture.completedFuture(null) : this.future.thenApply((texture) -> null);
+    }
+ 
+    public void registerTexture(TextureManager textureManager, ResourceManager resourceManager, Identifier id, Executor executor) {

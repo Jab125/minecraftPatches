@@ -1,0 +1,24 @@
+--- a/net/minecraft/world/event/EntityPositionSource.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/event/EntityPositionSource.java	2023-03-30 20:29:05
+@@ -36,7 +36,7 @@
+    }
+ 
+    private void findEntityInWorld(World world) {
+-      ((Optional)this.source.map(Optional::of, (entityId) -> Optional.ofNullable((Entity)entityId.map((uuid) -> {
++      (this.source.map(Optional::of, (entityId) -> Optional.ofNullable((Entity)entityId.map((uuid) -> {
+             Entity var10000;
+             if (world instanceof ServerWorld serverWorld) {
+                var10000 = serverWorld.getEntity(uuid);
+@@ -69,9 +69,9 @@
+          return new EntityPositionSource(Either.right(Either.right(packetByteBuf.readVarInt())), packetByteBuf.readFloat());
+       }
+ 
+-      public void writeToBuf(PacketByteBuf packetByteBuf, EntityPositionSource entityPositionSource) {
+-         packetByteBuf.writeVarInt(entityPositionSource.getEntityId());
+-         packetByteBuf.writeFloat(entityPositionSource.yOffset);
++      public <T extends PositionSource> void writeToBuf(PacketByteBuf packetByteBuf, T entityPositionSource) {
++         packetByteBuf.writeVarInt(((EntityPositionSource)entityPositionSource).getEntityId());
++         packetByteBuf.writeFloat(((EntityPositionSource)entityPositionSource).yOffset);
+       }
+ 
+       public Codec<EntityPositionSource> getCodec() {

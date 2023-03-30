@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/collection/SortedArraySet.java	2023-03-30 19:29:27
++++ b/net/minecraft/util/collection/SortedArraySet.java	2023-03-30 19:29:45
+@@ -164,7 +164,7 @@
+    }
+ 
+    public void clear() {
+-      Arrays.fill(this.elements, 0, this.size, (Object)null);
++      Arrays.fill(this.elements, 0, this.size, null);
+       this.size = 0;
+    }
+ 

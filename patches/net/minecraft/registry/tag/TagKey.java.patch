@@ -1,0 +1,11 @@
+--- a/net/minecraft/registry/tag/TagKey.java	1970-01-12 08:58:04
++++ b/net/minecraft/registry/tag/TagKey.java	2023-03-30 20:05:23
+@@ -29,7 +29,7 @@
+    }
+ 
+    public <E> Optional<TagKey<E>> tryCast(RegistryKey<? extends Registry<E>> registryRef) {
+-      return this.isOf(registryRef) ? Optional.of(this) : Optional.empty();
++      return this.isOf(registryRef) ? Optional.of((TagKey<E>) this) : Optional.empty();
+    }
+ 
+    public String toString() {

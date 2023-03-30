@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/treedecorator/AlterGroundTreeDecorator.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/gen/treedecorator/AlterGroundTreeDecorator.java	2023-03-30 21:03:20
+@@ -40,7 +40,7 @@
+             this.setArea(generator, pos.west().south(2));
+             this.setArea(generator, pos.east(2).south(2));
+ 
+-            for(int i = 0; i < 5; ++i) {
++            for(int i2 = 0; i2 < 5; ++i2) {
+                int j = generator.getRandom().nextInt(64);
+                int k = j % 8;
+                int l = j / 8;

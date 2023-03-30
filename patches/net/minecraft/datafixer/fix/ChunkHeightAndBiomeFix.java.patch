@@ -1,0 +1,11 @@
+--- a/net/minecraft/datafixer/fix/ChunkHeightAndBiomeFix.java	2023-03-30 19:29:26
++++ b/net/minecraft/datafixer/fix/ChunkHeightAndBiomeFix.java	2023-03-30 19:29:44
+@@ -155,7 +155,7 @@
+ 
+    private static Dynamic<?>[] fixBiomes(Dynamic<?> level, boolean overworld, int i, MutableBoolean heightAlreadyUpdated) {
+       Dynamic<?>[] dynamics = new Dynamic[overworld ? 24 : 16];
+-      int[] is = (int[])level.get("Biomes").asIntStreamOpt().result().map(IntStream::toArray).orElse((Object)null);
++      int[] is = (int[])level.get("Biomes").asIntStreamOpt().result().map(IntStream::toArray).orElse(null);
+       if (is != null && is.length == 1536) {
+          heightAlreadyUpdated.setValue(true);
+ 

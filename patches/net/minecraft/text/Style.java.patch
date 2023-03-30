@@ -1,0 +1,11 @@
+--- a/net/minecraft/text/Style.java	2023-03-30 19:29:28
++++ b/net/minecraft/text/Style.java	2023-03-30 19:29:44
+@@ -45,7 +45,7 @@
+    final Identifier font;
+ 
+    private static Style of(Optional<TextColor> color, Optional<Boolean> bold, Optional<Boolean> italic, Optional<Boolean> underlined, Optional<Boolean> strikethrough, Optional<Boolean> obfuscated, Optional<String> insertion, Optional<Identifier> font) {
+-      return new Style((TextColor)color.orElse((Object)null), (Boolean)bold.orElse((Object)null), (Boolean)italic.orElse((Object)null), (Boolean)underlined.orElse((Object)null), (Boolean)strikethrough.orElse((Object)null), (Boolean)obfuscated.orElse((Object)null), (ClickEvent)null, (HoverEvent)null, (String)insertion.orElse((Object)null), (Identifier)font.orElse((Object)null));
++      return new Style((TextColor)color.orElse(null), (Boolean)bold.orElse(null), (Boolean)italic.orElse(null), (Boolean)underlined.orElse(null), (Boolean)strikethrough.orElse(null), (Boolean)obfuscated.orElse(null), (ClickEvent)null, (HoverEvent)null, (String)insertion.orElse(null), (Identifier)font.orElse(null));
+    }
+ 
+    Style(@Nullable TextColor color, @Nullable Boolean bold, @Nullable Boolean italic, @Nullable Boolean underlined, @Nullable Boolean strikethrough, @Nullable Boolean obfuscated, @Nullable ClickEvent clickEvent, @Nullable HoverEvent hoverEvent, @Nullable String insertion, @Nullable Identifier font) {

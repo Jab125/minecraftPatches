@@ -1,0 +1,20 @@
+--- a/net/minecraft/util/collection/DataPool.java	1970-01-12 08:58:04
++++ b/net/minecraft/util/collection/DataPool.java	2023-03-30 21:03:20
+@@ -12,7 +12,7 @@
+       return Weighted.Present.createCodec(dataCodec).listOf().xmap(DataPool::new, Pool::getEntries);
+    }
+ 
+-   public static <E> Codec<DataPool<E>> createCodec(Codec<E> dataCodec) {
++   public static <E> Codec<DataPool<E>> createDataCodec(Codec<E> dataCodec) {
+       return Codecs.nonEmptyList(Weighted.Present.createCodec(dataCodec).listOf()).xmap(DataPool::new, Pool::getEntries);
+    }
+ 
+@@ -24,7 +24,7 @@
+       return new DataPool.Builder<>();
+    }
+ 
+-   public static <E> DataPool<E> empty() {
++   public static <E> DataPool<E> createEmpty() {
+       return new DataPool<>(List.of());
+    }
+ 

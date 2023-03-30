@@ -1,0 +1,11 @@
+--- a/net/minecraft/item/trim/ArmorTrim.java	2023-03-30 19:29:24
++++ b/net/minecraft/item/trim/ArmorTrim.java	2023-03-30 19:29:44
+@@ -95,7 +95,7 @@
+    public static Optional<ArmorTrim> getTrim(DynamicRegistryManager registryManager, ItemStack stack) {
+       if (stack.isIn(ItemTags.TRIMMABLE_ARMOR) && stack.getNbt() != null && stack.getNbt().contains("Trim")) {
+          NbtCompound nbtCompound = stack.getSubNbt("Trim");
+-         ArmorTrim armorTrim = (ArmorTrim)CODEC.parse(RegistryOps.of(NbtOps.INSTANCE, registryManager), nbtCompound).resultOrPartial(LOGGER::error).orElse((Object)null);
++         ArmorTrim armorTrim = (ArmorTrim)CODEC.parse(RegistryOps.of(NbtOps.INSTANCE, registryManager), nbtCompound).resultOrPartial(LOGGER::error).orElse(null);
+          return Optional.ofNullable(armorTrim);
+       } else {
+          return Optional.empty();

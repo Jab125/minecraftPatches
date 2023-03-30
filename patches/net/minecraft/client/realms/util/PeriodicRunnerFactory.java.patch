@@ -1,0 +1,26 @@
+--- a/net/minecraft/client/realms/util/PeriodicRunnerFactory.java	2023-03-30 19:29:28
++++ b/net/minecraft/client/realms/util/PeriodicRunnerFactory.java	2023-03-30 19:29:45
+@@ -64,7 +64,7 @@
+ 
+       void run(long currentTime) {
+          if (this.resultFuture != null) {
+-            PeriodicRunnerFactory.TimedErrableResult<T> timedErrableResult = (PeriodicRunnerFactory.TimedErrableResult)this.resultFuture.getNow((Object)null);
++            PeriodicRunnerFactory.TimedErrableResult<T> timedErrableResult = (PeriodicRunnerFactory.TimedErrableResult)this.resultFuture.getNow(null);
+             if (timedErrableResult == null) {
+                return;
+             }
+@@ -177,12 +177,9 @@
+ 
+    @Environment(EnvType.CLIENT)
+    static record TimedErrableResult<T>(Either<T, Exception> value, long time) {
+-      final long time;
+    }
+ 
+    @Environment(EnvType.CLIENT)
+    static record TimedResult<T>(T value, long time) {
+-      final T value;
+-      final long time;
+    }
+-}
++}
+\ No newline at end of file

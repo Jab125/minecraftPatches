@@ -1,0 +1,11 @@
+--- a/net/minecraft/network/packet/s2c/play/FeaturesS2CPacket.java	1970-01-12 08:58:04
++++ b/net/minecraft/network/packet/s2c/play/FeaturesS2CPacket.java	2023-03-30 21:03:20
+@@ -9,7 +9,7 @@
+ 
+ public record FeaturesS2CPacket(Set<Identifier> features) implements Packet<ClientPlayPacketListener> {
+    public FeaturesS2CPacket(PacketByteBuf buf) {
+-      this(buf.readCollection(HashSet::new, PacketByteBuf::readIdentifier));
++      this(buf.<Identifier, Set<Identifier>>readCollection(HashSet::new, PacketByteBuf::readIdentifier));
+    }
+ 
+    public void write(PacketByteBuf buf) {

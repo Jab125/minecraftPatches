@@ -1,0 +1,15 @@
+--- a/net/minecraft/entity/passive/AxolotlBrain.java	2023-03-30 19:29:27
++++ b/net/minecraft/entity/passive/AxolotlBrain.java	2023-03-30 19:29:44
+@@ -88,10 +88,10 @@
+ 
+    public static void updateActivities(AxolotlEntity axolotl) {
+       Brain<AxolotlEntity> brain = axolotl.getBrain();
+-      Activity activity = (Activity)brain.getFirstPossibleNonCoreActivity().orElse((Object)null);
++      Activity activity = (Activity)brain.getFirstPossibleNonCoreActivity().orElse(null);
+       if (activity != Activity.PLAY_DEAD) {
+          brain.resetPossibleActivities(ImmutableList.of(Activity.PLAY_DEAD, Activity.FIGHT, Activity.IDLE));
+-         if (activity == Activity.FIGHT && brain.getFirstPossibleNonCoreActivity().orElse((Object)null) != Activity.FIGHT) {
++         if (activity == Activity.FIGHT && brain.getFirstPossibleNonCoreActivity().orElse(null) != Activity.FIGHT) {
+             brain.remember(MemoryModuleType.HAS_HUNTING_COOLDOWN, true, 2400L);
+          }
+       }

@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/font/TextHandler.java	2023-03-30 19:29:27
++++ b/net/minecraft/client/font/TextHandler.java	2023-03-30 19:29:45
+@@ -92,7 +92,7 @@
+    @Nullable
+    public Style getStyleAt(StringVisitable text, int x) {
+       TextHandler.WidthLimitingVisitor widthLimitingVisitor = new TextHandler.WidthLimitingVisitor((float)x);
+-      return (Style)text.visit((style, textx) -> TextVisitFactory.visitFormatted(textx, style, widthLimitingVisitor) ? Optional.empty() : Optional.of(style), Style.EMPTY).orElse((Object)null);
++      return (Style)text.visit((style, textx) -> TextVisitFactory.visitFormatted(textx, style, widthLimitingVisitor) ? Optional.empty() : Optional.of(style), Style.EMPTY).orElse(null);
+    }
+ 
+    @Nullable

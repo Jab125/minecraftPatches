@@ -1,0 +1,29 @@
+--- a/net/minecraft/recipe/RecipeManager.java	1970-01-12 08:58:04
++++ b/net/minecraft/recipe/RecipeManager.java	2023-03-30 20:05:23
+@@ -81,7 +81,7 @@
+          }
+       }
+ 
+-      return map.entrySet().stream().filter((entry) -> ((Recipe)entry.getValue()).matches(inventory, world)).findFirst().map((entry) -> Pair.of((Identifier)entry.getKey(), (Recipe)entry.getValue()));
++      return map.entrySet().stream().filter((entry) -> (entry.getValue()).matches(inventory, world)).findFirst().map((entry) -> Pair.of((Identifier)entry.getKey(), entry.getValue()));
+    }
+ 
+    public <C extends Inventory, T extends Recipe<C>> List<T> listAllOfType(RecipeType<T> type) {
+@@ -112,7 +112,7 @@
+    }
+ 
+    public Optional<? extends Recipe<?>> get(Identifier id) {
+-      return Optional.ofNullable((Recipe)this.recipesById.get(id));
++      return Optional.ofNullable(this.recipesById.get(id));
+    }
+ 
+    public Collection<Recipe<?>> values() {
+@@ -156,7 +156,7 @@
+             if (optional.isPresent()) {
+                Pair<Identifier, T> pair = (Pair)optional.get();
+                this.id = (Identifier)pair.getFirst();
+-               return Optional.of((Recipe)pair.getSecond());
++               return Optional.of(pair.getSecond());
+             } else {
+                return Optional.empty();
+             }

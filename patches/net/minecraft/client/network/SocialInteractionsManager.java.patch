@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/network/SocialInteractionsManager.java	2023-03-30 19:29:27
++++ b/net/minecraft/client/network/SocialInteractionsManager.java	2023-03-30 19:29:44
+@@ -22,7 +22,7 @@
+    private final UserApiService userApiService;
+    private final Map<String, UUID> playerNameByUuid = Maps.newHashMap();
+    private boolean blockListLoaded;
+-   private CompletableFuture<?> blockListLoader = CompletableFuture.completedFuture((Object)null);
++   private CompletableFuture<?> blockListLoader = CompletableFuture.completedFuture(null);
+ 
+    public SocialInteractionsManager(MinecraftClient client, UserApiService userApiService) {
+       this.client = client;

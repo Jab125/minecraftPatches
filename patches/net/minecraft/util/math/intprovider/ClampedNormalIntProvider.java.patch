@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/math/intprovider/ClampedNormalIntProvider.java	1970-01-12 08:58:04
++++ b/net/minecraft/util/math/intprovider/ClampedNormalIntProvider.java	2023-03-30 21:03:20
+@@ -8,7 +8,7 @@
+ import net.minecraft.util.math.random.Random;
+ 
+ public class ClampedNormalIntProvider extends IntProvider {
+-   public static final Codec<ClampedNormalIntProvider> CODEC = RecordCodecBuilder.create((instance) -> instance.group(Codec.FLOAT.fieldOf("mean").forGetter((provider) -> provider.mean), Codec.FLOAT.fieldOf("deviation").forGetter((provider) -> provider.deviation), Codec.INT.fieldOf("min_inclusive").forGetter((provider) -> provider.min), Codec.INT.fieldOf("max_inclusive").forGetter((provider) -> provider.max)).apply(instance, ClampedNormalIntProvider::new)).comapFlatMap((provider) -> provider.max < provider.min ? DataResult.error(() -> "Max must be larger than min: [" + provider.min + ", " + provider.max + "]") : DataResult.success(provider), Function.identity());
++   public static final Codec<ClampedNormalIntProvider> CODEC = RecordCodecBuilder.<ClampedNormalIntProvider>create((instance) -> instance.group(Codec.FLOAT.fieldOf("mean").forGetter((provider) -> provider.mean), Codec.FLOAT.fieldOf("deviation").forGetter((provider) -> provider.deviation), Codec.INT.fieldOf("min_inclusive").forGetter((provider) -> provider.min), Codec.INT.fieldOf("max_inclusive").forGetter((provider) -> provider.max)).apply(instance, ClampedNormalIntProvider::new)).comapFlatMap((provider) -> provider.max < provider.min ? DataResult.error(() -> "Max must be larger than min: [" + provider.min + ", " + provider.max + "]") : DataResult.success(provider), Function.identity());
+    private final float mean;
+    private final float deviation;
+    private final int min;

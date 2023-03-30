@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/render/entity/EntityRenderers.java	1970-01-12 08:58:04
++++ b/net/minecraft/client/render/entity/EntityRenderers.java	2023-03-30 19:25:13
+@@ -20,7 +20,7 @@
+    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final String DEFAULT = "default";
+    private static final Map<EntityType<?>, EntityRendererFactory<?>> RENDERER_FACTORIES = Maps.newHashMap();
+-   private static final Map<String, EntityRendererFactory<AbstractClientPlayerEntity>> PLAYER_RENDERER_FACTORIES = ImmutableMap.of("default", (EntityRendererFactory<>)(context) -> new PlayerEntityRenderer(context, false), "slim", (EntityRendererFactory<>)(context) -> new PlayerEntityRenderer(context, true));
++   private static final Map<String, EntityRendererFactory<AbstractClientPlayerEntity>> PLAYER_RENDERER_FACTORIES = ImmutableMap.of("default", (context) -> new PlayerEntityRenderer(context, false), "slim", (context) -> new PlayerEntityRenderer(context, true));
+ 
+    private static <T extends Entity> void register(EntityType<? extends T> type, EntityRendererFactory<T> factory) {
+       RENDERER_FACTORIES.put(type, factory);

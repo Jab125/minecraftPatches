@@ -1,0 +1,17 @@
+--- a/net/minecraft/client/render/BufferBuilder.java	1970-01-12 08:58:04
++++ b/net/minecraft/client/render/BufferBuilder.java	2023-03-30 19:23:16
+@@ -430,7 +430,6 @@
+ 
+    @Environment(EnvType.CLIENT)
+    public static record DrawParameters(VertexFormat format, int vertexCount, int indexCount, VertexFormat.DrawMode mode, VertexFormat.IndexType indexType, boolean indexOnly, boolean sequentialIndex) {
+-      final int vertexCount;
+ 
+       public int getVertexBufferSize() {
+          return this.vertexCount * this.format.getVertexSizeByte();
+@@ -480,4 +479,4 @@
+          this.cameraZ = cameraZ;
+       }
+    }
+-}
++}
+\ No newline at end of file

@@ -1,0 +1,11 @@
+--- a/net/minecraft/block/entity/PistonBlockEntity.java	2023-03-30 19:29:26
++++ b/net/minecraft/block/entity/PistonBlockEntity.java	2023-03-30 19:29:45
+@@ -174,7 +174,7 @@
+    private static void moveEntity(Direction direction, Entity entity, double d, Direction movementDirection) {
+       field_12205.set(direction);
+       entity.move(MovementType.PISTON, new Vec3d(d * (double)movementDirection.getOffsetX(), d * (double)movementDirection.getOffsetY(), d * (double)movementDirection.getOffsetZ()));
+-      field_12205.set((Object)null);
++      field_12205.set(null);
+    }
+ 
+    private static void moveEntitiesInHoneyBlock(World world, BlockPos pos, float f, PistonBlockEntity blockEntity) {

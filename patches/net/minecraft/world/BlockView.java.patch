@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/BlockView.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/BlockView.java	2023-03-30 20:05:23
+@@ -24,7 +24,7 @@
+ 
+    default <T extends BlockEntity> Optional<T> getBlockEntity(BlockPos pos, BlockEntityType<T> type) {
+       BlockEntity blockEntity = this.getBlockEntity(pos);
+-      return blockEntity != null && blockEntity.getType() == type ? Optional.of(blockEntity) : Optional.empty();
++      return blockEntity != null && blockEntity.getType() == type ? Optional.of((T) blockEntity) : Optional.empty();
+    }
+ 
+    BlockState getBlockState(BlockPos pos);

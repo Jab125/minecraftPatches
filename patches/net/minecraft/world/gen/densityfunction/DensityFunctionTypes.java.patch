@@ -1,0 +1,71 @@
+--- a/net/minecraft/world/gen/densityfunction/DensityFunctionTypes.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/gen/densityfunction/DensityFunctionTypes.java	2023-03-30 21:03:20
+@@ -236,7 +236,7 @@
+       return add(mul(delta, add(end, constant(-start))), constant(start));
+    }
+ 
+-   protected static enum Beardifier implements DensityFunctionTypes.Beardifying {
++   public static enum Beardifier implements DensityFunctionTypes.Beardifying {
+       INSTANCE;
+ 
+       public double sample(DensityFunction.NoisePos pos) {
+@@ -426,7 +426,7 @@
+       }
+    }
+ 
+-   protected static enum BlendAlpha implements DensityFunction.Base {
++   public static enum BlendAlpha implements DensityFunction.Base {
+       INSTANCE;
+ 
+       public static final CodecHolder<DensityFunction> CODEC = CodecHolder.of(MapCodec.unit(INSTANCE));
+@@ -476,7 +476,7 @@
+       }
+    }
+ 
+-   protected static enum BlendOffset implements DensityFunction.Base {
++   public static enum BlendOffset implements DensityFunction.Base {
+       INSTANCE;
+ 
+       public static final CodecHolder<DensityFunction> CODEC = CodecHolder.of(MapCodec.unit(INSTANCE));
+@@ -520,7 +520,6 @@
+    }
+ 
+    static record Constant(double value) implements DensityFunction.Base {
+-      final double value;
+       static final CodecHolder<DensityFunctionTypes.Constant> CODEC_HOLDER = DensityFunctionTypes.holderOf(DensityFunctionTypes.CONSTANT_RANGE, DensityFunctionTypes.Constant::new, DensityFunctionTypes.Constant::value);
+       static final DensityFunctionTypes.Constant ZERO = new DensityFunctionTypes.Constant(0.0D);
+ 
+@@ -545,7 +544,7 @@
+       }
+    }
+ 
+-   protected static final class EndIslands implements DensityFunction.Base {
++   public static final class EndIslands implements DensityFunction.Base {
+       public static final CodecHolder<DensityFunctionTypes.EndIslands> CODEC_HOLDER = CodecHolder.of(MapCodec.unit(new DensityFunctionTypes.EndIslands(0L)));
+       private static final float field_37677 = -0.9F;
+       private final SimplexNoiseSampler sampler;
+@@ -1095,7 +1094,7 @@
+       }
+    }
+ 
+-   protected static record Wrapping(DensityFunctionTypes.Wrapping.Type type, DensityFunction wrapped) implements DensityFunctionTypes.Wrapper {
++   public static record Wrapping(DensityFunctionTypes.Wrapping.Type type, DensityFunction wrapped) implements DensityFunctionTypes.Wrapper {
+       public double sample(DensityFunction.NoisePos pos) {
+          return this.wrapped.sample(pos);
+       }
+@@ -1112,7 +1111,7 @@
+          return this.wrapped.maxValue();
+       }
+ 
+-      static enum Type implements StringIdentifiable {
++      public static enum Type implements StringIdentifiable {
+          INTERPOLATED("interpolated"),
+          FLAT_CACHE("flat_cache"),
+          CACHE2D("cache_2d"),
+@@ -1152,4 +1151,4 @@
+          return CODEC_HOLDER;
+       }
+    }
+-}
++}
+\ No newline at end of file

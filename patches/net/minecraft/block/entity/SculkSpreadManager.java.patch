@@ -1,0 +1,20 @@
+--- a/net/minecraft/block/entity/SculkSpreadManager.java	2023-03-30 19:29:24
++++ b/net/minecraft/block/entity/SculkSpreadManager.java	2023-03-30 20:18:24
+@@ -108,7 +108,7 @@
+    public void readNbt(NbtCompound nbt) {
+       if (nbt.contains("cursors", 9)) {
+          this.cursors.clear();
+-         List<SculkSpreadManager.Cursor> list = (List)SculkSpreadManager.Cursor.CODEC.listOf().parse(new Dynamic(NbtOps.INSTANCE, nbt.getList("cursors", 10))).resultOrPartial(LOGGER::error).orElseGet(ArrayList::new);
++         List<SculkSpreadManager.Cursor> list = (List)SculkSpreadManager.Cursor.CODEC.listOf().parse(new Dynamic(NbtOps.INSTANCE, nbt.getList("cursors", 10))).resultOrPartial(a -> LOGGER.error((String) a)).orElseGet(ArrayList::new);
+          int i = Math.min(list.size(), 32);
+ 
+          for(int j = 0; j < i; ++j) {
+@@ -201,7 +201,7 @@
+          this.charge = charge;
+          this.decay = decay;
+          this.update = update;
+-         this.faces = (Set)faces.orElse((Object)null);
++         this.faces = (Set)faces.orElse(null);
+       }
+ 
+       public Cursor(BlockPos pos, int charge) {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/util/UserCache.java	2023-03-30 19:29:27
++++ b/net/minecraft/util/UserCache.java	2023-03-30 19:29:44
+@@ -85,7 +85,7 @@
+          }
+ 
+          public void onProfileLookupFailed(GameProfile profile, Exception exception) {
+-            atomicReference.set((Object)null);
++            atomicReference.set(null);
+          }
+       };
+       repository.findProfilesByNames(new String[]{name}, Agent.MINECRAFT, profileLookupCallback);

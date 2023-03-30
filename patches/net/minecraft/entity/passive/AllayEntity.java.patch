@@ -1,0 +1,31 @@
+--- a/net/minecraft/entity/passive/AllayEntity.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/passive/AllayEntity.java	2023-03-30 20:29:05
+@@ -115,7 +115,7 @@
+    }
+ 
+    public Brain<AllayEntity> getBrain() {
+-      return super.getBrain();
++      return (Brain<AllayEntity>) super.getBrain();
+    }
+ 
+    public static DefaultAttributeContainer.Builder createAllayAttributes() {
+@@ -163,8 +163,8 @@
+    public boolean damage(DamageSource source, float amount) {
+       Entity optional = source.getAttacker();
+       if (optional instanceof PlayerEntity playerEntity) {
+-         Optional<UUID> optional = this.getBrain().getOptionalRegisteredMemory(MemoryModuleType.LIKED_PLAYER);
+-         if (optional.isPresent() && playerEntity.getUuid().equals(optional.get())) {
++         Optional<UUID> optional2 = this.getBrain().getOptionalRegisteredMemory(MemoryModuleType.LIKED_PLAYER);
++         if (optional2.isPresent() && playerEntity.getUuid().equals(optional2.get())) {
+             return false;
+          }
+       }
+@@ -434,7 +434,7 @@
+       super.readCustomDataFromNbt(nbt);
+       this.readInventory(nbt);
+       if (nbt.contains("listener", 10)) {
+-         VibrationListener.createCodec(this.listenerCallback).parse(new Dynamic(NbtOps.INSTANCE, nbt.getCompound("listener"))).resultOrPartial(LOGGER::error).ifPresent((vibrationListener) -> this.gameEventHandler.setListener(vibrationListener, this.world));
++         VibrationListener.createCodec(this.listenerCallback).parse(new Dynamic(NbtOps.INSTANCE, nbt.getCompound("listener"))).resultOrPartial(a -> LOGGER.error((String) a)).ifPresent((vibrationListener) -> this.gameEventHandler.setListener((VibrationListener) vibrationListener, this.world));
+       }
+ 
+       this.duplicationCooldown = (long)nbt.getInt("DuplicationCooldown");

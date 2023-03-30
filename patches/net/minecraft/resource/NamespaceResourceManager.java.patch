@@ -1,0 +1,44 @@
+--- a/net/minecraft/resource/NamespaceResourceManager.java	1970-01-12 08:58:04
++++ b/net/minecraft/resource/NamespaceResourceManager.java	2023-03-30 19:24:28
+@@ -157,9 +157,6 @@
+             int k = j;
+             resourcePack.findResources(this.type, this.namespace, startingPath, (id, supplier) -> {
+                record Result(ResourcePack pack, InputSupplier<InputStream> supplier, int packIndex) {
+-                  final ResourcePack pack;
+-                  final InputSupplier<InputStream> supplier;
+-                  final int packIndex;
+                }
+ 
+                if (isMcmeta(id)) {
+@@ -337,9 +334,6 @@
+    }
+ 
+    static record EntryList(Identifier id, Identifier metadataId, List<NamespaceResourceManager.FileSource> fileSources, Map<ResourcePack, InputSupplier<InputStream>> metaSources) {
+-      final Identifier id;
+-      final List<NamespaceResourceManager.FileSource> fileSources;
+-      final Map<ResourcePack, InputSupplier<InputStream>> metaSources;
+ 
+       EntryList(Identifier id) {
+          this(id, NamespaceResourceManager.getMetadataPath(id), new ArrayList(), new Object2ObjectArrayMap());
+@@ -347,14 +341,10 @@
+    }
+ 
+    static record FileSource(ResourcePack sourcePack, InputSupplier<InputStream> supplier) {
+-      final ResourcePack sourcePack;
+-      final InputSupplier<InputStream> supplier;
+    }
+ 
+    static record FilterablePack(String name, @Nullable ResourcePack underlying, @Nullable Predicate<Identifier> filter) {
+-      final String name;
+       @Nullable
+-      final ResourcePack underlying;
+ 
+       public void removeFiltered(Collection<Identifier> ids) {
+          if (this.filter != null) {
+@@ -367,4 +357,4 @@
+          return this.filter != null && this.filter.test(id);
+       }
+    }
+-}
++}
+\ No newline at end of file

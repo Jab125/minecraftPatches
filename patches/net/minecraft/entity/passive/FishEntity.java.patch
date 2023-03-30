@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/passive/FishEntity.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/passive/FishEntity.java	2023-03-30 20:31:12
+@@ -87,7 +87,7 @@
+    protected void initGoals() {
+       super.initGoals();
+       this.goalSelector.add(0, new EscapeDangerGoal(this, 1.25D));
+-      this.goalSelector.add(2, new FleeEntityGoal(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.EXCEPT_SPECTATOR::test));
++      this.goalSelector.add(2, new FleeEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.EXCEPT_SPECTATOR::test));
+       this.goalSelector.add(4, new FishEntity.SwimToRandomPlaceGoal(this));
+    }
+ 

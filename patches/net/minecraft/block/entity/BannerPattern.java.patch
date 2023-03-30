@@ -1,0 +1,11 @@
+--- a/net/minecraft/block/entity/BannerPattern.java	2023-03-30 19:29:27
++++ b/net/minecraft/block/entity/BannerPattern.java	2023-03-30 19:29:45
+@@ -30,7 +30,7 @@
+ 
+    @Nullable
+    public static RegistryEntry<BannerPattern> byId(String id) {
+-      return (RegistryEntry)Registries.BANNER_PATTERN.streamEntries().filter((pattern) -> ((BannerPattern)pattern.value()).id.equals(id)).findAny().orElse((Object)null);
++      return (RegistryEntry)Registries.BANNER_PATTERN.streamEntries().filter((pattern) -> ((BannerPattern)pattern.value()).id.equals(id)).findAny().orElse(null);
+    }
+ 
+    public static class Patterns {

@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/noise/NoiseConfig.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/gen/noise/NoiseConfig.java	2023-03-30 21:03:20
+@@ -83,7 +83,7 @@
+                Random random = bl ? this.createRandom(0L) : NoiseConfig.this.randomDeriver.split(new Identifier("terrain"));
+                return interpolatedNoiseSampler.copyWithRandom(random);
+             } else {
+-               return (DensityFunction)(densityFunction instanceof DensityFunctionTypes.EndIslands ? new DensityFunctionTypes.EndIslands(seed) : densityFunction);
++               return (densityFunction instanceof DensityFunctionTypes.EndIslands ? new DensityFunctionTypes.EndIslands(seed) : densityFunction);
+             }
+          }
+ 

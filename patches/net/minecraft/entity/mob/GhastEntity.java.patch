@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/mob/GhastEntity.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/mob/GhastEntity.java	2023-03-30 20:32:56
+@@ -44,7 +44,7 @@
+       this.goalSelector.add(5, new GhastEntity.FlyRandomlyGoal(this));
+       this.goalSelector.add(7, new GhastEntity.LookAtTargetGoal(this));
+       this.goalSelector.add(7, new GhastEntity.ShootFireballGoal(this));
+-      this.targetSelector.add(1, new ActiveTargetGoal(this, PlayerEntity.class, 10, true, false, (entity) -> Math.abs(entity.getY() - this.getY()) <= 4.0D));
++      this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, (entity) -> Math.abs(entity.getY() - this.getY()) <= 4.0D));
+    }
+ 
+    public boolean isShooting() {

@@ -1,0 +1,16 @@
+--- a/net/minecraft/resource/fs/ResourceFileSystem.java	1970-01-12 08:58:04
++++ b/net/minecraft/resource/fs/ResourceFileSystem.java	2023-03-30 19:23:30
+@@ -163,11 +163,9 @@
+    }
+ 
+    static record Directory(Map<String, ResourceFileSystem.Directory> children, Map<String, Path> files) {
+-      final Map<String, ResourceFileSystem.Directory> children;
+-      final Map<String, Path> files;
+ 
+       public Directory() {
+          this(new HashMap(), new HashMap());
+       }
+    }
+-}
++}
+\ No newline at end of file

@@ -1,0 +1,11 @@
+--- a/net/minecraft/predicate/NumberRange.java	1970-01-12 08:58:04
++++ b/net/minecraft/predicate/NumberRange.java	2023-03-30 20:23:28
+@@ -295,7 +295,7 @@
+       }
+ 
+       public static NumberRange.IntRange fromStringReader(StringReader reader, Function<Integer, Integer> converter) throws CommandSyntaxException {
+-         return parse(reader, NumberRange.IntRange::parse, Integer::parseInt, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidInt, converter);
++         return NumberRange.<Integer, IntRange>parse(reader, IntRange::parse, Integer::parseInt, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidInt, converter);
+       }
+    }
+ }

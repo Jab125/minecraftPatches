@@ -1,0 +1,46 @@
+--- a/net/minecraft/world/gen/densityfunction/DensityFunctions.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/gen/densityfunction/DensityFunctions.java	2023-03-30 21:09:37
+@@ -200,7 +200,7 @@
+       return DensityFunctionTypes.mul(DensityFunctionTypes.interpolated(densityFunction), DensityFunctionTypes.constant(0.64D)).squeeze();
+    }
+ 
+-   protected static NoiseRouter createSurfaceNoiseRouter(RegistryEntryLookup<DensityFunction> densityFunctionLookup, RegistryEntryLookup<DoublePerlinNoiseSampler.NoiseParameters> noiseParametersLookup, boolean largeBiomes, boolean amplified) {
++   public static NoiseRouter createSurfaceNoiseRouter(RegistryEntryLookup<DensityFunction> densityFunctionLookup, RegistryEntryLookup<DoublePerlinNoiseSampler.NoiseParameters> noiseParametersLookup, boolean largeBiomes, boolean amplified) {
+       DensityFunction densityFunction = DensityFunctionTypes.noise(noiseParametersLookup.getOrThrow(NoiseParametersKeys.AQUIFER_BARRIER), 0.5D);
+       DensityFunction densityFunction2 = DensityFunctionTypes.noise(noiseParametersLookup.getOrThrow(NoiseParametersKeys.AQUIFER_FLUID_LEVEL_FLOODEDNESS), 0.67D);
+       DensityFunction densityFunction3 = DensityFunctionTypes.noise(noiseParametersLookup.getOrThrow(NoiseParametersKeys.AQUIFER_FLUID_LEVEL_SPREAD), 0.7142857142857143D);
+@@ -249,15 +249,15 @@
+       return applySlides(function, minY, maxY, 72, -184, -23.4375D, 4, 32, -0.234375D);
+    }
+ 
+-   protected static NoiseRouter createNetherNoiseRouter(RegistryEntryLookup<DensityFunction> densityFunctionLookup, RegistryEntryLookup<DoublePerlinNoiseSampler.NoiseParameters> noiseParametersLookup) {
++   public static NoiseRouter createNetherNoiseRouter(RegistryEntryLookup<DensityFunction> densityFunctionLookup, RegistryEntryLookup<DoublePerlinNoiseSampler.NoiseParameters> noiseParametersLookup) {
+       return createMultiNoiseDependentNoiseRouter(densityFunctionLookup, noiseParametersLookup, applyCavesSlides(densityFunctionLookup, 0, 128));
+    }
+ 
+-   protected static NoiseRouter createCavesNoiseRouter(RegistryEntryLookup<DensityFunction> densityFunctionLookup, RegistryEntryLookup<DoublePerlinNoiseSampler.NoiseParameters> noiseParametersLookup) {
++   public static NoiseRouter createCavesNoiseRouter(RegistryEntryLookup<DensityFunction> densityFunctionLookup, RegistryEntryLookup<DoublePerlinNoiseSampler.NoiseParameters> noiseParametersLookup) {
+       return createMultiNoiseDependentNoiseRouter(densityFunctionLookup, noiseParametersLookup, applyCavesSlides(densityFunctionLookup, -64, 192));
+    }
+ 
+-   protected static NoiseRouter createFloatingIslandsNoiseRouter(RegistryEntryLookup<DensityFunction> densityFunctionLookup, RegistryEntryLookup<DoublePerlinNoiseSampler.NoiseParameters> noiseParametersLookup) {
++   public static NoiseRouter createFloatingIslandsNoiseRouter(RegistryEntryLookup<DensityFunction> densityFunctionLookup, RegistryEntryLookup<DoublePerlinNoiseSampler.NoiseParameters> noiseParametersLookup) {
+       return createMultiNoiseDependentNoiseRouter(densityFunctionLookup, noiseParametersLookup, applyFloatingIslandsSlides(entryHolder(densityFunctionLookup, BASE_3D_NOISE_END), 0, 256));
+    }
+ 
+@@ -265,13 +265,13 @@
+       return applyFloatingIslandsSlides(slopedCheese, 0, 128);
+    }
+ 
+-   protected static NoiseRouter createEndNoiseRouter(RegistryEntryLookup<DensityFunction> densityFunctionLookup) {
++   public static NoiseRouter createEndNoiseRouter(RegistryEntryLookup<DensityFunction> densityFunctionLookup) {
+       DensityFunction densityFunction = DensityFunctionTypes.cache2d(DensityFunctionTypes.endIslands(0L));
+       DensityFunction densityFunction2 = applyBlendDensity(applyEndSlides(entryHolder(densityFunctionLookup, SLOPED_CHEESE_END)));
+       return new NoiseRouter(DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), densityFunction, DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), applyEndSlides(DensityFunctionTypes.add(densityFunction, DensityFunctionTypes.constant(-0.703125D))), densityFunction2, DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero());
+    }
+ 
+-   protected static NoiseRouter createMissingNoiseRouter() {
++   public static NoiseRouter createMissingNoiseRouter() {
+       return new NoiseRouter(DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero(), DensityFunctionTypes.zero());
+    }
+ 

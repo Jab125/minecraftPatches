@@ -1,0 +1,11 @@
+--- a/net/minecraft/entity/effect/StatusEffectInstance.java	1970-01-12 08:58:04
++++ b/net/minecraft/entity/effect/StatusEffectInstance.java	2023-03-30 20:43:47
+@@ -295,7 +295,7 @@
+ 
+       Optional<StatusEffectInstance.FactorCalculationData> optional;
+       if (nbt.contains("FactorCalculationData", 10)) {
+-         optional = StatusEffectInstance.FactorCalculationData.CODEC.parse(new Dynamic(NbtOps.INSTANCE, nbt.getCompound("FactorCalculationData"))).resultOrPartial(LOGGER::error);
++         optional = StatusEffectInstance.FactorCalculationData.CODEC.parse(new Dynamic(NbtOps.INSTANCE, nbt.getCompound("FactorCalculationData"))).resultOrPartial(a -> LOGGER.error((String) a));
+       } else {
+          optional = Optional.empty();
+       }

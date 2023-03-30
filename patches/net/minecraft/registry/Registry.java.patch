@@ -1,0 +1,55 @@
+--- a/net/minecraft/registry/Registry.java	2023-03-30 19:29:24
++++ b/net/minecraft/registry/Registry.java	2023-03-30 20:05:23
+@@ -34,7 +34,7 @@
+    }
+ 
+    default Codec<RegistryEntry<T>> createEntryCodec() {
+-      Codec<RegistryEntry<T>> codec = Identifier.CODEC.flatXmap((id) -> (DataResult)this.getEntry(RegistryKey.of(this.getKey(), id)).map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.getKey() + ": " + id)), (entry) -> (DataResult)entry.getKey().map(RegistryKey::getValue).map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.getKey() + ":" + entry)));
++      Codec<RegistryEntry<T>> codec = Identifier.CODEC.flatXmap((id) -> this.getEntry(RegistryKey.of(this.getKey(), id)).map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.getKey() + ": " + id)), (entry) -> (DataResult)entry.getKey().map(RegistryKey::getValue).map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.getKey() + ":" + entry)));
+       return Codecs.withLifecycle(codec, (entry) -> this.getEntryLifecycle((T)entry.value()), (entry) -> this.getEntryLifecycle((T)entry.value()));
+    }
+ 
+@@ -129,7 +129,7 @@
+    RegistryEntry<T> getEntry(T value);
+ 
+    default RegistryEntry.Reference<T> entryOf(RegistryKey<T> key) {
+-      return (RegistryEntry.Reference)this.getEntry(key).orElseThrow(() -> new IllegalStateException("Missing key in " + this.getKey() + ": " + key));
++      return this.getEntry(key).orElseThrow(() -> new IllegalStateException("Missing key in " + this.getKey() + ": " + key));
+    }
+ 
+    Stream<RegistryEntry.Reference<T>> streamEntries();
+@@ -137,7 +137,7 @@
+    Optional<RegistryEntryList.Named<T>> getEntryList(TagKey<T> tag);
+ 
+    default Iterable<RegistryEntry<T>> iterateEntries(TagKey<T> tag) {
+-      return (Iterable)DataFixUtils.orElse(this.getEntryList(tag), List.of());
++      return DataFixUtils.orElse(this.getEntryList(tag), List.of());
+    }
+ 
+    RegistryEntryList.Named<T> getOrCreateEntryList(TagKey<T> tag);
+@@ -151,14 +151,14 @@
+    void populateTags(Map<TagKey<T>, List<RegistryEntry<T>>> tagEntries);
+ 
+    default IndexedIterable<RegistryEntry<T>> getIndexedEntries() {
+-      return new IndexedIterable<RegistryEntry<T>>() {
++      return new IndexedIterable<>() {
+          public int getRawId(RegistryEntry<T> registryEntry) {
+             return Registry.this.getRawId(registryEntry.value());
+          }
+ 
+          @Nullable
+          public RegistryEntry<T> get(int i) {
+-            return (RegistryEntry)Registry.this.getEntry(i).orElse((Object)null);
++            return Registry.this.getEntry(i).orElse(null);
+          }
+ 
+          public int size() {
+@@ -166,7 +166,7 @@
+          }
+ 
+          public Iterator<RegistryEntry<T>> iterator() {
+-            return Registry.this.streamEntries().map((entry) -> entry).iterator();
++            return Registry.this.streamEntries().map((entry) -> (RegistryEntry<T>)entry).iterator();
+          }
+       };
+    }

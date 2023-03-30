@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/event/PositionSourceType.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/event/PositionSourceType.java	2023-03-30 20:18:24
+@@ -12,7 +12,7 @@
+ 
+    T readFromBuf(PacketByteBuf buf);
+ 
+-   void writeToBuf(PacketByteBuf buf, T positionSource);
++   <T extends PositionSource> void writeToBuf(PacketByteBuf buf, T positionSource);
+ 
+    Codec<T> getCodec();
+ 

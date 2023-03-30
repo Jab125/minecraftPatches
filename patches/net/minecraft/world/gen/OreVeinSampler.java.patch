@@ -1,0 +1,11 @@
+--- a/net/minecraft/world/gen/OreVeinSampler.java	1970-01-12 08:58:04
++++ b/net/minecraft/world/gen/OreVeinSampler.java	2023-03-30 19:27:30
+@@ -22,7 +22,7 @@
+    private OreVeinSampler() {
+    }
+ 
+-   protected static ChunkNoiseSampler.BlockStateSampler create(DensityFunction veinToggle, DensityFunction veinRidged, DensityFunction veinGap, RandomSplitter randomDeriver) {
++   public static ChunkNoiseSampler.BlockStateSampler create(DensityFunction veinToggle, DensityFunction veinRidged, DensityFunction veinGap, RandomSplitter randomDeriver) {
+       BlockState blockState = null;
+       return (pos) -> {
+          double d = veinToggle.sample(pos);

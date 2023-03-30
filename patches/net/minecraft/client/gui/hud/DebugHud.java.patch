@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/hud/DebugHud.java	2023-03-30 19:29:26
++++ b/net/minecraft/client/gui/hud/DebugHud.java	2023-03-30 19:29:44
+@@ -339,7 +339,7 @@
+          }
+       }
+ 
+-      return (WorldChunk)this.chunkFuture.getNow((Object)null);
++      return (WorldChunk)this.chunkFuture.getNow(null);
+    }
+ 
+    private WorldChunk getClientChunk() {

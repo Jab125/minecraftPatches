@@ -1,0 +1,13 @@
+--- a/net/minecraft/command/EntitySelectorOptions.java	1970-01-12 08:58:04
++++ b/net/minecraft/command/EntitySelectorOptions.java	2023-03-30 19:23:38
+@@ -486,8 +486,5 @@
+    }
+ 
+    static record SelectorOption(EntitySelectorOptions.SelectorHandler handler, Predicate<EntitySelectorReader> condition, Text description) {
+-      final EntitySelectorOptions.SelectorHandler handler;
+-      final Predicate<EntitySelectorReader> condition;
+-      final Text description;
+    }
+-}
++}
+\ No newline at end of file

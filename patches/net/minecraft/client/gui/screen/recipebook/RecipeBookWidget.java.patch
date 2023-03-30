@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/gui/screen/recipebook/RecipeBookWidget.java	2023-03-30 19:29:27
++++ b/net/minecraft/client/gui/screen/recipebook/RecipeBookWidget.java	2023-03-30 19:29:44
+@@ -111,7 +111,7 @@
+       }
+ 
+       if (this.currentTab != null) {
+-         this.currentTab = (RecipeGroupButtonWidget)this.tabButtons.stream().filter((button) -> button.getCategory().equals(this.currentTab.getCategory())).findFirst().orElse((Object)null);
++         this.currentTab = (RecipeGroupButtonWidget)this.tabButtons.stream().filter((button) -> button.getCategory().equals(this.currentTab.getCategory())).findFirst().orElse(null);
+       }
+ 
+       if (this.currentTab == null) {

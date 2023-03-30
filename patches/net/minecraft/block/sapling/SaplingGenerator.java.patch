@@ -1,0 +1,11 @@
+--- a/net/minecraft/block/sapling/SaplingGenerator.java	2023-03-30 19:29:27
++++ b/net/minecraft/block/sapling/SaplingGenerator.java	2023-03-30 19:29:44
+@@ -22,7 +22,7 @@
+       if (registryKey == null) {
+          return false;
+       } else {
+-         RegistryEntry<ConfiguredFeature<?, ?>> registryEntry = (RegistryEntry)world.getRegistryManager().get(RegistryKeys.CONFIGURED_FEATURE).getEntry(registryKey).orElse((Object)null);
++         RegistryEntry<ConfiguredFeature<?, ?>> registryEntry = (RegistryEntry)world.getRegistryManager().get(RegistryKeys.CONFIGURED_FEATURE).getEntry(registryKey).orElse(null);
+          if (registryEntry == null) {
+             return false;
+          } else {

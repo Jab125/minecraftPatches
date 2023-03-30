@@ -1,0 +1,14 @@
+--- a/net/minecraft/entity/mob/HoglinBrain.java	2023-03-30 19:29:28
++++ b/net/minecraft/entity/mob/HoglinBrain.java	2023-03-30 19:29:44
+@@ -86,9 +86,9 @@
+ 
+    protected static void refreshActivities(HoglinEntity hoglin) {
+       Brain<HoglinEntity> brain = hoglin.getBrain();
+-      Activity activity = (Activity)brain.getFirstPossibleNonCoreActivity().orElse((Object)null);
++      Activity activity = (Activity)brain.getFirstPossibleNonCoreActivity().orElse(null);
+       brain.resetPossibleActivities(ImmutableList.of(Activity.FIGHT, Activity.AVOID, Activity.IDLE));
+-      Activity activity2 = (Activity)brain.getFirstPossibleNonCoreActivity().orElse((Object)null);
++      Activity activity2 = (Activity)brain.getFirstPossibleNonCoreActivity().orElse(null);
+       if (activity != activity2) {
+          getSoundEvent(hoglin).ifPresent(hoglin::playSound);
+       }

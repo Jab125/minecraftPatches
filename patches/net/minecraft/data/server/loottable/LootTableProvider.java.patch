@@ -1,0 +1,11 @@
+--- a/net/minecraft/data/server/loottable/LootTableProvider.java	1970-01-12 08:58:04
++++ b/net/minecraft/data/server/loottable/LootTableProvider.java	2023-03-30 19:23:16
+@@ -66,6 +66,5 @@
+    }
+ 
+    public static record LootTypeGenerator(Supplier<LootTableGenerator> provider, LootContextType paramSet) {
+-      final LootContextType paramSet;
+    }
+-}
++}
+\ No newline at end of file
