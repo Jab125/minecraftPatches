@@ -15,4 +15,4 @@ gradle-app.setting
 
 ### Mac OS ###
 .DS_Store
-*.DS_Store.patch
+**.DS_Store.patch
