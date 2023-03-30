@@ -1,5 +1,5 @@
---- a/net/minecraft/client/texture/AsyncTexture.java	2023-03-30 19:29:25
-+++ b/net/minecraft/client/texture/AsyncTexture.java	2023-03-30 19:29:44
+--- a/net/minecraft/client/texture/AsyncTexture.java
++++ b/net/minecraft/client/texture/AsyncTexture.java
 @@ -31,7 +31,7 @@
     }
  

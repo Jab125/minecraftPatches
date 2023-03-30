@@ -1,5 +1,5 @@
---- a/net/minecraft/util/collection/DataPool.java	1970-01-12 08:58:04
-+++ b/net/minecraft/util/collection/DataPool.java	2023-03-30 21:03:20
+--- a/net/minecraft/util/collection/DataPool.java
++++ b/net/minecraft/util/collection/DataPool.java
 @@ -12,7 +12,7 @@
        return Weighted.Present.createCodec(dataCodec).listOf().xmap(DataPool::new, Pool::getEntries);
     }

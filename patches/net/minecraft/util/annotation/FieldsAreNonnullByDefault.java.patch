@@ -1,5 +1,5 @@
---- a/net/minecraft/util/annotation/FieldsAreNonnullByDefault.java	1970-01-12 08:58:04
-+++ b/net/minecraft/util/annotation/FieldsAreNonnullByDefault.java	2023-03-30 19:26:33
+--- a/net/minecraft/util/annotation/FieldsAreNonnullByDefault.java
++++ b/net/minecraft/util/annotation/FieldsAreNonnullByDefault.java
 @@ -3,11 +3,9 @@
  import java.lang.annotation.ElementType;
  import java.lang.annotation.Retention;

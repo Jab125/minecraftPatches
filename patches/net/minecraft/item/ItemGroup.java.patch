@@ -1,5 +1,5 @@
---- a/net/minecraft/item/ItemGroup.java	1970-01-12 08:58:04
-+++ b/net/minecraft/item/ItemGroup.java	2023-03-30 19:23:16
+--- a/net/minecraft/item/ItemGroup.java
++++ b/net/minecraft/item/ItemGroup.java
 @@ -196,7 +196,6 @@
     }
  

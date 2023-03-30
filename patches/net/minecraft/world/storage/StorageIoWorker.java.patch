@@ -1,5 +1,5 @@
---- a/net/minecraft/world/storage/StorageIoWorker.java	2023-03-30 19:29:27
-+++ b/net/minecraft/world/storage/StorageIoWorker.java	2023-03-30 19:29:44
+--- a/net/minecraft/world/storage/StorageIoWorker.java
++++ b/net/minecraft/world/storage/StorageIoWorker.java
 @@ -149,12 +149,12 @@
        return sync ? completableFuture.thenCompose((void_) -> this.run(() -> {
              try {

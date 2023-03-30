@@ -1,5 +1,5 @@
---- a/net/minecraft/client/font/BitmapFont.java	1970-01-12 08:58:04
-+++ b/net/minecraft/client/font/BitmapFont.java	2023-03-30 19:24:17
+--- a/net/minecraft/client/font/BitmapFont.java
++++ b/net/minecraft/client/font/BitmapFont.java
 @@ -48,13 +48,6 @@
  
     @Environment(EnvType.CLIENT)

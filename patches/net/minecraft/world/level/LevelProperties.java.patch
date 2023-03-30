@@ -1,5 +1,5 @@
---- a/net/minecraft/world/level/LevelProperties.java	2023-03-30 19:29:25
-+++ b/net/minecraft/world/level/LevelProperties.java	2023-03-30 19:29:44
+--- a/net/minecraft/world/level/LevelProperties.java
++++ b/net/minecraft/world/level/LevelProperties.java
 @@ -120,7 +120,7 @@
     public static <T> LevelProperties readProperties(Dynamic<T> dynamic, DataFixer dataFixer, int dataVersion, @Nullable NbtCompound playerData, LevelInfo levelInfo, SaveVersionInfo saveVersionInfo, LevelProperties.SpecialProperty specialProperty, GeneratorOptions generatorOptions, Lifecycle lifecycle) {
        long l = dynamic.get("Time").asLong(0L);

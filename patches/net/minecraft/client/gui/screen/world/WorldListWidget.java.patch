@@ -1,5 +1,5 @@
---- a/net/minecraft/client/gui/screen/world/WorldListWidget.java	2023-03-30 19:29:28
-+++ b/net/minecraft/client/gui/screen/world/WorldListWidget.java	2023-03-30 19:29:45
+--- a/net/minecraft/client/gui/screen/world/WorldListWidget.java
++++ b/net/minecraft/client/gui/screen/world/WorldListWidget.java
 @@ -95,7 +95,7 @@
     @Nullable
     private List<LevelSummary> tryGet() {

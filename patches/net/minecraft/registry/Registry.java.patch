@@ -1,5 +1,5 @@
---- a/net/minecraft/registry/Registry.java	2023-03-30 19:29:24
-+++ b/net/minecraft/registry/Registry.java	2023-03-30 20:05:23
+--- a/net/minecraft/registry/Registry.java
++++ b/net/minecraft/registry/Registry.java
 @@ -34,7 +34,7 @@
     }
  

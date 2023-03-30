@@ -1,5 +1,5 @@
---- a/net/minecraft/data/server/tag/TagProvider.java	2023-03-30 19:29:25
-+++ b/net/minecraft/data/server/tag/TagProvider.java	2023-03-30 19:29:45
+--- a/net/minecraft/data/server/tag/TagProvider.java
++++ b/net/minecraft/data/server/tag/TagProvider.java
 @@ -56,12 +56,10 @@
  
     public CompletableFuture<?> run(DataWriter writer) {

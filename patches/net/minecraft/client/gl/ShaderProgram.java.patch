@@ -1,5 +1,5 @@
---- a/net/minecraft/client/gl/ShaderProgram.java	2023-03-30 19:29:28
-+++ b/net/minecraft/client/gl/ShaderProgram.java	2023-03-30 19:29:45
+--- a/net/minecraft/client/gl/ShaderProgram.java
++++ b/net/minecraft/client/gl/ShaderProgram.java
 @@ -467,7 +467,7 @@
        JsonObject jsonObject = JsonHelper.asObject(json, "sampler");
        String string = JsonHelper.getString(jsonObject, "name");

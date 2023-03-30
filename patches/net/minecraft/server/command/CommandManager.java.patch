@@ -1,5 +1,5 @@
---- a/net/minecraft/server/command/CommandManager.java	1970-01-12 08:58:04
-+++ b/net/minecraft/server/command/CommandManager.java	2023-03-30 20:05:23
+--- a/net/minecraft/server/command/CommandManager.java
++++ b/net/minecraft/server/command/CommandManager.java
 @@ -238,7 +238,7 @@
     private void makeTreeForSource(CommandNode<ServerCommandSource> tree, CommandNode<CommandSource> result, ServerCommandSource source, Map<CommandNode<ServerCommandSource>, CommandNode<CommandSource>> resultNodes) {
        for(CommandNode<ServerCommandSource> commandNode : tree.getChildren()) {

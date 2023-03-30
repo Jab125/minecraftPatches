@@ -1,5 +1,5 @@
---- a/net/minecraft/network/message/ArgumentSignatureDataMap.java	1970-01-12 08:58:04
-+++ b/net/minecraft/network/message/ArgumentSignatureDataMap.java	2023-03-30 20:05:22
+--- a/net/minecraft/network/message/ArgumentSignatureDataMap.java
++++ b/net/minecraft/network/message/ArgumentSignatureDataMap.java
 @@ -13,7 +13,7 @@
     private static final int MAX_ARGUMENT_NAME_LENGTH = 16;
  

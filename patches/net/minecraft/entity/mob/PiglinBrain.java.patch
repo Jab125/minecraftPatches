@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/mob/PiglinBrain.java	2023-03-30 19:29:24
-+++ b/net/minecraft/entity/mob/PiglinBrain.java	2023-03-30 19:29:44
+--- a/net/minecraft/entity/mob/PiglinBrain.java
++++ b/net/minecraft/entity/mob/PiglinBrain.java
 @@ -187,9 +187,9 @@
  
     protected static void tickActivities(PiglinEntity piglin) {

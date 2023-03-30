@@ -1,5 +1,5 @@
---- a/net/minecraft/world/gen/feature/EndSpikeFeatureConfig.java	2023-03-30 19:29:24
-+++ b/net/minecraft/world/gen/feature/EndSpikeFeatureConfig.java	2023-03-30 19:29:45
+--- a/net/minecraft/world/gen/feature/EndSpikeFeatureConfig.java
++++ b/net/minecraft/world/gen/feature/EndSpikeFeatureConfig.java
 @@ -21,7 +21,7 @@
     private EndSpikeFeatureConfig(boolean crystalInvulnerable, List<EndSpikeFeature.Spike> spikes, Optional<BlockPos> crystalBeamTarget) {
        this.crystalInvulnerable = crystalInvulnerable;

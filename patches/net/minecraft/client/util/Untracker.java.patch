@@ -1,5 +1,5 @@
---- a/net/minecraft/client/util/Untracker.java	2023-03-30 19:29:27
-+++ b/net/minecraft/client/util/Untracker.java	2023-03-30 19:29:44
+--- a/net/minecraft/client/util/Untracker.java
++++ b/net/minecraft/client/util/Untracker.java
 @@ -21,7 +21,7 @@
           method.setAccessible(true);
           Field field = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");

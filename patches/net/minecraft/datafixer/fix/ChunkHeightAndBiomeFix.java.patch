@@ -1,5 +1,5 @@
---- a/net/minecraft/datafixer/fix/ChunkHeightAndBiomeFix.java	2023-03-30 19:29:26
-+++ b/net/minecraft/datafixer/fix/ChunkHeightAndBiomeFix.java	2023-03-30 19:29:44
+--- a/net/minecraft/datafixer/fix/ChunkHeightAndBiomeFix.java
++++ b/net/minecraft/datafixer/fix/ChunkHeightAndBiomeFix.java
 @@ -155,7 +155,7 @@
  
     private static Dynamic<?>[] fixBiomes(Dynamic<?> level, boolean overworld, int i, MutableBoolean heightAlreadyUpdated) {

@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/passive/CamelEntity.java	1970-01-12 08:58:04
-+++ b/net/minecraft/entity/passive/CamelEntity.java	2023-03-30 20:22:55
+--- a/net/minecraft/entity/passive/CamelEntity.java
++++ b/net/minecraft/entity/passive/CamelEntity.java
 @@ -136,7 +136,7 @@
  
     protected void mobTick() {

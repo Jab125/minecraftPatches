@@ -1,5 +1,5 @@
---- a/net/minecraft/client/gui/EditBox.java	1970-01-12 08:58:04
-+++ b/net/minecraft/client/gui/EditBox.java	2023-03-30 19:23:38
+--- a/net/minecraft/client/gui/EditBox.java
++++ b/net/minecraft/client/gui/EditBox.java
 @@ -361,8 +361,6 @@
  
     @Environment(EnvType.CLIENT)

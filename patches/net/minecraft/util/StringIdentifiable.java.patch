@@ -1,5 +1,5 @@
---- a/net/minecraft/util/StringIdentifiable.java	1970-01-12 08:58:04
-+++ b/net/minecraft/util/StringIdentifiable.java	2023-03-30 19:40:07
+--- a/net/minecraft/util/StringIdentifiable.java
++++ b/net/minecraft/util/StringIdentifiable.java
 @@ -23,10 +23,10 @@
     }
  

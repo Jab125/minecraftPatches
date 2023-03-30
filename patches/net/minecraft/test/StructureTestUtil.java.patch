@@ -1,5 +1,5 @@
---- a/net/minecraft/test/StructureTestUtil.java	2023-03-30 19:29:28
-+++ b/net/minecraft/test/StructureTestUtil.java	2023-03-30 19:29:44
+--- a/net/minecraft/test/StructureTestUtil.java
++++ b/net/minecraft/test/StructureTestUtil.java
 @@ -199,7 +199,7 @@
        Comparator<BlockPos> comparator = Comparator.comparingInt((posx) -> posx.getManhattanDistance(pos));
        Collection<BlockPos> collection = findStructureBlocks(pos, radius, world);

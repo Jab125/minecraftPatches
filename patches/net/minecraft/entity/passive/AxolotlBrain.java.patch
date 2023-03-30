@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/passive/AxolotlBrain.java	2023-03-30 19:29:27
-+++ b/net/minecraft/entity/passive/AxolotlBrain.java	2023-03-30 19:29:44
+--- a/net/minecraft/entity/passive/AxolotlBrain.java
++++ b/net/minecraft/entity/passive/AxolotlBrain.java
 @@ -88,10 +88,10 @@
  
     public static void updateActivities(AxolotlEntity axolotl) {

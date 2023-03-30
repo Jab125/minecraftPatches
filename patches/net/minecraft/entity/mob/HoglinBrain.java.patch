@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/mob/HoglinBrain.java	2023-03-30 19:29:28
-+++ b/net/minecraft/entity/mob/HoglinBrain.java	2023-03-30 19:29:44
+--- a/net/minecraft/entity/mob/HoglinBrain.java
++++ b/net/minecraft/entity/mob/HoglinBrain.java
 @@ -86,9 +86,9 @@
  
     protected static void refreshActivities(HoglinEntity hoglin) {

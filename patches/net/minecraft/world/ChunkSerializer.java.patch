@@ -1,5 +1,5 @@
---- a/net/minecraft/world/ChunkSerializer.java	2023-03-30 19:29:26
-+++ b/net/minecraft/world/ChunkSerializer.java	2023-03-30 19:29:44
+--- a/net/minecraft/world/ChunkSerializer.java
++++ b/net/minecraft/world/ChunkSerializer.java
 @@ -140,7 +140,7 @@
        ChunkStatus.ChunkType chunkType = getChunkType(nbt);
        BlendingData blendingData;

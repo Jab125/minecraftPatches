@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/decoration/EndCrystalEntity.java	2023-03-30 19:29:28
-+++ b/net/minecraft/entity/decoration/EndCrystalEntity.java	2023-03-30 19:29:45
+--- a/net/minecraft/entity/decoration/EndCrystalEntity.java
++++ b/net/minecraft/entity/decoration/EndCrystalEntity.java
 @@ -121,7 +121,7 @@
  
     @Nullable

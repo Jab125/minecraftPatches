@@ -1,5 +1,5 @@
---- a/net/minecraft/client/gui/screen/CustomizeBuffetLevelScreen.java	2023-03-30 19:29:27
-+++ b/net/minecraft/client/gui/screen/CustomizeBuffetLevelScreen.java	2023-03-30 19:29:44
+--- a/net/minecraft/client/gui/screen/CustomizeBuffetLevelScreen.java
++++ b/net/minecraft/client/gui/screen/CustomizeBuffetLevelScreen.java
 @@ -54,7 +54,7 @@
           this.client.setScreen(this.parent);
        }).dimensions(this.width / 2 - 155, this.height - 28, 150, 20).build());

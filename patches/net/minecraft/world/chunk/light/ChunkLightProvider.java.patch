@@ -1,5 +1,5 @@
---- a/net/minecraft/world/chunk/light/ChunkLightProvider.java	2023-03-30 19:29:24
-+++ b/net/minecraft/world/chunk/light/ChunkLightProvider.java	2023-03-30 19:29:44
+--- a/net/minecraft/world/chunk/light/ChunkLightProvider.java
++++ b/net/minecraft/world/chunk/light/ChunkLightProvider.java
 @@ -69,7 +69,7 @@
  
     private void clearChunkCache() {

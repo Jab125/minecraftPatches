@@ -1,5 +1,5 @@
---- a/net/minecraft/registry/tag/TagGroupLoader.java	2023-03-30 19:29:26
-+++ b/net/minecraft/registry/tag/TagGroupLoader.java	2023-03-30 21:03:20
+--- a/net/minecraft/registry/tag/TagGroupLoader.java
++++ b/net/minecraft/registry/tag/TagGroupLoader.java
 @@ -47,14 +47,14 @@
           Identifier identifier = (Identifier)entry.getKey();
           Identifier identifier2 = resourceFinder.toResourceId(identifier);

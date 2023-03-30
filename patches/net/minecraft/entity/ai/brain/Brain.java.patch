@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/ai/brain/Brain.java	1970-01-12 08:58:04
-+++ b/net/minecraft/entity/ai/brain/Brain.java	2023-03-30 20:42:01
+--- a/net/minecraft/entity/ai/brain/Brain.java
++++ b/net/minecraft/entity/ai/brain/Brain.java
 @@ -66,14 +66,14 @@
              map.entries().forEach((pair) -> {
                 DataResult<MemoryModuleType<?>> dataResult = Registries.MEMORY_MODULE_TYPE.getCodec().parse(ops, pair.getFirst());

@@ -1,5 +1,5 @@
---- a/net/minecraft/client/item/ModelPredicateProviderRegistry.java	2023-03-30 19:29:25
-+++ b/net/minecraft/client/item/ModelPredicateProviderRegistry.java	2023-03-30 19:29:45
+--- a/net/minecraft/client/item/ModelPredicateProviderRegistry.java
++++ b/net/minecraft/client/item/ModelPredicateProviderRegistry.java
 @@ -146,7 +146,7 @@
        register(Items.COMPASS, new Identifier("angle"), new CompassAnglePredicateProvider((world, stack, entity) -> CompassItem.hasLodestone(stack) ? CompassItem.createLodestonePos(stack.getOrCreateNbt()) : CompassItem.createSpawnPos(world)));
        register(Items.RECOVERY_COMPASS, new Identifier("angle"), new CompassAnglePredicateProvider((world, stack, entity) -> {

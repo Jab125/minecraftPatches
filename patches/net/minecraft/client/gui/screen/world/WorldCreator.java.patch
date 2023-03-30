@@ -1,5 +1,5 @@
---- a/net/minecraft/client/gui/screen/world/WorldCreator.java	2023-03-30 19:29:28
-+++ b/net/minecraft/client/gui/screen/world/WorldCreator.java	2023-03-30 19:29:44
+--- a/net/minecraft/client/gui/screen/world/WorldCreator.java
++++ b/net/minecraft/client/gui/screen/world/WorldCreator.java
 @@ -51,7 +51,7 @@
     public WorldCreator(Path savesDirectory, GeneratorOptionsHolder generatorOptionsHolder, Optional<RegistryKey<WorldPreset>> defaultWorldType, OptionalLong seed) {
        this.savesDirectory = savesDirectory;

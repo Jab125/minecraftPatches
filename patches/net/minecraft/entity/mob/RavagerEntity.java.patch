@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/mob/RavagerEntity.java	1970-01-12 08:58:04
-+++ b/net/minecraft/entity/mob/RavagerEntity.java	2023-03-30 20:35:47
+--- a/net/minecraft/entity/mob/RavagerEntity.java
++++ b/net/minecraft/entity/mob/RavagerEntity.java
 @@ -67,9 +67,9 @@
        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
        this.goalSelector.add(10, new LookAtEntityGoal(this, MobEntity.class, 8.0F));

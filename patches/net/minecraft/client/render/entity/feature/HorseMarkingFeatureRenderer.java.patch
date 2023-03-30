@@ -1,5 +1,5 @@
---- a/net/minecraft/client/render/entity/feature/HorseMarkingFeatureRenderer.java	2023-03-30 19:29:28
-+++ b/net/minecraft/client/render/entity/feature/HorseMarkingFeatureRenderer.java	2023-03-30 19:29:45
+--- a/net/minecraft/client/render/entity/feature/HorseMarkingFeatureRenderer.java
++++ b/net/minecraft/client/render/entity/feature/HorseMarkingFeatureRenderer.java
 @@ -18,7 +18,7 @@
  @Environment(EnvType.CLIENT)
  public class HorseMarkingFeatureRenderer extends FeatureRenderer<HorseEntity, HorseEntityModel<HorseEntity>> {

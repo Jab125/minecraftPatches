@@ -1,5 +1,5 @@
---- a/net/minecraft/world/tick/OrderedTick.java	1970-01-12 08:58:04
-+++ b/net/minecraft/world/tick/OrderedTick.java	2023-03-30 20:05:23
+--- a/net/minecraft/world/tick/OrderedTick.java
++++ b/net/minecraft/world/tick/OrderedTick.java
 @@ -40,7 +40,7 @@
     }
  

@@ -1,5 +1,5 @@
---- a/net/minecraft/structure/processor/StructureProcessorRule.java	2023-03-30 19:29:26
-+++ b/net/minecraft/structure/processor/StructureProcessorRule.java	2023-03-30 19:29:44
+--- a/net/minecraft/structure/processor/StructureProcessorRule.java
++++ b/net/minecraft/structure/processor/StructureProcessorRule.java
 @@ -34,7 +34,7 @@
        this.locationPredicate = locationPredicate;
        this.positionPredicate = positionPredicate;

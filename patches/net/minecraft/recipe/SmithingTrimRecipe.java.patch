@@ -1,5 +1,5 @@
---- a/net/minecraft/recipe/SmithingTrimRecipe.java	1970-01-12 08:58:04
-+++ b/net/minecraft/recipe/SmithingTrimRecipe.java	2023-03-30 21:09:37
+--- a/net/minecraft/recipe/SmithingTrimRecipe.java
++++ b/net/minecraft/recipe/SmithingTrimRecipe.java
 @@ -112,7 +112,8 @@
           return new SmithingTrimRecipe(identifier, ingredient, ingredient2, ingredient3);
        }

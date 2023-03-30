@@ -1,5 +1,5 @@
---- a/net/minecraft/scoreboard/Scoreboard.java	1970-01-12 08:58:04
-+++ b/net/minecraft/scoreboard/Scoreboard.java	2023-03-30 20:05:23
+--- a/net/minecraft/scoreboard/Scoreboard.java
++++ b/net/minecraft/scoreboard/Scoreboard.java
 @@ -60,7 +60,7 @@
     }
  

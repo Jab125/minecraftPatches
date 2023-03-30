@@ -1,5 +1,5 @@
---- a/net/minecraft/server/world/ThreadedAnvilChunkStorage.java	2023-03-30 19:29:27
-+++ b/net/minecraft/server/world/ThreadedAnvilChunkStorage.java	2023-03-30 19:29:44
+--- a/net/minecraft/server/world/ThreadedAnvilChunkStorage.java
++++ b/net/minecraft/server/world/ThreadedAnvilChunkStorage.java
 @@ -700,7 +700,7 @@
        if (!chunkHolder.isAccessible()) {
           return false;

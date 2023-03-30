@@ -1,5 +1,5 @@
---- a/net/minecraft/network/packet/s2c/play/EntityStatusEffectS2CPacket.java	2023-03-30 19:29:25
-+++ b/net/minecraft/network/packet/s2c/play/EntityStatusEffectS2CPacket.java	2023-03-30 19:29:45
+--- a/net/minecraft/network/packet/s2c/play/EntityStatusEffectS2CPacket.java
++++ b/net/minecraft/network/packet/s2c/play/EntityStatusEffectS2CPacket.java
 @@ -40,7 +40,7 @@
        }
  

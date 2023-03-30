@@ -1,5 +1,5 @@
---- a/net/minecraft/block/ChestBlock.java	2023-03-30 19:29:27
-+++ b/net/minecraft/block/ChestBlock.java	2023-03-30 19:29:44
+--- a/net/minecraft/block/ChestBlock.java
++++ b/net/minecraft/block/ChestBlock.java
 @@ -251,7 +251,7 @@
  
     @Nullable

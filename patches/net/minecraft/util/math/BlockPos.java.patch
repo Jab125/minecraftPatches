@@ -1,5 +1,5 @@
---- a/net/minecraft/util/math/BlockPos.java	1970-01-12 08:58:04
-+++ b/net/minecraft/util/math/BlockPos.java	2023-03-30 20:24:57
+--- a/net/minecraft/util/math/BlockPos.java
++++ b/net/minecraft/util/math/BlockPos.java
 @@ -330,12 +330,12 @@
                 if (this.index == l) {
                    return (BlockPos)this.endOfData();

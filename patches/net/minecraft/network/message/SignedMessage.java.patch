@@ -1,5 +1,5 @@
---- a/net/minecraft/network/message/SignedMessage.java	2023-03-30 19:29:24
-+++ b/net/minecraft/network/message/SignedMessage.java	2023-03-30 19:29:44
+--- a/net/minecraft/network/message/SignedMessage.java
++++ b/net/minecraft/network/message/SignedMessage.java
 @@ -17,7 +17,7 @@
  import org.jetbrains.annotations.Nullable;
  

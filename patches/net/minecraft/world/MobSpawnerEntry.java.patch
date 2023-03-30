@@ -1,5 +1,5 @@
---- a/net/minecraft/world/MobSpawnerEntry.java	1970-01-12 08:58:04
-+++ b/net/minecraft/world/MobSpawnerEntry.java	2023-03-30 21:03:20
+--- a/net/minecraft/world/MobSpawnerEntry.java
++++ b/net/minecraft/world/MobSpawnerEntry.java
 @@ -9,16 +9,16 @@
  import net.minecraft.util.collection.DataPool;
  import net.minecraft.util.dynamic.Range;

@@ -1,5 +1,5 @@
---- a/net/minecraft/block/entity/SculkSpreadManager.java	2023-03-30 19:29:24
-+++ b/net/minecraft/block/entity/SculkSpreadManager.java	2023-03-30 20:18:24
+--- a/net/minecraft/block/entity/SculkSpreadManager.java
++++ b/net/minecraft/block/entity/SculkSpreadManager.java
 @@ -108,7 +108,7 @@
     public void readNbt(NbtCompound nbt) {
        if (nbt.contains("cursors", 9)) {

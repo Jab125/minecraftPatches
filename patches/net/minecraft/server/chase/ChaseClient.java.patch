@@ -1,5 +1,5 @@
---- a/net/minecraft/server/chase/ChaseClient.java	1970-01-12 08:58:04
-+++ b/net/minecraft/server/chase/ChaseClient.java	2023-03-30 19:23:38
+--- a/net/minecraft/server/chase/ChaseClient.java
++++ b/net/minecraft/server/chase/ChaseClient.java
 @@ -174,8 +174,5 @@
     }
  

@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/mob/PiglinBruteBrain.java	2023-03-30 19:29:27
-+++ b/net/minecraft/entity/mob/PiglinBruteBrain.java	2023-03-30 19:29:44
+--- a/net/minecraft/entity/mob/PiglinBruteBrain.java
++++ b/net/minecraft/entity/mob/PiglinBruteBrain.java
 @@ -79,9 +79,9 @@
  
     protected static void tick(PiglinBruteEntity piglinBrute) {

@@ -1,5 +1,5 @@
---- a/net/minecraft/network/message/LastSeenMessageList.java	1970-01-12 08:58:04
-+++ b/net/minecraft/network/message/LastSeenMessageList.java	2023-03-30 20:05:23
+--- a/net/minecraft/network/message/LastSeenMessageList.java
++++ b/net/minecraft/network/message/LastSeenMessageList.java
 @@ -43,7 +43,7 @@
        public static final LastSeenMessageList.Indexed EMPTY = new LastSeenMessageList.Indexed(List.of());
  

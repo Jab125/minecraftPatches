@@ -1,5 +1,5 @@
---- a/net/minecraft/client/texture/SpriteLoader.java	2023-03-30 19:29:26
-+++ b/net/minecraft/client/texture/SpriteLoader.java	2023-03-30 19:29:45
+--- a/net/minecraft/client/texture/SpriteLoader.java
++++ b/net/minecraft/client/texture/SpriteLoader.java
 @@ -91,7 +91,7 @@
        if (l > 0) {
           completableFuture = CompletableFuture.runAsync(() -> map.values().forEach((sprite) -> sprite.getContents().generateMipmaps(l)), executor);

@@ -1,5 +1,5 @@
---- a/net/minecraft/state/StateManager.java	1970-01-12 08:58:04
-+++ b/net/minecraft/state/StateManager.java	2023-03-30 21:03:20
+--- a/net/minecraft/state/StateManager.java
++++ b/net/minecraft/state/StateManager.java
 @@ -33,12 +33,12 @@
     protected StateManager(Function<O, S> defaultStateGetter, O owner, StateManager.Factory<O, S> factory, Map<String, Property<?>> propertiesMap) {
        this.owner = owner;

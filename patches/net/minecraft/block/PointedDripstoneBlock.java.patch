@@ -1,5 +1,5 @@
---- a/net/minecraft/block/PointedDripstoneBlock.java	2023-03-30 19:29:24
-+++ b/net/minecraft/block/PointedDripstoneBlock.java	2023-03-30 19:29:45
+--- a/net/minecraft/block/PointedDripstoneBlock.java
++++ b/net/minecraft/block/PointedDripstoneBlock.java
 @@ -389,7 +389,7 @@
        } else {
           Direction direction = state.get(VERTICAL_DIRECTION);

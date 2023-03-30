@@ -1,5 +1,5 @@
---- a/net/minecraft/block/pattern/BlockPatternBuilder.java	2023-03-30 19:29:25
-+++ b/net/minecraft/block/pattern/BlockPatternBuilder.java	2023-03-30 19:29:44
+--- a/net/minecraft/block/pattern/BlockPatternBuilder.java
++++ b/net/minecraft/block/pattern/BlockPatternBuilder.java
 @@ -38,7 +38,7 @@
  
                 for(char c : string.toCharArray()) {

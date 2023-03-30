@@ -1,5 +1,5 @@
---- a/net/minecraft/server/command/SpreadPlayersCommand.java	2023-03-30 19:29:26
-+++ b/net/minecraft/server/command/SpreadPlayersCommand.java	2023-03-30 19:29:44
+--- a/net/minecraft/server/command/SpreadPlayersCommand.java
++++ b/net/minecraft/server/command/SpreadPlayersCommand.java
 @@ -67,7 +67,7 @@
           if (entity instanceof PlayerEntity) {
              set.add(entity.getScoreboardTeam());

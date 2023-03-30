@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/EntityType.java	2023-03-30 19:29:25
-+++ b/net/minecraft/entity/EntityType.java	2023-03-30 19:29:44
+--- a/net/minecraft/entity/EntityType.java
++++ b/net/minecraft/entity/EntityType.java
 @@ -551,7 +551,7 @@
           }
  

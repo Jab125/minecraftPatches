@@ -1,5 +1,5 @@
---- a/net/minecraft/block/entity/SculkCatalystBlockEntity.java	1970-01-12 08:58:04
-+++ b/net/minecraft/block/entity/SculkCatalystBlockEntity.java	2023-03-30 20:15:22
+--- a/net/minecraft/block/entity/SculkCatalystBlockEntity.java
++++ b/net/minecraft/block/entity/SculkCatalystBlockEntity.java
 @@ -45,9 +45,9 @@
           if (i instanceof LivingEntity) {
              LivingEntity livingEntity = (LivingEntity)i;

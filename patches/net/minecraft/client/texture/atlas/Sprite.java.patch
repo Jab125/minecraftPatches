@@ -1,5 +1,5 @@
---- a/net/minecraft/client/texture/atlas/Sprite.java	2023-03-30 19:29:28
-+++ b/net/minecraft/client/texture/atlas/Sprite.java	2023-03-30 19:29:44
+--- a/net/minecraft/client/texture/atlas/Sprite.java
++++ b/net/minecraft/client/texture/atlas/Sprite.java
 @@ -63,7 +63,7 @@
     public void close() {
        int i = this.regionCount.decrementAndGet();

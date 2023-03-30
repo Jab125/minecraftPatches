@@ -1,5 +1,5 @@
---- a/net/minecraft/util/math/floatprovider/TrapezoidFloatProvider.java	1970-01-12 08:58:04
-+++ b/net/minecraft/util/math/floatprovider/TrapezoidFloatProvider.java	2023-03-30 21:03:20
+--- a/net/minecraft/util/math/floatprovider/TrapezoidFloatProvider.java
++++ b/net/minecraft/util/math/floatprovider/TrapezoidFloatProvider.java
 @@ -7,7 +7,7 @@
  import net.minecraft.util.math.random.Random;
  

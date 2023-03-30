@@ -1,5 +1,5 @@
---- a/net/minecraft/data/report/DynamicRegistriesProvider.java	2023-03-30 19:29:27
-+++ b/net/minecraft/data/report/DynamicRegistriesProvider.java	2023-03-30 19:29:44
+--- a/net/minecraft/data/report/DynamicRegistriesProvider.java
++++ b/net/minecraft/data/report/DynamicRegistriesProvider.java
 @@ -45,7 +45,7 @@
  
     private static <E> CompletableFuture<?> writeToPath(Path path, DataWriter cache, DynamicOps<JsonElement> json, Encoder<E> encoder, E value) {

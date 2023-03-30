@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/passive/AxolotlEntity.java	1970-01-12 08:58:04
-+++ b/net/minecraft/entity/passive/AxolotlEntity.java	2023-03-30 20:29:05
+--- a/net/minecraft/entity/passive/AxolotlEntity.java
++++ b/net/minecraft/entity/passive/AxolotlEntity.java
 @@ -66,7 +66,7 @@
  public class AxolotlEntity extends AnimalEntity implements AngledModelEntity, VariantHolder<AxolotlEntity.Variant>, Bucketable {
     public static final int PLAY_DEAD_TICKS = 200;

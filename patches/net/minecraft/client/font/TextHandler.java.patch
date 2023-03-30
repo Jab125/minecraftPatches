@@ -1,5 +1,5 @@
---- a/net/minecraft/client/font/TextHandler.java	2023-03-30 19:29:27
-+++ b/net/minecraft/client/font/TextHandler.java	2023-03-30 19:29:45
+--- a/net/minecraft/client/font/TextHandler.java
++++ b/net/minecraft/client/font/TextHandler.java
 @@ -92,7 +92,7 @@
     @Nullable
     public Style getStyleAt(StringVisitable text, int x) {

@@ -1,5 +1,5 @@
---- a/net/minecraft/client/realms/FileUpload.java	2023-03-30 19:29:28
-+++ b/net/minecraft/client/realms/FileUpload.java	2023-03-30 19:29:45
+--- a/net/minecraft/client/realms/FileUpload.java
++++ b/net/minecraft/client/realms/FileUpload.java
 @@ -144,7 +144,7 @@
                 JsonParser jsonParser = new JsonParser();
                 JsonElement jsonElement = jsonParser.parse(string).getAsJsonObject().get("errorMsg");

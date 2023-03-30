@@ -1,5 +1,5 @@
---- a/net/minecraft/client/render/BackgroundRenderer.java	2023-03-30 19:29:28
-+++ b/net/minecraft/client/render/BackgroundRenderer.java	2023-03-30 19:29:45
+--- a/net/minecraft/client/render/BackgroundRenderer.java
++++ b/net/minecraft/client/render/BackgroundRenderer.java
 @@ -195,7 +195,7 @@
     @Nullable
     private static BackgroundRenderer.StatusEffectFogModifier getFogModifier(Entity entity, float tickDelta) {

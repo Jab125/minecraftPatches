@@ -1,5 +1,5 @@
---- a/net/minecraft/entity/mob/HoglinEntity.java	2023-03-30 19:29:27
-+++ b/net/minecraft/entity/mob/HoglinEntity.java	2023-03-30 20:33:32
+--- a/net/minecraft/entity/mob/HoglinEntity.java
++++ b/net/minecraft/entity/mob/HoglinEntity.java
 @@ -57,7 +57,7 @@
     private int timeInOverworld;
     private boolean cannotBeHunted;

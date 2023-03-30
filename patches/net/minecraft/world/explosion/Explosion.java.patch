@@ -1,5 +1,5 @@
---- a/net/minecraft/world/explosion/Explosion.java	1970-01-12 08:58:04
-+++ b/net/minecraft/world/explosion/Explosion.java	2023-03-30 20:43:47
+--- a/net/minecraft/world/explosion/Explosion.java
++++ b/net/minecraft/world/explosion/Explosion.java
 @@ -251,9 +251,9 @@
                 BlockPos blockPos2 = blockPos.toImmutable();
                 this.world.getProfiler().push("explosion_blocks");

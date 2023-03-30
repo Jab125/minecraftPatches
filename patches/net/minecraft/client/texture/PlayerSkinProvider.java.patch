@@ -1,5 +1,5 @@
---- a/net/minecraft/client/texture/PlayerSkinProvider.java	2023-03-30 19:29:26
-+++ b/net/minecraft/client/texture/PlayerSkinProvider.java	2023-03-30 19:29:45
+--- a/net/minecraft/client/texture/PlayerSkinProvider.java
++++ b/net/minecraft/client/texture/PlayerSkinProvider.java
 @@ -134,7 +134,7 @@
     }
  

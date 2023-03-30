@@ -1,5 +1,5 @@
---- a/net/minecraft/util/function/ValueLists.java	2023-03-30 19:29:25
-+++ b/net/minecraft/util/function/ValueLists.java	2023-03-30 19:29:45
+--- a/net/minecraft/util/function/ValueLists.java
++++ b/net/minecraft/util/function/ValueLists.java
 @@ -38,7 +38,7 @@
           throw new IllegalArgumentException("Empty value list");
        } else {

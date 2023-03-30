@@ -1,5 +1,5 @@
---- a/net/minecraft/block/entity/SkullBlockEntity.java	2023-03-30 19:29:28
-+++ b/net/minecraft/block/entity/SkullBlockEntity.java	2023-03-30 19:29:45
+--- a/net/minecraft/block/entity/SkullBlockEntity.java
++++ b/net/minecraft/block/entity/SkullBlockEntity.java
 @@ -133,7 +133,7 @@
     public static void loadProperties(@Nullable GameProfile owner, Consumer<GameProfile> callback) {
        if (owner != null && !StringHelper.isEmpty(owner.getName()) && (!owner.isComplete() || !owner.getProperties().containsKey("textures")) && userCache != null && sessionService != null) {
