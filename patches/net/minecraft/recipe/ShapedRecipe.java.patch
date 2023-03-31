@@ -5,7 +5,7 @@
        }
  
 -      public void write(PacketByteBuf packetByteBuf, ShapedRecipe shapedRecipe) {
-+      public void write(PacketByteBuf packetByteBuf, Recipe recipe) {
++      public void write(PacketByteBuf packetByteBuf, ShapedRecipe recipe) {
 +         ShapedRecipe shapedRecipe = (ShapedRecipe)recipe;
           packetByteBuf.writeVarInt(shapedRecipe.width);
           packetByteBuf.writeVarInt(shapedRecipe.height);

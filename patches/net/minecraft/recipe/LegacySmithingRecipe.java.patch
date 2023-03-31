@@ -5,7 +5,7 @@
        }
  
 -      public void write(PacketByteBuf packetByteBuf, LegacySmithingRecipe legacySmithingRecipe) {
-+      public void write(PacketByteBuf packetByteBuf, Recipe recipe) {
++      public void write(PacketByteBuf packetByteBuf, LegacySmithingRecipe recipe) {
 +         LegacySmithingRecipe legacySmithingRecipe = (LegacySmithingRecipe)recipe;
           legacySmithingRecipe.base.write(packetByteBuf);
           legacySmithingRecipe.addition.write(packetByteBuf);

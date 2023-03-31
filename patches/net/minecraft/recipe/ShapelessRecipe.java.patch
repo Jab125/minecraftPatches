@@ -5,7 +5,7 @@
        }
  
 -      public void write(PacketByteBuf packetByteBuf, ShapelessRecipe shapelessRecipe) {
-+      public void write(PacketByteBuf packetByteBuf, Recipe recipe) {
++      public void write(PacketByteBuf packetByteBuf, ShapelessRecipe recipe) {
 +         ShapelessRecipe shapelessRecipe = (ShapelessRecipe)recipe;
           packetByteBuf.writeString(shapelessRecipe.group);
           packetByteBuf.writeEnumConstant(shapelessRecipe.category);

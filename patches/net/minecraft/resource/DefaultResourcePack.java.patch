@@ -1,0 +1,26 @@
+--- a/net/minecraft/resource/DefaultResourcePack.java
++++ b/net/minecraft/resource/DefaultResourcePack.java
+@@ -52,8 +52,8 @@
+       PathUtil.split(path.getPath()).get().ifLeft((segments) -> {
+          String string = path.getNamespace();
+ 
+-         for(Path path : (List)this.namespacePaths.get(type)) {
+-            Path path2 = path.resolve(string);
++         for(Path path3 : this.namespacePaths.get(type)) {
++            Path path2 = path3.resolve(string);
+             consumer.accept(PathUtil.getPath(path2, segments));
+          }
+ 
+@@ -92,10 +92,10 @@
+ 
+    @Nullable
+    public InputSupplier<InputStream> open(ResourceType type, Identifier id) {
+-      return (InputSupplier)PathUtil.split(id.getPath()).get().map((segments) -> {
++      return PathUtil.split(id.getPath()).get().map((segments) -> {
+          String string = id.getNamespace();
+ 
+-         for(Path path : (List)this.namespacePaths.get(type)) {
++         for(Path path : this.namespacePaths.get(type)) {
+             Path path2 = PathUtil.getPath(path.resolve(string), segments);
+             if (Files.exists(path2, new LinkOption[0]) && DirectoryResourcePack.isValidPath(path2)) {
+                return InputSupplier.create(path2);

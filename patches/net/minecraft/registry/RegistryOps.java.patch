@@ -1,0 +1,33 @@
+--- a/net/minecraft/registry/RegistryOps.java
++++ b/net/minecraft/registry/RegistryOps.java
+@@ -17,10 +17,10 @@
+ 
+    private static RegistryOps.RegistryInfoGetter caching(final RegistryOps.RegistryInfoGetter registryInfoGetter) {
+       return new RegistryOps.RegistryInfoGetter() {
+-         private final Map<RegistryKey<? extends Registry<?>>, Optional<? extends RegistryOps.RegistryInfo<?>>> registryRefToInfo = new HashMap();
++         private final Map<RegistryKey<? extends Registry<?>>, Optional<? extends RegistryOps.RegistryInfo<?>>> registryRefToInfo = new HashMap<>();
+ 
+          public <T> Optional<RegistryOps.RegistryInfo<T>> getRegistryInfo(RegistryKey<? extends Registry<? extends T>> registryRef) {
+-            return (Optional)this.registryRefToInfo.computeIfAbsent(registryRef, registryInfoGetter::getRegistryInfo);
++            return (Optional<RegistryInfo<T>>)this.registryRefToInfo.computeIfAbsent(registryRef, registryInfoGetter::getRegistryInfo);
+          }
+       };
+    }
+@@ -53,7 +53,7 @@
+    public static <E, O> RecordCodecBuilder<O, RegistryEntryLookup<E>> getEntryLookupCodec(RegistryKey<? extends Registry<? extends E>> registryRef) {
+       return Codecs.createContextRetrievalCodec((ops) -> {
+          if (ops instanceof RegistryOps<?> registryOps) {
+-            return (DataResult)registryOps.registryInfoGetter.getRegistryInfo(registryRef).map((info) -> DataResult.success(info.entryLookup(), info.elementsLifecycle())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + registryRef));
++            return registryOps.registryInfoGetter.getRegistryInfo(registryRef).map((info) -> DataResult.success(info.entryLookup(), info.elementsLifecycle())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + registryRef));
+          } else {
+             return DataResult.error(() -> "Not a registry ops");
+          }
+@@ -64,7 +64,7 @@
+       RegistryKey<? extends Registry<E>> registryKey = RegistryKey.ofRegistry(key.getRegistry());
+       return Codecs.createContextRetrievalCodec((ops) -> {
+          if (ops instanceof RegistryOps<?> registryOps) {
+-            return (DataResult)registryOps.registryInfoGetter.getRegistryInfo(registryKey).flatMap((info) -> info.entryLookup().getOptional(key)).map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Can't find value: " + key));
++            return registryOps.registryInfoGetter.getRegistryInfo(registryKey).flatMap((info) -> info.entryLookup().getOptional(key)).map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Can't find value: " + key));
+          } else {
+             return DataResult.error(() -> "Not a registry ops");
+          }

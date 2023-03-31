@@ -1,16 +1,39 @@
 --- a/net/minecraft/resource/NamespaceResourceManager.java
 +++ b/net/minecraft/resource/NamespaceResourceManager.java
-@@ -157,9 +157,6 @@
+@@ -104,8 +104,8 @@
+                   inputSupplier2 = ResourceMetadata.NONE_SUPPLIER;
+                } else {
+                   inputSupplier2 = () -> {
+-                     InputSupplier<InputStream> inputSupplier = resourcePack.open(this.type, identifier);
+-                     return inputSupplier != null ? loadMetadata(inputSupplier) : ResourceMetadata.NONE;
++                     InputSupplier<InputStream> inputSupplier3 = resourcePack.open(this.type, identifier);
++                     return inputSupplier3 != null ? loadMetadata(inputSupplier3) : ResourceMetadata.NONE;
+                   };
+                }
+ 
+@@ -143,6 +143,9 @@
+       return id.withPath(id.getPath() + ".mcmeta");
+    }
+ 
++   record Result(ResourcePack pack, InputSupplier<InputStream> supplier, int packIndex) {
++   }
++
+    public Map<Identifier, Resource> findResources(String startingPath, Predicate<Identifier> allowedPathPredicate) {
+       Map<Identifier, Result> map = new HashMap();
+       Map<Identifier, Result> map2 = new HashMap();
+@@ -156,11 +159,6 @@
+          if (resourcePack != null) {
              int k = j;
              resourcePack.findResources(this.type, this.namespace, startingPath, (id, supplier) -> {
-                record Result(ResourcePack pack, InputSupplier<InputStream> supplier, int packIndex) {
+-               record Result(ResourcePack pack, InputSupplier<InputStream> supplier, int packIndex) {
 -                  final ResourcePack pack;
 -                  final InputSupplier<InputStream> supplier;
 -                  final int packIndex;
-                }
+-               }
  
                 if (isMcmeta(id)) {
-@@ -337,9 +334,6 @@
+                   if (allowedPathPredicate.test(getMetadataFileName(id))) {
+@@ -337,9 +335,6 @@
     }
  
     static record EntryList(Identifier id, Identifier metadataId, List<NamespaceResourceManager.FileSource> fileSources, Map<ResourcePack, InputSupplier<InputStream>> metaSources) {
@@ -20,7 +43,7 @@
  
        EntryList(Identifier id) {
           this(id, NamespaceResourceManager.getMetadataPath(id), new ArrayList(), new Object2ObjectArrayMap());
-@@ -347,14 +341,10 @@
+@@ -347,14 +342,10 @@
     }
  
     static record FileSource(ResourcePack sourcePack, InputSupplier<InputStream> supplier) {
@@ -35,7 +58,7 @@
  
        public void removeFiltered(Collection<Identifier> ids) {
           if (this.filter != null) {
-@@ -367,4 +357,4 @@
+@@ -367,4 +358,4 @@
           return this.filter != null && this.filter.test(id);
        }
     }

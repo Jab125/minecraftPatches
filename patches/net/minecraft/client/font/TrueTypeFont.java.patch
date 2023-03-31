@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/font/TrueTypeFont.java
++++ b/net/minecraft/client/font/TrueTypeFont.java
+@@ -96,7 +96,7 @@
+                      break label62;
+                   }
+ 
+-                  var17 = () -> f / this.oversample;
++                  var17 = (Glyph.EmptyGlyph) () -> f / this.oversample;
+                } catch (Throwable var15) {
+                   if (memoryStack != null) {
+                      try {

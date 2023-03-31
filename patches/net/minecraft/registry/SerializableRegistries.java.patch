@@ -1,0 +1,11 @@
+--- a/net/minecraft/registry/SerializableRegistries.java
++++ b/net/minecraft/registry/SerializableRegistries.java
+@@ -44,7 +44,7 @@
+ 
+    private static <E> Codec<DynamicRegistryManager> createCodec() {
+       Codec<RegistryKey<? extends Registry<E>>> codec = Identifier.CODEC.xmap(RegistryKey::ofRegistry, RegistryKey::getValue);
+-      Codec<Registry<E>> codec2 = codec.partialDispatch("type", (registry) -> DataResult.success(registry.getKey()), (registryRef) -> getNetworkCodec(registryRef).map((codec) -> RegistryCodecs.createRegistryCodec(registryRef, Lifecycle.experimental(), codec)));
++      Codec<Registry<E>> codec2 = codec.partialDispatch("type", (registry) -> DataResult.success(registry.getKey()), (registryRef) -> getNetworkCodec(registryRef).map((codec3) -> RegistryCodecs.createRegistryCodec(registryRef, Lifecycle.experimental(), codec3)));
+       UnboundedMapCodec<? extends RegistryKey<? extends Registry<?>>, ? extends Registry<?>> unboundedMapCodec = Codec.unboundedMap(codec, codec2);
+       return createDynamicRegistryManagerCodec(unboundedMapCodec);
+    }

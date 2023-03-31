@@ -5,7 +5,7 @@
        }
  
 -      public void write(PacketByteBuf packetByteBuf, SmithingTrimRecipe smithingTrimRecipe) {
-+      public void write(PacketByteBuf packetByteBuf, Recipe recipe) {
++      public void write(PacketByteBuf packetByteBuf, SmithingTrimRecipe recipe) {
 +         SmithingTrimRecipe smithingTrimRecipe = (SmithingTrimRecipe) recipe;
           smithingTrimRecipe.template.write(packetByteBuf);
           smithingTrimRecipe.base.write(packetByteBuf);

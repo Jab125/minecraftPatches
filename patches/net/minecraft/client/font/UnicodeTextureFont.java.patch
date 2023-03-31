@@ -1,5 +1,19 @@
 --- a/net/minecraft/client/font/UnicodeTextureFont.java
 +++ b/net/minecraft/client/font/UnicodeTextureFont.java
+@@ -92,10 +92,10 @@
+             list.add(completableFuture.thenAcceptAsync((image) -> {
+                if (image != null) {
+                   if (image.getWidth() == 256 && image.getHeight() == 256) {
+-                     for(int k = 0; k < 256; ++k) {
+-                        byte b = sizes[l + k];
++                     for(int k2 = 0; k2 < 256; ++k2) {
++                        byte b = sizes[l + k2];
+                         if (b != 0 && getStart(b) > getEnd(b)) {
+-                           sizes[l + k] = 0;
++                           sizes[l + k2] = 0;
+                         }
+                      }
+ 
 @@ -251,11 +251,6 @@
  
     @Environment(EnvType.CLIENT)

@@ -1,0 +1,11 @@
+--- a/net/minecraft/registry/entry/RegistryEntryListCodec.java
++++ b/net/minecraft/registry/entry/RegistryEntryListCodec.java
+@@ -68,7 +68,7 @@
+       return this.entryCodec.listOf().decode(ops, input).flatMap((pair) -> {
+          List<RegistryEntry.Direct<E>> list = new ArrayList();
+ 
+-         for(RegistryEntry<E> registryEntry : (List)pair.getFirst()) {
++         for(RegistryEntry<E> registryEntry : pair.getFirst()) {
+             if (!(registryEntry instanceof RegistryEntry.Direct)) {
+                return DataResult.error(() -> "Can't decode element " + registryEntry + " without registry");
+             }
