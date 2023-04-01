@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/util/math/Spline.java
++++ b/java/net/minecraft/util/math/Spline.java
+@@ -155,7 +155,6 @@
+ 
+    @Debug
+    public static record Implementation<C, I extends ToFloatFunction<C>>(I locationFunction, float[] locations, List<Spline<C, I>> values, float[] derivatives, float min, float max) implements Spline<C, I> {
+-      final float[] locations;
+ 
+       public Implementation {
+          method_41301(fs, list, gs);
+@@ -286,4 +285,4 @@
+    public interface Visitor<I> {
+       I visit(I value);
+    }
+ }

@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/network/packet/s2c/play/PlayerListS2CPacket.java
++++ b/java/net/minecraft/network/packet/s2c/play/PlayerListS2CPacket.java
+@@ -134,7 +134,6 @@
+ 
+    public static record Entry(UUID profileId, GameProfile profile, boolean listed, int latency, GameMode gameMode, @Nullable Text displayName, @Nullable PublicPlayerSession.Serialized chatSession) {
+       @Nullable
+-      final PublicPlayerSession.Serialized chatSession;
+ 
+       Entry(ServerPlayerEntity player) {
+          this(player.getUuid(), player.getGameProfile(), true, player.pingMilliseconds, player.interactionManager.getGameMode(), player.getPlayerListName(), Nullables.map(player.getSession(), PublicPlayerSession::toSerialized));
+@@ -161,4 +160,4 @@
+          return new PlayerListS2CPacket.Entry(this.profileId, this.gameProfile, this.listed, this.latency, this.gameMode, this.displayName, this.session);
+       }
+    }
+ }

@@ -1,0 +1,14 @@
+--- a/java/net/minecraft/client/render/entity/EntityRenderers.java
++++ b/java/net/minecraft/client/render/entity/EntityRenderers.java
+@@ -17,9 +17,9 @@
+    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final String DEFAULT = "default";
+    private static final Map<EntityType<?>, EntityRendererFactory<?>> RENDERER_FACTORIES = Maps.newHashMap();
+-   private static final Map<String, EntityRendererFactory<AbstractClientPlayerEntity>> PLAYER_RENDERER_FACTORIES = ImmutableMap.of("default", (EntityRendererFactory<>)(context) -> {
++   private static final Map<String, EntityRendererFactory<AbstractClientPlayerEntity>> PLAYER_RENDERER_FACTORIES = ImmutableMap.of("default", (context) -> {
+       return new PlayerEntityRenderer(context, false);
+-   }, "slim", (EntityRendererFactory<>)(context) -> {
++   }, "slim", (context) -> {
+       return new PlayerEntityRenderer(context, true);
+    });
+ 

@@ -1,0 +1,32 @@
+--- a/java/net/minecraft/registry/RegistryBuilder.java
++++ b/java/net/minecraft/registry/RegistryBuilder.java
+@@ -114,9 +114,6 @@
+    }
+ 
+    static record InitializedRegistry<T>(RegistryKey<? extends Registry<? extends T>> key, Lifecycle lifecycle, Map<RegistryKey<T>, RegistryBuilder.EntryAssociatedValue<T>> values) {
+-      final RegistryKey<? extends Registry<? extends T>> key;
+-      final Lifecycle lifecycle;
+-      final Map<RegistryKey<T>, RegistryBuilder.EntryAssociatedValue<T>> values;
+ 
+       public RegistryWrapper.Impl<T> toWrapper() {
+          return new RegistryWrapper.Impl<T>() {
+@@ -157,14 +154,9 @@
+    }
+ 
+    static record RegisteredValue<T>(T value, Lifecycle lifecycle) {
+-      final T value;
+    }
+ 
+    static record Registries(RegistryBuilder.AnyOwner owner, RegistryBuilder.StandAloneEntryCreatingLookup lookup, Map<Identifier, RegistryEntryLookup<?>> registries, Map<RegistryKey<?>, RegistryBuilder.RegisteredValue<?>> registeredValues, List<RuntimeException> errors) {
+-      final RegistryBuilder.StandAloneEntryCreatingLookup lookup;
+-      final Map<Identifier, RegistryEntryLookup<?>> registries;
+-      final Map<RegistryKey<?>, RegistryBuilder.RegisteredValue<?>> registeredValues;
+-      final List<RuntimeException> errors;
+ 
+       public static RegistryBuilder.Registries of(DynamicRegistryManager dynamicRegistryManager, Stream<RegistryKey<? extends Registry<?>>> registryRefs) {
+          RegistryBuilder.AnyOwner registrybuilder$anyowner = new RegistryBuilder.AnyOwner();
+@@ -291,4 +283,4 @@
+          });
+       }
+    }
+ }

@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/datafixer/fix/StructuresToConfiguredStructuresFix.java
++++ b/java/net/minecraft/datafixer/fix/StructuresToConfiguredStructuresFix.java
+@@ -125,7 +125,6 @@
+    }
+ 
+    static record Mapping(Map<String, String> biomeMapping, String fallback) {
+-      final String fallback;
+ 
+       public static StructuresToConfiguredStructuresFix.Mapping create(String mapping) {
+          return new StructuresToConfiguredStructuresFix.Mapping(Map.of(), mapping);
+@@ -147,4 +146,4 @@
+          return builder.build();
+       }
+    }
+ }

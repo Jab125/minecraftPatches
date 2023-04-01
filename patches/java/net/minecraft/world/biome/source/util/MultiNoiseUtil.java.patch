@@ -1,0 +1,20 @@
+--- a/java/net/minecraft/world/biome/source/util/MultiNoiseUtil.java
++++ b/java/net/minecraft/world/biome/source/util/MultiNoiseUtil.java
+@@ -206,12 +206,6 @@
+    }
+ 
+    public static record NoiseValuePoint(long temperatureNoise, long humidityNoise, long continentalnessNoise, long erosionNoise, long depth, long weirdnessNoise) {
+-      final long temperatureNoise;
+-      final long humidityNoise;
+-      final long continentalnessNoise;
+-      final long erosionNoise;
+-      final long depth;
+-      final long weirdnessNoise;
+ 
+       @VisibleForTesting
+       protected long[] getNoiseValueList() {
+@@ -486,4 +480,4 @@
+          }
+       }
+    }
+ }

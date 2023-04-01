@@ -1,0 +1,16 @@
+--- a/java/net/minecraft/world/chunk/PalettedContainer.java
++++ b/java/net/minecraft/world/chunk/PalettedContainer.java
+@@ -304,8 +304,6 @@
+    }
+ 
+    static record Data<T>(PalettedContainer.DataProvider<T> configuration, PaletteStorage storage, Palette<T> palette) {
+-      final PaletteStorage storage;
+-      final Palette<T> palette;
+ 
+       public void importFrom(Palette<T> palette, PaletteStorage storage) {
+          for(int i = 0; i < storage.getSize(); ++i) {
+@@ -410,4 +408,4 @@
+          return dataprovider.factory() == ID_LIST ? i : dataprovider.bits();
+       }
+    }
+ }

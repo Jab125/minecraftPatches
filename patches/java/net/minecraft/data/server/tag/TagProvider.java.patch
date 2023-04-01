@@ -1,0 +1,16 @@
+--- a/java/net/minecraft/data/server/tag/TagProvider.java
++++ b/java/net/minecraft/data/server/tag/TagProvider.java
+@@ -60,8 +60,6 @@
+          return registryLookupFuture;
+       }).thenCombineAsync(this.parentTagLookupFuture, (lookup, parent) -> {
+          record RegistryInfo<T>(RegistryWrapper.WrapperLookup contents, TagProvider.TagLookup<T> parent) {
+-            final RegistryWrapper.WrapperLookup contents;
+-            final TagProvider.TagLookup<T> parent;
+          }
+ 
+          return new RegistryInfo<>(lookup, parent);
+@@ -169,4 +167,4 @@
+          return this.apply(tag).isPresent();
+       }
+    }
+ }

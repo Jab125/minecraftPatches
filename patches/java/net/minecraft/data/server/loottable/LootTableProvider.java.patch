@@ -1,0 +1,9 @@
+--- a/java/net/minecraft/data/server/loottable/LootTableProvider.java
++++ b/java/net/minecraft/data/server/loottable/LootTableProvider.java
+@@ -76,6 +76,5 @@
+    }
+ 
+    public static record LootTypeGenerator(Supplier<LootTableGenerator> provider, LootContextType paramSet) {
+-      final LootContextType paramSet;
+    }
+ }

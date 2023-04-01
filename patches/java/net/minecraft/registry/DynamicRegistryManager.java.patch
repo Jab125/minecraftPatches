@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/registry/DynamicRegistryManager.java
++++ b/java/net/minecraft/registry/DynamicRegistryManager.java
+@@ -62,7 +62,6 @@
+    }
+ 
+    public static record Entry<T>(RegistryKey<? extends Registry<T>> key, Registry<T> value) {
+-      final Registry<T> value;
+ 
+       private static <T, R extends Registry<? extends T>> DynamicRegistryManager.Entry<T> of(Map.Entry<? extends RegistryKey<? extends Registry<?>>, R> entry) {
+          return of(entry.getKey(), entry.getValue());
+@@ -107,4 +106,4 @@
+          return this.registries.entrySet().stream().map(DynamicRegistryManager.Entry::of);
+       }
+    }
+ }

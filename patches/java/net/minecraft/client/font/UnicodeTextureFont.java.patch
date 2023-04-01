@@ -1,0 +1,19 @@
+--- a/java/net/minecraft/client/font/UnicodeTextureFont.java
++++ b/java/net/minecraft/client/font/UnicodeTextureFont.java
+@@ -209,11 +209,6 @@
+    }
+ 
+    static record UnicodeTextureGlyph(int unpackSkipPixels, int unpackSkipRows, int width, int height, NativeImage image) implements Glyph {
+-      final int unpackSkipPixels;
+-      final int unpackSkipRows;
+-      final int width;
+-      final int height;
+-      final NativeImage image;
+ 
+       public float getAdvance() {
+          return (float)(this.width / 2 + 1);
+@@ -251,4 +246,4 @@
+          });
+       }
+    }
+ }

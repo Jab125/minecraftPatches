@@ -1,0 +1,26 @@
+--- a/java/net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen.java
++++ b/java/net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen.java
+@@ -620,8 +620,8 @@
+       boolean flag = this.focusedSlot != null && this.focusedSlot instanceof CreativeInventoryScreen.LockableSlot;
+       boolean flag1 = selectedTab.getType() == Type.CATEGORY;
+       boolean flag2 = selectedTab.getType() == Type.SEARCH;
+-      TooltipContext.Default default = this.client.options.advancedItemTooltips ? Default.ADVANCED : Default.BASIC;
+-      TooltipContext tooltipcontext = flag ? default.withCreative() : default;
++      TooltipContext.Default default1 = this.client.options.advancedItemTooltips ? Default.ADVANCED : Default.BASIC;
++      TooltipContext tooltipcontext = flag ? default1.withCreative() : default1;
+       List<Text> list = stack.getTooltip(this.client.player, tooltipcontext);
+       List<Text> list1;
+       if (flag1 && flag) {
+@@ -841,9 +841,9 @@
+ 
+       public ItemStack quickMove(PlayerEntity player, int slot) {
+          if (slot >= this.slots.size() - 9 && slot < this.slots.size()) {
+-            Slot slot = (Slot)this.slots.get(slot);
+-            if (slot != null && slot.hasStack()) {
+-               slot.setStack(ItemStack.EMPTY);
++            Slot slot1 = this.slots.get(slot);
++            if (slot1 != null && slot1.hasStack()) {
++               slot1.setStack(ItemStack.EMPTY);
+             }
+          }
+ 

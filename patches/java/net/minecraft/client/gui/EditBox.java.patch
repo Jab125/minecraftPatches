@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/gui/EditBox.java
++++ b/java/net/minecraft/client/gui/EditBox.java
+@@ -359,8 +359,6 @@
+    }
+ 
+    protected static record Substring(int beginIndex, int endIndex) {
+-      final int beginIndex;
+-      final int endIndex;
+       static final EditBox.Substring EMPTY = new EditBox.Substring(0, 0);
+    }
+ }

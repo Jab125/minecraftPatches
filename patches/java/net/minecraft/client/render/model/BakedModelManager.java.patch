@@ -1,0 +1,13 @@
+--- a/java/net/minecraft/client/render/model/BakedModelManager.java
++++ b/java/net/minecraft/client/render/model/BakedModelManager.java
+@@ -229,10 +229,5 @@
+    }
+ 
+    static record BakingResult(ModelLoader modelLoader, BakedModel missingModel, Map<BlockState, BakedModel> modelCache, Map<Identifier, SpriteAtlasManager.AtlasPreparation> atlasPreparations, CompletableFuture<Void> readyForUpload) {
+-      final ModelLoader modelLoader;
+-      final BakedModel missingModel;
+-      final Map<BlockState, BakedModel> modelCache;
+-      final Map<Identifier, SpriteAtlasManager.AtlasPreparation> atlasPreparations;
+-      final CompletableFuture<Void> readyForUpload;
+    }
+ }

@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/client/render/BufferBuilder.java
++++ b/java/net/minecraft/client/render/BufferBuilder.java
+@@ -433,7 +433,6 @@
+    }
+ 
+    public static record DrawParameters(VertexFormat format, int vertexCount, int indexCount, VertexFormat.DrawMode mode, VertexFormat.IndexType indexType, boolean indexOnly, boolean sequentialIndex) {
+-      final int vertexCount;
+ 
+       public int getVertexBufferSize() {
+          return this.vertexCount * this.format.getVertexSizeByte();
+@@ -482,4 +481,4 @@
+          this.cameraZ = cameraZ;
+       }
+    }
+ }

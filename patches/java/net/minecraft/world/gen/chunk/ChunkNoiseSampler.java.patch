@@ -1,0 +1,23 @@
+--- a/java/net/minecraft/world/gen/chunk/ChunkNoiseSampler.java
++++ b/java/net/minecraft/world/gen/chunk/ChunkNoiseSampler.java
+@@ -223,13 +223,13 @@
+    }
+ 
+    public ChunkNoiseSampler at(int i) {
+-      int i = Math.floorMod(i, this.horizontalCellBlockCount);
+-      int j = Math.floorDiv(i, this.horizontalCellBlockCount);
+-      int k = Math.floorMod(j, this.horizontalCellBlockCount);
+-      int l = this.verticalCellBlockCount - 1 - Math.floorDiv(j, this.horizontalCellBlockCount);
+-      this.cellBlockX = k;
+-      this.cellBlockY = l;
+-      this.cellBlockZ = i;
++      int j = Math.floorMod(i, this.horizontalCellBlockCount);
++      int k = Math.floorDiv(i, this.horizontalCellBlockCount);
++      int l = Math.floorMod(k, this.horizontalCellBlockCount);
++      int m = this.verticalCellBlockCount - 1 - Math.floorDiv(k, this.horizontalCellBlockCount);
++      this.cellBlockX = l;
++      this.cellBlockY = m;
++      this.cellBlockZ = j;
+       this.index = i;
+       return this;
+    }

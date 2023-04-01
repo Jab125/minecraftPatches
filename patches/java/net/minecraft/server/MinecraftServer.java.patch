@@ -1,0 +1,16 @@
+--- a/java/net/minecraft/server/MinecraftServer.java
++++ b/java/net/minecraft/server/MinecraftServer.java
+@@ -1758,8 +1758,6 @@
+    }
+ 
+    static record ResourceManagerHolder(LifecycledResourceManager resourceManager, DataPackContents dataPackContents) implements AutoCloseable {
+-      final LifecycledResourceManager resourceManager;
+-      final DataPackContents dataPackContents;
+ 
+       public void close() {
+          this.resourceManager.close();
+@@ -1768,4 +1766,4 @@
+ 
+    public static record ServerResourcePackProperties(String url, String hash, boolean isRequired, @Nullable Text prompt) {
+    }
+ }

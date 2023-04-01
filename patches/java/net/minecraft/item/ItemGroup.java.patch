@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/item/ItemGroup.java
++++ b/java/net/minecraft/item/ItemGroup.java
+@@ -197,7 +197,6 @@
+    }
+ 
+    public static record DisplayContext(FeatureSet enabledFeatures, boolean hasPermissions, RegistryWrapper.WrapperLookup lookup) {
+-      final FeatureSet enabledFeatures;
+ 
+       public boolean doesNotMatch(FeatureSet enabledFeatures, boolean hasPermissions, RegistryWrapper.WrapperLookup lookup) {
+          return !this.enabledFeatures.equals(enabledFeatures) || this.hasPermissions != hasPermissions || this.lookup != lookup;
+@@ -290,4 +289,4 @@
+       HOTBAR,
+       SEARCH;
+    }
+ }

@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/block/PointedDripstoneBlock.java
++++ b/java/net/minecraft/block/PointedDripstoneBlock.java
+@@ -590,8 +590,5 @@
+    }
+ 
+    static record DrippingFluid(BlockPos pos, Fluid fluid, BlockState sourceState) {
+-      final BlockPos pos;
+-      final Fluid fluid;
+-      final BlockState sourceState;
+    }
+ }

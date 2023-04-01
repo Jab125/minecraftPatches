@@ -1,0 +1,16 @@
+--- a/java/net/minecraft/client/render/debug/GameEventDebugRenderer.java
++++ b/java/net/minecraft/client/render/debug/GameEventDebugRenderer.java
+@@ -105,8 +105,6 @@
+    }
+ 
+    static record Entry(long startingMs, GameEvent event, Vec3d pos) {
+-      final GameEvent event;
+-      final Vec3d pos;
+ 
+       public boolean hasExpired() {
+          return Util.getMeasuringTimeMs() - this.startingMs > 3000L;
+@@ -144,4 +142,4 @@
+          return false;
+       }
+    }
+ }

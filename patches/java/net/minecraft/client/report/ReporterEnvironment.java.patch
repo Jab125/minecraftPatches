@@ -1,0 +1,10 @@
+--- a/java/net/minecraft/client/report/ReporterEnvironment.java
++++ b/java/net/minecraft/client/report/ReporterEnvironment.java
+@@ -65,7 +65,6 @@
+       }
+ 
+       public static record ThirdParty(String ip) implements ReporterEnvironment.Server {
+-         final String ip;
+       }
+    }
+ }

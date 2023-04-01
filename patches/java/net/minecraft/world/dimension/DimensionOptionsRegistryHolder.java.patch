@@ -1,0 +1,16 @@
+--- a/java/net/minecraft/world/dimension/DimensionOptionsRegistryHolder.java
++++ b/java/net/minecraft/world/dimension/DimensionOptionsRegistryHolder.java
+@@ -181,8 +181,6 @@
+             return this.dimensions.getOrEmpty(key);
+          }).ifPresent((dimensionOptions) -> {
+             record Entry(RegistryKey<DimensionOptions> key, DimensionOptions value) {
+-               final RegistryKey<DimensionOptions> key;
+-               final DimensionOptions value;
+ 
+                Lifecycle getLifecycle() {
+                   return DimensionOptionsRegistryHolder.getLifecycle(this.key, this.value);
+@@ -211,4 +209,4 @@
+          return (new DynamicRegistryManager.ImmutableImpl(List.of(this.dimensions))).toImmutable();
+       }
+    }
+ }

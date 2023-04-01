@@ -1,0 +1,17 @@
+--- a/java/net/minecraft/client/texture/TextureStitcher.java
++++ b/java/net/minecraft/client/texture/TextureStitcher.java
+@@ -117,9 +117,6 @@
+    }
+ 
+    static record Holder<T extends TextureStitcher.Stitchable>(T sprite, int width, int height) {
+-      final T sprite;
+-      final int width;
+-      final int height;
+ 
+       public Holder(T sprite, int mipLevel) {
+          this(sprite, TextureStitcher.applyMipLevel(sprite.getWidth(), mipLevel), TextureStitcher.applyMipLevel(sprite.getHeight(), mipLevel));
+@@ -225,4 +222,4 @@
+ 
+       Identifier getId();
+    }
+ }

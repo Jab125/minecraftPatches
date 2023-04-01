@@ -1,0 +1,13 @@
+--- a/java/net/minecraft/registry/tag/TagGroupLoader.java
++++ b/java/net/minecraft/registry/tag/TagGroupLoader.java
+@@ -157,10 +157,9 @@
+    }
+ 
+    public static record TrackedEntry(TagEntry entry, String source) {
+-      final TagEntry entry;
+ 
+       public String toString() {
+          return this.entry + " (from " + this.source + ")";
+       }
+    }
+ }

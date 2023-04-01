@@ -1,0 +1,16 @@
+--- a/java/net/minecraft/client/render/model/SpriteAtlasManager.java
++++ b/java/net/minecraft/client/render/model/SpriteAtlasManager.java
+@@ -42,8 +42,6 @@
+    }
+ 
+    static record Atlas(SpriteAtlasTexture atlas, Identifier atlasInfoLocation) implements AutoCloseable {
+-      final SpriteAtlasTexture atlas;
+-      final Identifier atlasInfoLocation;
+ 
+       public void close() {
+          this.atlas.clear();
+@@ -76,4 +74,4 @@
+          this.atlasTexture.upload(this.stitchResult);
+       }
+    }
+ }

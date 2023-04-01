@@ -1,0 +1,9 @@
+--- a/java/net/minecraft/client/network/ClientPlayNetworkHandler.java
++++ b/java/net/minecraft/client/network/ClientPlayNetworkHandler.java
+@@ -2447,6 +2447,5 @@
+    }
+ 
+    static record QueuedPacket(Packet<ServerPlayPacketListener> packet, BooleanSupplier sendCondition, long expirationTime) {
+-      final Packet<ServerPlayPacketListener> packet;
+    }
+ }

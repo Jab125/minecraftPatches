@@ -1,0 +1,60 @@
+--- a/java/net/minecraft/world/gen/densityfunction/DensityFunctionTypes.java
++++ b/java/net/minecraft/world/gen/densityfunction/DensityFunctionTypes.java
+@@ -242,7 +242,7 @@
+       return add(mul(delta, add(end, constant(-start))), constant(start));
+    }
+ 
+-   protected static enum Beardifier implements DensityFunctionTypes.Beardifying {
++   public static enum Beardifier implements DensityFunctionTypes.Beardifying {
+       INSTANCE;
+ 
+       public double sample(DensityFunction.NoisePos pos) {
+@@ -434,7 +434,7 @@
+       }
+    }
+ 
+-   protected static enum BlendAlpha implements DensityFunction.Base {
++   public static enum BlendAlpha implements DensityFunction.Base {
+       INSTANCE;
+ 
+       public static final CodecHolder<DensityFunction> CODEC = CodecHolder.of(MapCodec.unit(INSTANCE));
+@@ -484,7 +484,7 @@
+       }
+    }
+ 
+-   protected static enum BlendOffset implements DensityFunction.Base {
++   public static enum BlendOffset implements DensityFunction.Base {
+       INSTANCE;
+ 
+       public static final CodecHolder<DensityFunction> CODEC = CodecHolder.of(MapCodec.unit(INSTANCE));
+@@ -530,7 +530,6 @@
+    }
+ 
+    static record Constant(double value) implements DensityFunction.Base {
+-      final double value;
+       static final CodecHolder<DensityFunctionTypes.Constant> CODEC_HOLDER = DensityFunctionTypes.holderOf(DensityFunctionTypes.CONSTANT_RANGE, DensityFunctionTypes.Constant::new, DensityFunctionTypes.Constant::value);
+       static final DensityFunctionTypes.Constant ZERO = new DensityFunctionTypes.Constant(0.0D);
+ 
+@@ -1117,7 +1116,7 @@
+       }
+    }
+ 
+-   protected static record Wrapping(DensityFunctionTypes.Wrapping.Type type, DensityFunction wrapped) implements DensityFunctionTypes.Wrapper {
++   public static record Wrapping(DensityFunctionTypes.Wrapping.Type type, DensityFunction wrapped) implements DensityFunctionTypes.Wrapper {
+       public double sample(DensityFunction.NoisePos pos) {
+          return this.wrapped.sample(pos);
+       }
+@@ -1134,7 +1133,7 @@
+          return this.wrapped.maxValue();
+       }
+ 
+-      static enum Type implements StringIdentifiable {
++      public static enum Type implements StringIdentifiable {
+          INTERPOLATED("interpolated"),
+          FLAT_CACHE("flat_cache"),
+          CACHE2D("cache_2d"),
+@@ -1178,4 +1177,4 @@
+          return CODEC_HOLDER;
+       }
+    }
+ }

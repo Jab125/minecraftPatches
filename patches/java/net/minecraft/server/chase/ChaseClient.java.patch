@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/server/chase/ChaseClient.java
++++ b/java/net/minecraft/server/chase/ChaseClient.java
+@@ -148,8 +148,5 @@
+    }
+ 
+    static record TeleportPos(RegistryKey<World> dimension, Vec3d pos, Vec2f rot) {
+-      final RegistryKey<World> dimension;
+-      final Vec3d pos;
+-      final Vec2f rot;
+    }
+ }

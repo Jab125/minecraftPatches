@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/gui/widget/MultilineTextWidget.java
++++ b/java/net/minecraft/client/gui/widget/MultilineTextWidget.java
+@@ -73,8 +73,5 @@
+    }
+ 
+    static record CacheKey(Text message, int maxWidth, OptionalInt maxRows) {
+-      final Text message;
+-      final int maxWidth;
+-      final OptionalInt maxRows;
+    }
+ }

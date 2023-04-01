@@ -1,0 +1,27 @@
+--- a/java/net/minecraft/world/gen/structure/Structure.java
++++ b/java/net/minecraft/world/gen/structure/Structure.java
+@@ -163,19 +163,12 @@
+    public abstract StructureType<?> getType();
+ 
+    public static record Config(RegistryEntryList<Biome> biomes, Map<SpawnGroup, StructureSpawns> spawnOverrides, GenerationStep.Feature step, StructureTerrainAdaptation terrainAdaptation) {
+-      final RegistryEntryList<Biome> biomes;
+-      final Map<SpawnGroup, StructureSpawns> spawnOverrides;
+-      final GenerationStep.Feature step;
+-      final StructureTerrainAdaptation terrainAdaptation;
+       public static final MapCodec<Structure.Config> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
+          return instance.group(RegistryCodecs.entryList(RegistryKeys.BIOME).fieldOf("biomes").forGetter(Structure.Config::biomes), Codec.simpleMap(SpawnGroup.CODEC, StructureSpawns.CODEC, StringIdentifiable.toKeyable(SpawnGroup.values())).fieldOf("spawn_overrides").forGetter(Structure.Config::spawnOverrides), GenerationStep.Feature.CODEC.fieldOf("step").forGetter(Structure.Config::step), StructureTerrainAdaptation.CODEC.optionalFieldOf("terrain_adaptation", StructureTerrainAdaptation.NONE).forGetter(Structure.Config::terrainAdaptation)).apply(instance, Structure.Config::new);
+       });
+    }
+ 
+    public static record Context(DynamicRegistryManager dynamicRegistryManager, ChunkGenerator chunkGenerator, BiomeSource biomeSource, NoiseConfig noiseConfig, StructureTemplateManager structureTemplateManager, ChunkRandom random, long seed, ChunkPos chunkPos, HeightLimitView world, Predicate<RegistryEntry<Biome>> biomePredicate) {
+-      final ChunkGenerator chunkGenerator;
+-      final NoiseConfig noiseConfig;
+-      final Predicate<RegistryEntry<Biome>> biomePredicate;
+ 
+       public Context(DynamicRegistryManager dynamicRegistryManager, ChunkGenerator chunkGenerator, BiomeSource biomeSource, NoiseConfig noiseConfig, StructureTemplateManager structureTemplateManager, long seed, ChunkPos chunkPos, HeightLimitView world, Predicate<RegistryEntry<Biome>> biomePredicate) {
+          this(dynamicRegistryManager, chunkGenerator, biomeSource, noiseConfig, structureTemplateManager, createChunkRandom(seed, chunkPos), seed, chunkPos, world, biomePredicate);
+@@ -203,4 +196,4 @@
+          });
+       }
+    }
+ }

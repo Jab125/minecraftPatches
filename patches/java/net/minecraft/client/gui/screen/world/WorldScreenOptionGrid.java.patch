@@ -1,0 +1,10 @@
+--- a/java/net/minecraft/client/gui/screen/world/WorldScreenOptionGrid.java
++++ b/java/net/minecraft/client/gui/screen/world/WorldScreenOptionGrid.java
+@@ -179,7 +179,5 @@
+    }
+ 
+    static record TooltipBoxDisplay(int maxInfoRows, boolean alwaysMaxHeight) {
+-      final int maxInfoRows;
+-      final boolean alwaysMaxHeight;
+    }
+ }

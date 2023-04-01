@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/data/DataCache.java
++++ b/java/net/minecraft/data/DataCache.java
+@@ -137,7 +137,6 @@
+    }
+ 
+    static record CachedData(String version, ImmutableMap<Path, HashCode> data) {
+-      final String version;
+ 
+       @Nullable
+       public HashCode get(Path path) {
+@@ -247,4 +246,4 @@
+    public interface Runner {
+       CompletableFuture<?> update(DataWriter writer);
+    }
+ }

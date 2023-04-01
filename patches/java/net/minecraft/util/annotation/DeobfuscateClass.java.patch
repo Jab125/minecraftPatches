@@ -1,0 +1,12 @@
+--- a/java/net/minecraft/util/annotation/DeobfuscateClass.java
++++ b/java/net/minecraft/util/annotation/DeobfuscateClass.java
+@@ -3,9 +3,7 @@
+ import java.lang.annotation.ElementType;
+ import java.lang.annotation.Retention;
+ import java.lang.annotation.RetentionPolicy;
+-import javax.annotation.meta.TypeQualifierDefault;
+ 
+-@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+ @Retention(RetentionPolicy.CLASS)
+ public @interface DeobfuscateClass {
+ }

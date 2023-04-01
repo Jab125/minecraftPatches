@@ -1,0 +1,176 @@
+--- a/java/net/minecraft/datafixer/fix/StructureSeparationDataFix.java
++++ b/java/net/minecraft/datafixer/fix/StructureSeparationDataFix.java
+@@ -33,7 +33,7 @@
+    private static final String END_CITY_STRUCTURE_ID = "minecraft:endcity";
+    private static final String MANSION_STRUCTURE_ID = "minecraft:mansion";
+    private static final String MONUMENT_STRUCTURE_ID = "minecraft:monument";
+-   private static final ImmutableMap<String, StructureSeparationDataFix.Information> STRUCTURE_SPACING = ImmutableMap.builder().put("minecraft:village", new StructureSeparationDataFix.Information(32, 8, 10387312)).put("minecraft:desert_pyramid", new StructureSeparationDataFix.Information(32, 8, 14357617)).put("minecraft:igloo", new StructureSeparationDataFix.Information(32, 8, 14357618)).put("minecraft:jungle_pyramid", new StructureSeparationDataFix.Information(32, 8, 14357619)).put("minecraft:swamp_hut", new StructureSeparationDataFix.Information(32, 8, 14357620)).put("minecraft:pillager_outpost", new StructureSeparationDataFix.Information(32, 8, 165745296)).put("minecraft:monument", new StructureSeparationDataFix.Information(32, 5, 10387313)).put("minecraft:endcity", new StructureSeparationDataFix.Information(20, 11, 10387313)).put("minecraft:mansion", new StructureSeparationDataFix.Information(80, 20, 10387319)).build();
++   private static final ImmutableMap<String, StructureSeparationDataFix.Information> STRUCTURE_SPACING = ImmutableMap.<String, StructureSeparationDataFix.Information>builder().put("minecraft:village", new StructureSeparationDataFix.Information(32, 8, 10387312)).put("minecraft:desert_pyramid", new StructureSeparationDataFix.Information(32, 8, 14357617)).put("minecraft:igloo", new StructureSeparationDataFix.Information(32, 8, 14357618)).put("minecraft:jungle_pyramid", new StructureSeparationDataFix.Information(32, 8, 14357619)).put("minecraft:swamp_hut", new StructureSeparationDataFix.Information(32, 8, 14357620)).put("minecraft:pillager_outpost", new StructureSeparationDataFix.Information(32, 8, 165745296)).put("minecraft:monument", new StructureSeparationDataFix.Information(32, 5, 10387313)).put("minecraft:endcity", new StructureSeparationDataFix.Information(20, 11, 10387313)).put("minecraft:mansion", new StructureSeparationDataFix.Information(80, 20, 10387319)).build();
+ 
+    public StructureSeparationDataFix(Schema outputSchema) {
+       super(outputSchema, true);
+@@ -50,7 +50,7 @@
+    }
+ 
+    private static <T> Dynamic<T> method_28272(Dynamic<T> dynamic, long l, boolean bl, boolean bl2) {
+-      ImmutableMap.Builder<Dynamic<T>, Dynamic<T>> builder = ImmutableMap.builder().put(dynamic.createString("type"), dynamic.createString("minecraft:vanilla_layered")).put(dynamic.createString("seed"), dynamic.createLong(l)).put(dynamic.createString("large_biomes"), dynamic.createBoolean(bl2));
++      ImmutableMap.Builder<Dynamic<T>, Dynamic<T>> builder = ImmutableMap.<Dynamic<T>, Dynamic<T>>builder().put(dynamic.createString("type"), dynamic.createString("minecraft:vanilla_layered")).put(dynamic.createString("seed"), dynamic.createLong(l)).put(dynamic.createString("large_biomes"), dynamic.createBoolean(bl2));
+       if (bl) {
+          builder.put(dynamic.createString("legacy_biome_init_layer"), dynamic.createBoolean(bl));
+       }
+@@ -59,81 +59,81 @@
+    }
+ 
+    private static <T> Dynamic<T> method_28271(Dynamic<T> dynamic) {
+-      DynamicOps<T> dynamicops = dynamic.getOps();
+-      long i = dynamic.get("RandomSeed").asLong(0L);
+-      Optional<String> optional = dynamic.get("generatorName").asString().map((string) -> {
+-         return string.toLowerCase(Locale.ROOT);
++      DynamicOps<T> dynamicOps = dynamic.getOps();
++      long l = dynamic.get("RandomSeed").asLong(0L);
++      Optional<String> optional = dynamic.get("generatorName").asString().map((stringx) -> {
++         return stringx.toLowerCase(Locale.ROOT);
+       }).result();
+-      Optional<String> optional1 = dynamic.get("legacy_custom_options").asString().result().map(Optional::of).orElseGet(() -> {
++      Optional<String> optional2 = (Optional)dynamic.get("legacy_custom_options").asString().result().map(Optional::of).orElseGet(() -> {
+          return optional.equals(Optional.of("customized")) ? dynamic.get("generatorOptions").asString().result() : Optional.empty();
+       });
+-      boolean flag = false;
+-      Dynamic<T> dynamic;
++      boolean bl = false;
++      Dynamic<T> dynamic2;
+       if (optional.equals(Optional.of("customized"))) {
+-         dynamic = method_29916(dynamic, i);
++         dynamic2 = method_29916(dynamic, l);
+       } else if (!optional.isPresent()) {
+-         dynamic = method_29916(dynamic, i);
++         dynamic2 = method_29916(dynamic, l);
+       } else {
+          switch ((String)optional.get()) {
+             case "flat":
+-               OptionalDynamic<T> optionaldynamic = dynamic.get("generatorOptions");
+-               Map<Dynamic<T>, Dynamic<T>> map = method_28275(dynamicops, optionaldynamic);
+-               dynamic = dynamic.createMap(ImmutableMap.of(dynamic.createString("type"), dynamic.createString("minecraft:flat"), dynamic.createString("settings"), dynamic.createMap(ImmutableMap.of(dynamic.createString("structures"), dynamic.createMap(map), dynamic.createString("layers"), (Dynamic)optionaldynamic.get("layers").result().orElseGet(() -> {
+-                  return (T)dynamic.createList(Stream.of((T[])(dynamic.createMap(ImmutableMap.of(dynamic.createString("height"), dynamic.createInt(1), dynamic.createString("block"), dynamic.createString("minecraft:bedrock"))), dynamic.createMap(ImmutableMap.of(dynamic.createString("height"), dynamic.createInt(2), dynamic.createString("block"), dynamic.createString("minecraft:dirt"))), dynamic.createMap(ImmutableMap.of(dynamic.createString("height"), dynamic.createInt(1), dynamic.createString("block"), dynamic.createString("minecraft:grass_block"))))));
+-               }), dynamic.createString("biome"), dynamic.createString(optionaldynamic.get("biome").asString("minecraft:plains"))))));
++               OptionalDynamic<T> optionalDynamic = dynamic.get("generatorOptions");
++               Map<Dynamic<T>, Dynamic<T>> map = method_28275(dynamicOps, optionalDynamic);
++               dynamic2 = dynamic.createMap(ImmutableMap.of(dynamic.createString("type"), dynamic.createString("minecraft:flat"), dynamic.createString("settings"), dynamic.createMap(ImmutableMap.of(dynamic.createString("structures"), dynamic.createMap(map), dynamic.createString("layers"), optionalDynamic.get("layers").result().orElseGet(() -> {
++                  return dynamic.createList(Stream.of(dynamic.createMap(ImmutableMap.of(dynamic.createString("height"), dynamic.createInt(1), dynamic.createString("block"), dynamic.createString("minecraft:bedrock"))), dynamic.createMap(ImmutableMap.of(dynamic.createString("height"), dynamic.createInt(2), dynamic.createString("block"), dynamic.createString("minecraft:dirt"))), dynamic.createMap(ImmutableMap.of(dynamic.createString("height"), dynamic.createInt(1), dynamic.createString("block"), dynamic.createString("minecraft:grass_block")))));
++               }), dynamic.createString("biome"), dynamic.createString(optionalDynamic.get("biome").asString("minecraft:plains"))))));
+                break;
+             case "debug_all_block_states":
+-               dynamic = dynamic.createMap(ImmutableMap.of(dynamic.createString("type"), dynamic.createString("minecraft:debug")));
++               dynamic2 = dynamic.createMap(ImmutableMap.of(dynamic.createString("type"), dynamic.createString("minecraft:debug")));
+                break;
+             case "buffet":
+-               OptionalDynamic<T> optionaldynamic1 = dynamic.get("generatorOptions");
+-               OptionalDynamic<?> optionaldynamic2 = optionaldynamic1.get("chunk_generator");
+-               Optional<String> optional2 = optionaldynamic2.get("type").asString().result();
+-               Dynamic<T> dynamic1;
+-               if (Objects.equals(optional2, Optional.of("minecraft:caves"))) {
+-                  dynamic1 = dynamic.createString("minecraft:caves");
+-                  flag = true;
+-               } else if (Objects.equals(optional2, Optional.of("minecraft:floating_islands"))) {
+-                  dynamic1 = dynamic.createString("minecraft:floating_islands");
++               OptionalDynamic<T> optionalDynamic2 = dynamic.get("generatorOptions");
++               OptionalDynamic<?> optionalDynamic3 = optionalDynamic2.get("chunk_generator");
++               Optional<String> optional3 = optionalDynamic3.get("type").asString().result();
++               Dynamic dynamic3;
++               if (Objects.equals(optional3, Optional.of("minecraft:caves"))) {
++                  dynamic3 = dynamic.createString("minecraft:caves");
++                  bl = true;
++               } else if (Objects.equals(optional3, Optional.of("minecraft:floating_islands"))) {
++                  dynamic3 = dynamic.createString("minecraft:floating_islands");
+                } else {
+-                  dynamic1 = dynamic.createString("minecraft:overworld");
++                  dynamic3 = dynamic.createString("minecraft:overworld");
+                }
+ 
+-               Dynamic<T> dynamic2 = (Dynamic)optionaldynamic1.get("biome_source").result().orElseGet(() -> {
+-                  return (T)dynamic.createMap(ImmutableMap.of(dynamic.createString("type"), dynamic.createString("minecraft:fixed")));
++               Dynamic<T> dynamic4 = (Dynamic)optionalDynamic2.get("biome_source").result().orElseGet(() -> {
++                  return dynamic.createMap(ImmutableMap.of(dynamic.createString("type"), dynamic.createString("minecraft:fixed")));
+                });
+-               Dynamic<T> dynamic3;
+-               if (dynamic2.get("type").asString().result().equals(Optional.of("minecraft:fixed"))) {
+-                  String s1 = dynamic2.get("options").get("biomes").asStream().findFirst().flatMap((dynamicx) -> {
++               Dynamic dynamic5;
++               if (dynamic4.get("type").asString().result().equals(Optional.of("minecraft:fixed"))) {
++                  String string = (String)dynamic4.get("options").get("biomes").asStream().findFirst().flatMap((dynamicx) -> {
+                      return dynamicx.asString().result();
+                   }).orElse("minecraft:ocean");
+-                  dynamic3 = dynamic2.remove("options").set("biome", dynamic.createString(s1));
++                  dynamic5 = dynamic4.remove("options").set("biome", dynamic.createString(string));
+                } else {
+-                  dynamic3 = dynamic2;
++                  dynamic5 = dynamic4;
+                }
+ 
+-               dynamic = method_28268(i, dynamic, dynamic1, dynamic3);
++               dynamic2 = method_28268(l, dynamic, dynamic3, dynamic5);
+                break;
+             default:
+-               boolean flag6 = optional.get().equals("default");
+-               boolean flag1 = optional.get().equals("default_1_1") || flag6 && dynamic.get("generatorVersion").asInt(0) == 0;
+-               boolean flag2 = optional.get().equals("amplified");
+-               boolean flag3 = optional.get().equals("largebiomes");
+-               dynamic = method_28268(i, dynamic, dynamic.createString(flag2 ? "minecraft:amplified" : "minecraft:overworld"), method_28272(dynamic, i, flag1, flag3));
++               boolean bl2 = ((String)optional.get()).equals("default");
++               boolean bl3 = ((String)optional.get()).equals("default_1_1") || bl2 && dynamic.get("generatorVersion").asInt(0) == 0;
++               boolean bl4 = ((String)optional.get()).equals("amplified");
++               boolean bl5 = ((String)optional.get()).equals("largebiomes");
++               dynamic2 = method_28268(l, dynamic, dynamic.createString(bl4 ? "minecraft:amplified" : "minecraft:overworld"), method_28272(dynamic, l, bl3, bl5));
+          }
+       }
+ 
+-      boolean flag4 = dynamic.get("MapFeatures").asBoolean(true);
+-      boolean flag5 = dynamic.get("BonusChest").asBoolean(false);
++      boolean bl6 = dynamic.get("MapFeatures").asBoolean(true);
++      boolean bl7 = dynamic.get("BonusChest").asBoolean(false);
+       ImmutableMap.Builder<T, T> builder = ImmutableMap.builder();
+-      builder.put(dynamicops.createString("seed"), dynamicops.createLong(i));
+-      builder.put(dynamicops.createString("generate_features"), dynamicops.createBoolean(flag4));
+-      builder.put(dynamicops.createString("bonus_chest"), dynamicops.createBoolean(flag5));
+-      builder.put(dynamicops.createString("dimensions"), method_29917(dynamic, i, dynamic, flag));
+-      optional1.ifPresent((string) -> {
+-         builder.put(dynamicops.createString("legacy_custom_options"), dynamicops.createString(string));
++      builder.put(dynamicOps.createString("seed"), dynamicOps.createLong(l));
++      builder.put(dynamicOps.createString("generate_features"), dynamicOps.createBoolean(bl6));
++      builder.put(dynamicOps.createString("bonus_chest"), dynamicOps.createBoolean(bl7));
++      builder.put(dynamicOps.createString("dimensions"), method_29917(dynamic, l, dynamic2, bl));
++      optional2.ifPresent((stringx) -> {
++         builder.put(dynamicOps.createString("legacy_custom_options"), dynamicOps.createString(stringx));
+       });
+-      return new Dynamic(dynamicops, dynamicops.createMap(builder.build()));
++      return new Dynamic(dynamicOps, dynamicOps.createMap(builder.build()));
+    }
+ 
+    protected static <T> Dynamic<T> method_29916(Dynamic<T> dynamic, long l) {
+@@ -158,11 +158,11 @@
+ 
+       optionalDynamic.get("structures").flatMap(Dynamic::getMapValues).result().ifPresent((map2) -> {
+          map2.forEach((dynamic, dynamic2) -> {
+-            dynamic2.getMapValues().result().ifPresent((map2) -> {
+-               map2.forEach((dynamic2, dynamic3) -> {
++            dynamic2.getMapValues().result().ifPresent((map3) -> {
++               map3.forEach((dynamic3, dynamic4) -> {
+                   String s = dynamic.asString("");
+-                  String s1 = dynamic2.asString("");
+-                  String s2 = dynamic3.asString("");
++                  String s1 = dynamic3.asString("");
++                  String s2 = dynamic4.asString("");
+                   if ("stronghold".equals(s)) {
+                      mutableboolean.setTrue();
+                      switch (s1) {
+@@ -244,8 +244,8 @@
+ 
+    private static void method_28281(Map<String, StructureSeparationDataFix.Information> map, String string, String string2, int i) {
+       StructureSeparationDataFix.Information structureseparationdatafix$information = map.getOrDefault(string, (StructureSeparationDataFix.Information)STRUCTURE_SPACING.get(string));
+-      int i = method_28280(string2, structureseparationdatafix$information.spacing, i);
+-      map.put(string, new StructureSeparationDataFix.Information(i, structureseparationdatafix$information.separation, structureseparationdatafix$information.salt));
++      int j = method_28280(string2, structureseparationdatafix$information.spacing, i);
++      map.put(string, new StructureSeparationDataFix.Information(j, structureseparationdatafix$information.separation, structureseparationdatafix$information.salt));
+    }
+ 
+    static final class Information {

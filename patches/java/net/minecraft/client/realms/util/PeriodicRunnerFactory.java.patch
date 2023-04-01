@@ -1,0 +1,14 @@
+--- a/java/net/minecraft/client/realms/util/PeriodicRunnerFactory.java
++++ b/java/net/minecraft/client/realms/util/PeriodicRunnerFactory.java
+@@ -170,11 +170,8 @@
+    }
+ 
+    static record TimedErrableResult<T>(Either<T, Exception> value, long time) {
+-      final long time;
+    }
+ 
+    static record TimedResult<T>(T value, long time) {
+-      final T value;
+-      final long time;
+    }
+ }

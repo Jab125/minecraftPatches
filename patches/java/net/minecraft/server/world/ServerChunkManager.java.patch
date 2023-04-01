@@ -1,0 +1,16 @@
+--- a/java/net/minecraft/server/world/ServerChunkManager.java
++++ b/java/net/minecraft/server/world/ServerChunkManager.java
+@@ -506,8 +506,6 @@
+    }
+ 
+    static record ChunkWithHolder(WorldChunk chunk, ChunkHolder holder) {
+-      final WorldChunk chunk;
+-      final ChunkHolder holder;
+    }
+ 
+    final class MainThreadExecutor extends ThreadExecutor<Runnable> {
+@@ -545,4 +543,4 @@
+          }
+       }
+    }
+ }

@@ -1,0 +1,17 @@
+--- a/java/net/minecraft/server/integrated/IntegratedServerLoader.java
++++ b/java/net/minecraft/server/integrated/IntegratedServerLoader.java
+@@ -127,9 +127,6 @@
+             throw new IllegalStateException("Failed to load world");
+          } else {
+             record CurrentSettings(LevelInfo levelInfo, GeneratorOptions options, Registry<DimensionOptions> existingDimensionRegistry) {
+-               final LevelInfo levelInfo;
+-               final GeneratorOptions options;
+-               final Registry<DimensionOptions> existingDimensionRegistry;
+             }
+ 
+             return new SaveLoading.LoadContext(new CurrentSettings(((SaveProperties)pair.getFirst()).getLevelInfo(), ((SaveProperties)pair.getFirst()).getGeneratorOptions(), ((DimensionOptionsRegistryHolder.DimensionsConfig)pair.getSecond()).dimensions()), context.dimensionsRegistryManager());
+@@ -274,4 +271,4 @@
+       }
+ 
+    }
+ }

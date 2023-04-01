@@ -1,0 +1,17 @@
+--- a/java/net/minecraft/world/biome/Biome.java
++++ b/java/net/minecraft/world/biome/Biome.java
+@@ -363,9 +363,6 @@
+    }
+ 
+    static record Weather(boolean hasPrecipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall) {
+-      final float temperature;
+-      final Biome.TemperatureModifier temperatureModifier;
+-      final float downfall;
+       public static final MapCodec<Biome.Weather> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
+          return instance.group(Codec.BOOL.fieldOf("has_precipitation").forGetter((weather) -> {
+             return weather.hasPrecipitation;
+@@ -378,4 +375,4 @@
+          })).apply(instance, Biome.Weather::new);
+       });
+    }
+ }

@@ -1,0 +1,16 @@
+--- a/java/net/minecraft/entity/data/DataTracker.java
++++ b/java/net/minecraft/entity/data/DataTracker.java
+@@ -253,8 +253,6 @@
+    }
+ 
+    public static record SerializedEntry<T>(int id, TrackedDataHandler<T> handler, T value) {
+-      final int id;
+-      final T value;
+ 
+       public static <T> DataTracker.SerializedEntry<T> of(TrackedData<T> data, T value) {
+          TrackedDataHandler<T> trackeddatahandler = data.getType();
+@@ -286,4 +284,4 @@
+          return new DataTracker.SerializedEntry<>(id, handler, handler.read(buf));
+       }
+    }
+ }

@@ -1,0 +1,18 @@
+--- a/java/net/minecraft/server/SaveLoading.java
++++ b/java/net/minecraft/server/SaveLoading.java
+@@ -75,8 +75,6 @@
+    }
+ 
+    public static record LoadContext<D>(D extraData, DynamicRegistryManager.Immutable dimensionsRegistryManager) {
+-      final D extraData;
+-      final DynamicRegistryManager.Immutable dimensionsRegistryManager;
+    }
+ 
+    @FunctionalInterface
+@@ -93,6 +91,5 @@
+    }
+ 
+    public static record ServerConfig(SaveLoading.DataPacks dataPacks, CommandManager.RegistrationEnvironment commandEnvironment, int functionPermissionLevel) {
+-      final SaveLoading.DataPacks dataPacks;
+    }
+ }

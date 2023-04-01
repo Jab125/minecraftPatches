@@ -1,0 +1,10 @@
+--- a/java/net/minecraft/client/render/model/ModelLoader.java
++++ b/java/net/minecraft/client/render/model/ModelLoader.java
+@@ -508,7 +508,5 @@
+    }
+ 
+    public static record SourceTrackedData(String source, JsonElement data) {
+-      final String source;
+-      final JsonElement data;
+    }
+ }

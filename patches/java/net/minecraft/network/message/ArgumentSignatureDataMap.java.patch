@@ -1,0 +1,16 @@
+--- a/java/net/minecraft/network/message/ArgumentSignatureDataMap.java
++++ b/java/net/minecraft/network/message/ArgumentSignatureDataMap.java
+@@ -48,8 +48,6 @@
+    }
+ 
+    public static record Entry(String name, MessageSignatureData signature) {
+-      final String name;
+-      final MessageSignatureData signature;
+ 
+       public Entry(PacketByteBuf buf) {
+          this(buf.readString(16), MessageSignatureData.fromBuf(buf));
+@@ -60,4 +58,4 @@
+          MessageSignatureData.write(buf, this.signature);
+       }
+    }
+ }

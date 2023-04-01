@@ -1,0 +1,9 @@
+--- a/java/net/minecraft/client/realms/util/RealmsTextureManager.java
++++ b/java/net/minecraft/client/realms/util/RealmsTextureManager.java
+@@ -60,6 +60,5 @@
+    }
+ 
+    public static record RealmsTexture(String image, Identifier textureId) {
+-      final Identifier textureId;
+    }
+ }

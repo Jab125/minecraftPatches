@@ -1,0 +1,42 @@
+--- a/java/net/minecraft/resource/NamespaceResourceManager.java
++++ b/java/net/minecraft/resource/NamespaceResourceManager.java
+@@ -159,9 +159,6 @@
+             int k = j;
+             resourcepack.findResources(this.type, this.namespace, startingPath, (id, supplier) -> {
+                record Result(ResourcePack pack, InputSupplier<InputStream> supplier, int packIndex) {
+-                  final ResourcePack pack;
+-                  final InputSupplier<InputStream> supplier;
+-                  final int packIndex;
+                }
+ 
+                if (isMcmeta(id)) {
+@@ -324,9 +321,6 @@
+    }
+ 
+    static record EntryList(Identifier id, Identifier metadataId, List<NamespaceResourceManager.FileSource> fileSources, Map<ResourcePack, InputSupplier<InputStream>> metaSources) {
+-      final Identifier id;
+-      final List<NamespaceResourceManager.FileSource> fileSources;
+-      final Map<ResourcePack, InputSupplier<InputStream>> metaSources;
+ 
+       EntryList(Identifier id) {
+          this(id, NamespaceResourceManager.getMetadataPath(id), new ArrayList<>(), new Object2ObjectArrayMap());
+@@ -334,14 +328,10 @@
+    }
+ 
+    static record FileSource(ResourcePack sourcePack, InputSupplier<InputStream> supplier) {
+-      final ResourcePack sourcePack;
+-      final InputSupplier<InputStream> supplier;
+    }
+ 
+    static record FilterablePack(String name, @Nullable ResourcePack underlying, @Nullable Predicate<Identifier> filter) {
+-      final String name;
+       @Nullable
+-      final ResourcePack underlying;
+ 
+       public void removeFiltered(Collection<Identifier> ids) {
+          if (this.filter != null) {
+@@ -354,4 +344,4 @@
+          return this.filter != null && this.filter.test(id);
+       }
+    }
+ }

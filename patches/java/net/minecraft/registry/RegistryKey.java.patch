@@ -1,0 +1,10 @@
+--- a/java/net/minecraft/registry/RegistryKey.java
++++ b/java/net/minecraft/registry/RegistryKey.java
+@@ -57,7 +57,5 @@
+    }
+ 
+    static record RegistryIdPair(Identifier registry, Identifier id) {
+-      final Identifier registry;
+-      final Identifier id;
+    }
+ }

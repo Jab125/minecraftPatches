@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/world/gen/OreVeinSampler.java
++++ b/java/net/minecraft/world/gen/OreVeinSampler.java
+@@ -22,7 +22,7 @@
+    private OreVeinSampler() {
+    }
+ 
+-   protected static ChunkNoiseSampler.BlockStateSampler create(DensityFunction veinToggle, DensityFunction veinRidged, DensityFunction veinGap, RandomSplitter randomDeriver) {
++   public static ChunkNoiseSampler.BlockStateSampler create(DensityFunction veinToggle, DensityFunction veinRidged, DensityFunction veinGap, RandomSplitter randomDeriver) {
+       BlockState blockstate = null;
+       return (pos) -> {
+          double d0 = veinToggle.sample(pos);

@@ -1,0 +1,46 @@
+--- a/java/net/minecraft/world/gen/surfacebuilder/MaterialRules.java
++++ b/java/net/minecraft/world/gen/surfacebuilder/MaterialRules.java
+@@ -133,9 +133,6 @@
+    }
+ 
+    static record AboveYMaterialCondition(YOffset anchor, int surfaceDepthMultiplier, boolean addStoneDepth) implements MaterialRules.MaterialCondition {
+-      final YOffset anchor;
+-      final int surfaceDepthMultiplier;
+-      final boolean addStoneDepth;
+       static final CodecHolder<MaterialRules.AboveYMaterialCondition> CODEC = CodecHolder.of(RecordCodecBuilder.mapCodec((instance) -> {
+          return instance.group(YOffset.OFFSET_CODEC.fieldOf("anchor").forGetter(MaterialRules.AboveYMaterialCondition::anchor), Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(MaterialRules.AboveYMaterialCondition::surfaceDepthMultiplier), Codec.BOOL.fieldOf("add_stone_depth").forGetter(MaterialRules.AboveYMaterialCondition::addStoneDepth)).apply(instance, MaterialRules.AboveYMaterialCondition::new);
+       }));
+@@ -515,8 +512,6 @@
+    }
+ 
+    static record NoiseThresholdMaterialCondition(RegistryKey<DoublePerlinNoiseSampler.NoiseParameters> noise, double minThreshold, double maxThreshold) implements MaterialRules.MaterialCondition {
+-      final double minThreshold;
+-      final double maxThreshold;
+       static final CodecHolder<MaterialRules.NoiseThresholdMaterialCondition> CODEC = CodecHolder.of(RecordCodecBuilder.mapCodec((instance) -> {
+          return instance.group(RegistryKey.createCodec(RegistryKeys.NOISE_PARAMETERS).fieldOf("noise").forGetter(MaterialRules.NoiseThresholdMaterialCondition::noise), Codec.DOUBLE.fieldOf("min_threshold").forGetter(MaterialRules.NoiseThresholdMaterialCondition::minThreshold), Codec.DOUBLE.fieldOf("max_threshold").forGetter(MaterialRules.NoiseThresholdMaterialCondition::maxThreshold)).apply(instance, MaterialRules.NoiseThresholdMaterialCondition::new);
+       }));
+@@ -612,9 +607,6 @@
+    }
+ 
+    static record StoneDepthMaterialCondition(int offset, boolean addSurfaceDepth, int secondaryDepthRange, VerticalSurfaceType surfaceType) implements MaterialRules.MaterialCondition {
+-      final int offset;
+-      final boolean addSurfaceDepth;
+-      final int secondaryDepthRange;
+       static final CodecHolder<MaterialRules.StoneDepthMaterialCondition> CODEC = CodecHolder.of(RecordCodecBuilder.mapCodec((instance) -> {
+          return instance.group(Codec.INT.fieldOf("offset").forGetter(MaterialRules.StoneDepthMaterialCondition::offset), Codec.BOOL.fieldOf("add_surface_depth").forGetter(MaterialRules.StoneDepthMaterialCondition::addSurfaceDepth), Codec.INT.fieldOf("secondary_depth_range").forGetter(MaterialRules.StoneDepthMaterialCondition::secondaryDepthRange), VerticalSurfaceType.CODEC.fieldOf("surface_type").forGetter(MaterialRules.StoneDepthMaterialCondition::surfaceType)).apply(instance, MaterialRules.StoneDepthMaterialCondition::new);
+       }));
+@@ -723,9 +715,6 @@
+    }
+ 
+    static record WaterMaterialCondition(int offset, int surfaceDepthMultiplier, boolean addStoneDepth) implements MaterialRules.MaterialCondition {
+-      final int offset;
+-      final int surfaceDepthMultiplier;
+-      final boolean addStoneDepth;
+       static final CodecHolder<MaterialRules.WaterMaterialCondition> CODEC = CodecHolder.of(RecordCodecBuilder.mapCodec((instance) -> {
+          return instance.group(Codec.INT.fieldOf("offset").forGetter(MaterialRules.WaterMaterialCondition::offset), Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(MaterialRules.WaterMaterialCondition::surfaceDepthMultiplier), Codec.BOOL.fieldOf("add_stone_depth").forGetter(MaterialRules.WaterMaterialCondition::addStoneDepth)).apply(instance, MaterialRules.WaterMaterialCondition::new);
+       }));
+@@ -748,4 +737,4 @@
+          return new WaterPredicate();
+       }
+    }
+ }

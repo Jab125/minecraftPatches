@@ -1,0 +1,18 @@
+--- a/java/net/minecraft/client/resource/PeriodicNotificationManager.java
++++ b/java/net/minecraft/client/resource/PeriodicNotificationManager.java
+@@ -109,10 +109,6 @@
+    }
+ 
+    public static record Entry(long delay, long period, String title, String message) {
+-      final long delay;
+-      final long period;
+-      final String title;
+-      final String message;
+ 
+       public Entry(long delay, long period, String title, String message) {
+          this.delay = delay != 0L ? delay : period;
+@@ -158,4 +154,4 @@
+ 
+       }
+    }
+ }
