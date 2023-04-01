@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/world/level/LevelProperties.java
++++ b/java/net/minecraft/world/level/LevelProperties.java
+@@ -119,9 +119,9 @@
+ 
+    public static <T> LevelProperties readProperties(Dynamic<T> dynamic, DataFixer dataFixer, int dataVersion, @Nullable NbtCompound playerData, LevelInfo levelInfo, SaveVersionInfo saveVersionInfo, LevelProperties.SpecialProperty specialProperty, GeneratorOptions generatorOptions, Lifecycle lifecycle) {
+       long i = dynamic.get("Time").asLong(0L);
+-      NbtCompound nbtcompound = (NbtCompound)((Dynamic)dynamic.get("DragonFight").result().orElseGet(() -> {
+-         return (T)dynamic.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
+-      })).convert(NbtOps.INSTANCE).getValue();
++      NbtCompound nbtcompound = (NbtCompound) dynamic.get("DragonFight").result().orElseGet(() -> {
++         return dynamic.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
++      }).convert(NbtOps.INSTANCE).getValue();
+       return new LevelProperties(dataFixer, dataVersion, playerData, dynamic.get("WasModded").asBoolean(false), dynamic.get("SpawnX").asInt(0), dynamic.get("SpawnY").asInt(0), dynamic.get("SpawnZ").asInt(0), dynamic.get("SpawnAngle").asFloat(0.0F), i, dynamic.get("DayTime").asLong(i), saveVersionInfo.getLevelFormatVersion(), dynamic.get("clearWeatherTime").asInt(0), dynamic.get("rainTime").asInt(0), dynamic.get("raining").asBoolean(false), dynamic.get("thunderTime").asInt(0), dynamic.get("thundering").asBoolean(false), dynamic.get("initialized").asBoolean(true), dynamic.get("DifficultyLocked").asBoolean(false), WorldBorder.Properties.fromDynamic(dynamic, WorldBorder.DEFAULT_BORDER), dynamic.get("WanderingTraderSpawnDelay").asInt(0), dynamic.get("WanderingTraderSpawnChance").asInt(0), (UUID)dynamic.get("WanderingTraderId").read(Uuids.INT_STREAM_CODEC).result().orElse((T)null), dynamic.get("ServerBrands").asStream().flatMap((dynamicx) -> {
+          return dynamicx.asString().result().stream();
+       }).collect(Collectors.toCollection(Sets::newLinkedHashSet)), new Timer<>(TimerCallbackSerializer.INSTANCE, dynamic.get("ScheduledEvents").asStream()), (NbtCompound)dynamic.get("CustomBossEvents").orElseEmptyMap().getValue(), nbtcompound, levelInfo, generatorOptions, specialProperty, lifecycle);

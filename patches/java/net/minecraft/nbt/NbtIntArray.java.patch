@@ -30,3 +30,15 @@
     }
  
     public void add(int i, NbtInt nbtInt) {
+@@ -157,9 +157,9 @@
+    }
+ 
+    public NbtInt remove(int i) {
+-      int i = this.value[i];
++      int j = this.value[i];
+       this.value = ArrayUtils.remove(this.value, i);
+-      return NbtInt.of(i);
++      return NbtInt.of(j);
+    }
+ 
+    public byte getHeldType() {

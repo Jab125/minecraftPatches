@@ -1,0 +1,25 @@
+--- a/java/net/minecraft/server/ServerAdvancementLoader.java
++++ b/java/net/minecraft/server/ServerAdvancementLoader.java
+@@ -33,19 +33,19 @@
+    }
+ 
+    protected void apply(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler) {
+-      Map<Identifier, Advancement.Builder> map = Maps.newHashMap();
++      Map<Identifier, Advancement.Builder> map2 = Maps.newHashMap();
+       map.forEach((id, json) -> {
+          try {
+             JsonObject jsonobject = JsonHelper.asObject(json, "advancement");
+             Advancement.Builder advancement$builder = Advancement.Builder.fromJson(jsonobject, new AdvancementEntityPredicateDeserializer(id, this.conditionManager));
+-            map.put(id, advancement$builder);
++            map2.put(id, advancement$builder);
+          } catch (Exception exception1) {
+             LOGGER.error("Parsing error loading custom advancement {}: {}", id, exception1.getMessage());
+          }
+ 
+       });
+       AdvancementManager advancementmanager = new AdvancementManager();
+-      advancementmanager.load(map);
++      advancementmanager.load(map2);
+ 
+       for(Advancement advancement : advancementmanager.getRoots()) {
+          if (advancement.getDisplay() != null) {

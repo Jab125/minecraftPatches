@@ -1,0 +1,22 @@
+--- a/java/net/minecraft/world/level/storage/SessionLock.java
++++ b/java/net/minecraft/world/level/storage/SessionLock.java
+@@ -18,16 +18,16 @@
+    private static final ByteBuffer SNOWMAN;
+ 
+    public static SessionLock create(Path path) throws IOException {
+-      Path path = path.resolve("session.lock");
++      Path path2 = path.resolve("session.lock");
+       PathUtil.createDirectories(path);
+-      FileChannel filechannel = FileChannel.open(path, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
++      FileChannel filechannel = FileChannel.open(path2, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+ 
+       try {
+          filechannel.write(SNOWMAN.duplicate());
+          filechannel.force(true);
+          FileLock filelock = filechannel.tryLock();
+          if (filelock == null) {
+-            throw SessionLock.AlreadyLockedException.create(path);
++            throw SessionLock.AlreadyLockedException.create(path2);
+          } else {
+             return new SessionLock(filechannel, filelock);
+          }

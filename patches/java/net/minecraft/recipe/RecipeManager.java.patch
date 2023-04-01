@@ -1,0 +1,71 @@
+--- a/java/net/minecraft/recipe/RecipeManager.java
++++ b/java/net/minecraft/recipe/RecipeManager.java
+@@ -44,7 +44,7 @@
+ 
+    protected void apply(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler) {
+       this.errored = false;
+-      Map<RecipeType<?>, ImmutableMap.Builder<Identifier, Recipe<?>>> map = Maps.newHashMap();
++      Map<RecipeType<?>, ImmutableMap.Builder<Identifier, Recipe<?>>> map2 = Maps.newHashMap();
+       ImmutableMap.Builder<Identifier, Recipe<?>> builder = ImmutableMap.builder();
+ 
+       for(Map.Entry<Identifier, JsonElement> entry : map.entrySet()) {
+@@ -52,17 +52,17 @@
+ 
+          try {
+             Recipe<?> recipe = deserialize(identifier, JsonHelper.asObject((JsonElement)entry.getValue(), "top element"));
+-            ((ImmutableMap.Builder)map.computeIfAbsent(recipe.getType(), (recipeType) -> {
++            map2.computeIfAbsent(recipe.getType(), (recipeType) -> {
+                return ImmutableMap.builder();
+-            })).put(identifier, recipe);
++            }).put(identifier, recipe);
+             builder.put(identifier, recipe);
+          } catch (IllegalArgumentException | JsonParseException jsonparseexception) {
+             LOGGER.error("Parsing error loading recipe {}", identifier, jsonparseexception);
+          }
+       }
+ 
+-      this.recipes = map.entrySet().stream().collect(ImmutableMap.toImmutableMap(Map.Entry::getKey, (entryx) -> {
+-         return ((ImmutableMap.Builder)entryx.getValue()).build();
++      this.recipes = map2.entrySet().stream().collect(ImmutableMap.<Map.Entry<RecipeType<?>, ImmutableMap.Builder<Identifier, Recipe<?>>>, RecipeType<?>, Map<Identifier, Recipe<?>>>toImmutableMap(Map.Entry::getKey, (entryx) -> {
++         return entryx.getValue().build();
+       }));
+       this.recipesById = builder.build();
+       LOGGER.info("Loaded {} recipes", map.size());
+@@ -83,14 +83,14 @@
+       if (id != null) {
+          T t = map.get(id);
+          if (t != null && t.matches(inventory, world)) {
+-            return Optional.of((T)Pair.of(id, t));
++            return Optional.of(Pair.of(id, t));
+          }
+       }
+ 
+       return map.entrySet().stream().filter((entry) -> {
+          return entry.getValue().matches(inventory, world);
+       }).findFirst().map((entry) -> {
+-         return Pair.of((Identifier)entry.getKey(), (Recipe)entry.getValue());
++         return Pair.of(entry.getKey(), (entry.getValue()));
+       });
+    }
+ 
+@@ -107,7 +107,7 @@
+    }
+ 
+    private <C extends Inventory, T extends Recipe<C>> Map<Identifier, T> getAllOfType(RecipeType<T> type) {
+-      return this.recipes.getOrDefault(type, Collections.emptyMap());
++      return (Map<Identifier, T>) this.recipes.getOrDefault(type, Collections.emptyMap());
+    }
+ 
+    public <C extends Inventory, T extends Recipe<C>> DefaultedList<ItemStack> getRemainingStacks(RecipeType<T> type, C inventory, World world) {
+@@ -157,9 +157,9 @@
+             return Maps.newHashMap();
+          });
+          Identifier identifier = recipe.getId();
+-         Recipe<?> recipe = map1.put(identifier, recipe);
++         Recipe<?> recipe2 = map1.put(identifier, recipe);
+          builder.put(identifier, recipe);
+-         if (recipe != null) {
++         if (recipe2 != null) {
+             throw new IllegalStateException("Duplicate recipe ignored with ID " + identifier);
+          }
+       });

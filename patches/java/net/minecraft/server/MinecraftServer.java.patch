@@ -1,5 +1,40 @@
 --- a/java/net/minecraft/server/MinecraftServer.java
 +++ b/java/net/minecraft/server/MinecraftServer.java
+@@ -692,8 +692,8 @@
+    private static CrashReport createCrashReport(Throwable throwable) {
+       CrashException crashexception = null;
+ 
+-      for(Throwable throwable = throwable; throwable != null; throwable = throwable.getCause()) {
+-         if (throwable instanceof CrashException crashexception1) {
++      for(Throwable throwable2 = throwable; throwable2 != null; throwable2 = throwable2.getCause()) {
++         if (throwable2 instanceof CrashException crashexception1) {
+             crashexception = crashexception1;
+          }
+       }
+@@ -752,7 +752,7 @@
+       }
+    }
+ 
+-   protected void executeTask(ServerTask serverTask) {
++   public void executeTask(ServerTask serverTask) {
+       this.getProfiler().visit("runTask");
+       super.executeTask(serverTask);
+    }
+@@ -1489,12 +1489,12 @@
+    }
+ 
+    private void dump(Path path) {
+-      Path path = path.resolve("levels");
++      Path path2 = path.resolve("levels");
+ 
+       try {
+          for(Map.Entry<RegistryKey<World>, ServerWorld> entry : this.worlds.entrySet()) {
+             Identifier identifier = entry.getKey().getValue();
+-            Path path1 = path.resolve(identifier.getNamespace()).resolve(identifier.getPath());
++            Path path1 = path2.resolve(identifier.getNamespace()).resolve(identifier.getPath());
+             Files.createDirectories(path1);
+             entry.getValue().dump(path1);
+          }
 @@ -1758,8 +1758,6 @@
     }
  

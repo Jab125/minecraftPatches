@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/util/UserCache.java
++++ b/java/net/minecraft/util/UserCache.java
+@@ -85,7 +85,7 @@
+          }
+ 
+          public void onProfileLookupFailed(GameProfile profile, Exception exception) {
+-            atomicreference.set((Object)null);
++            atomicreference.set(null);
+          }
+       };
+       repository.findProfilesByNames(new String[]{name}, Agent.MINECRAFT, profilelookupcallback);

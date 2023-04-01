@@ -1,0 +1,24 @@
+--- a/java/net/minecraft/world/GameRules.java
++++ b/java/net/minecraft/world/GameRules.java
+@@ -91,8 +91,8 @@
+ 
+    private static <T extends GameRules.Rule<T>> GameRules.Key<T> register(String name, GameRules.Category category, GameRules.Type<T> type) {
+       GameRules.Key<T> key = new GameRules.Key<>(name, category);
+-      GameRules.Type<?> type = RULE_TYPES.put(key, type);
+-      if (type != null) {
++      GameRules.Type<?> type2 = RULE_TYPES.put(key, type);
++      if (type2 != null) {
+          throw new IllegalStateException("Duplicate game rule registration for " + name);
+       } else {
+          return key;
+@@ -145,8 +145,8 @@
+    }
+ 
+    private static <T extends GameRules.Rule<T>> void accept(GameRules.Visitor consumer, GameRules.Key<?> key, GameRules.Type<?> type) {
+-      consumer.visit(key, type);
+-      type.accept(consumer, key);
++      consumer.visit((GameRules.Key<T>)key, (GameRules.Type<T>)type);
++      ((GameRules.Type<T>)type).accept(consumer, (GameRules.Key<T>)key);
+    }
+ 
+    public void setAllValues(GameRules rules, @Nullable MinecraftServer server) {

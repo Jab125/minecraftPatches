@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/server/command/CommandManager.java
++++ b/java/net/minecraft/server/command/CommandManager.java
+@@ -245,7 +245,7 @@
+    private void makeTreeForSource(CommandNode<ServerCommandSource> tree, CommandNode<CommandSource> result, ServerCommandSource source, Map<CommandNode<ServerCommandSource>, CommandNode<CommandSource>> resultNodes) {
+       for(CommandNode<ServerCommandSource> commandnode : tree.getChildren()) {
+          if (commandnode.canUse(source)) {
+-            ArgumentBuilder<CommandSource, ?> argumentbuilder = commandnode.createBuilder();
++            ArgumentBuilder<CommandSource, ?> argumentbuilder = ((CommandNode)commandnode).createBuilder();
+             argumentbuilder.requires((sourcex) -> {
+                return true;
+             });

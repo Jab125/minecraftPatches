@@ -1,15 +1,44 @@
 --- a/java/net/minecraft/world/dimension/DimensionOptionsRegistryHolder.java
 +++ b/java/net/minecraft/world/dimension/DimensionOptionsRegistryHolder.java
-@@ -181,8 +181,6 @@
+@@ -38,7 +38,7 @@
+    private static final int VANILLA_KEY_COUNT = VANILLA_KEYS.size();
+ 
+    public DimensionOptionsRegistryHolder {
+-      DimensionOptions dimensionoptions = registry.get(DimensionOptions.OVERWORLD);
++      DimensionOptions dimensionoptions = dimensions.get(DimensionOptions.OVERWORLD);
+       if (dimensionoptions == null) {
+          throw new IllegalStateException("Overworld settings missing");
+       }
+@@ -173,6 +173,13 @@
+       return false;
+    }
+ 
++   record Entry(RegistryKey<DimensionOptions> key, DimensionOptions value) {
++
++      Lifecycle getLifecycle() {
++         return DimensionOptionsRegistryHolder.getLifecycle(this.key, this.value);
++      }
++   }
++
+    public DimensionOptionsRegistryHolder.DimensionsConfig toConfig(Registry<DimensionOptions> existingRegistry) {
+       Stream<RegistryKey<DimensionOptions>> stream = Stream.concat(existingRegistry.getKeys().stream(), this.dimensions.getKeys().stream()).distinct();
+       List<Entry> list = new ArrayList<>();
+@@ -180,14 +187,6 @@
+          existingRegistry.getOrEmpty(key).or(() -> {
              return this.dimensions.getOrEmpty(key);
           }).ifPresent((dimensionOptions) -> {
-             record Entry(RegistryKey<DimensionOptions> key, DimensionOptions value) {
+-            record Entry(RegistryKey<DimensionOptions> key, DimensionOptions value) {
 -               final RegistryKey<DimensionOptions> key;
 -               final DimensionOptions value;
+-
+-               Lifecycle getLifecycle() {
+-                  return DimensionOptionsRegistryHolder.getLifecycle(this.key, this.value);
+-               }
+-            }
  
-                Lifecycle getLifecycle() {
-                   return DimensionOptionsRegistryHolder.getLifecycle(this.key, this.value);
-@@ -211,4 +209,4 @@
+             list.add(new Entry(key, dimensionOptions));
+          });
+@@ -211,4 +210,4 @@
           return (new DynamicRegistryManager.ImmutableImpl(List.of(this.dimensions))).toImmutable();
        }
     }

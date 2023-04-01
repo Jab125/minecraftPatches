@@ -1,0 +1,48 @@
+--- a/java/net/minecraft/structure/StructureTemplateManager.java
++++ b/java/net/minecraft/structure/StructureTemplateManager.java
+@@ -201,15 +201,15 @@
+       if (!Files.isDirectory(path)) {
+          return Optional.empty();
+       } else {
+-         Path path = PathUtil.getResourcePath(path, id.getPath(), ".snbt");
++         Path path2 = PathUtil.getResourcePath(path, id.getPath(), ".snbt");
+ 
+-         try (BufferedReader bufferedreader = Files.newBufferedReader(path)) {
++         try (BufferedReader bufferedreader = Files.newBufferedReader(path2)) {
+             String s = IOUtils.toString(bufferedreader);
+             return Optional.of(this.createTemplate(NbtHelper.fromNbtProviderString(s)));
+          } catch (NoSuchFileException nosuchfileexception) {
+             return Optional.empty();
+          } catch (CommandSyntaxException | IOException ioexception) {
+-            LOGGER.error("Couldn't load structure from {}", path, ioexception);
++            LOGGER.error("Couldn't load structure from {}", path2, ioexception);
+             return Optional.empty();
+          }
+       }
+@@ -277,8 +277,8 @@
+ 
+    public static Path getTemplatePath(Path path, Identifier id, String extension) {
+       try {
+-         Path path = path.resolve(id.getNamespace());
+-         Path path1 = path.resolve("structures");
++         Path path0 = path.resolve(id.getNamespace());
++         Path path1 = path0.resolve("structures");
+          return PathUtil.getResourcePath(path1, id.getPath(), extension);
+       } catch (InvalidPathException invalidpathexception) {
+          throw new InvalidIdentifierException("Invalid resource path: " + id, invalidpathexception);
+@@ -289,11 +289,11 @@
+       if (id.getPath().contains("//")) {
+          throw new InvalidIdentifierException("Invalid resource path: " + id);
+       } else {
+-         Path path = getTemplatePath(path, id, extension);
+-         if (path.startsWith(path) && PathUtil.isNormal(path) && PathUtil.isAllowedName(path)) {
+-            return path;
++         Path path2 = getTemplatePath(path, id, extension);
++         if (path2.startsWith(path) && PathUtil.isNormal(path2) && PathUtil.isAllowedName(path2)) {
++            return path2;
+          } else {
+-            throw new InvalidIdentifierException("Invalid resource path: " + path);
++            throw new InvalidIdentifierException("Invalid resource path: " + path2);
+          }
+       }
+    }

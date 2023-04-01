@@ -1,5 +1,31 @@
 --- a/java/net/minecraft/world/level/storage/LevelStorage.java
 +++ b/java/net/minecraft/world/level/storage/LevelStorage.java
+@@ -228,8 +228,8 @@
+          SaveVersionInfo saveversioninfo = SaveVersionInfo.fromDynamic(dynamic);
+          LevelInfo levelinfo = LevelInfo.fromDynamic(dynamic, dataConfiguration);
+          DimensionOptionsRegistryHolder.DimensionsConfig dimensionoptionsregistryholder$dimensionsconfig = worldgensettings.dimensionOptionsRegistryHolder().toConfig(dimensionOptionsRegistry);
+-         Lifecycle lifecycle = dimensionoptionsregistryholder$dimensionsconfig.getLifecycle().add(lifecycle);
+-         LevelProperties levelproperties = LevelProperties.readProperties(dynamic, dataFixer, i, nbtcompound2, levelinfo, saveversioninfo, dimensionoptionsregistryholder$dimensionsconfig.specialWorldProperty(), worldgensettings.generatorOptions(), lifecycle);
++         Lifecycle lifecycle2 = dimensionoptionsregistryholder$dimensionsconfig.getLifecycle().add(lifecycle);
++         LevelProperties levelproperties = LevelProperties.readProperties(dynamic, dataFixer, i, nbtcompound2, levelinfo, saveversioninfo, dimensionoptionsregistryholder$dimensionsconfig.specialWorldProperty(), worldgensettings.generatorOptions(), lifecycle2);
+          return Pair.of(levelproperties, dimensionoptionsregistryholder$dimensionsconfig);
+       };
+    }
+@@ -246,12 +246,12 @@
+                int j = saveversioninfo.getLevelFormatVersion();
+                if (j == 19132 || j == 19133) {
+                   boolean flag = j != this.getCurrentVersion();
+-                  Path path = levelSave.getIconPath();
++                  Path path2 = levelSave.getIconPath();
+                   DataConfiguration dataconfiguration = parseDataPackSettings(dynamic);
+                   LevelInfo levelinfo = LevelInfo.fromDynamic(dynamic, dataconfiguration);
+                   FeatureSet featureset = parseEnabledFeatures(dynamic);
+                   boolean flag1 = FeatureFlags.isNotVanilla(featureset);
+-                  return new LevelSummary(levelinfo, saveversioninfo, levelSave.getRootPath(), flag, locked, flag1, path);
++                  return new LevelSummary(levelinfo, saveversioninfo, levelSave.getRootPath(), flag, locked, flag1, path2);
+                }
+             } else {
+                LOGGER.warn("Invalid root tag in {}", path);
 @@ -308,7 +308,6 @@
     }
  
