@@ -1,0 +1,14 @@
+--- a/java/net/minecraft/world/gen/chunk/ChunkGenerator.java
++++ b/java/net/minecraft/world/gen/chunk/ChunkGenerator.java
+@@ -282,9 +282,9 @@
+          long i = chunkrandom.setPopulationSeed(world.getSeed(), blockpos.getX(), blockpos.getZ());
+          Set<RegistryEntry<Biome>> set = new ObjectArraySet();
+          ChunkPos.stream(chunksectionpos.toChunkPos(), 1).forEach((chunkPosx) -> {
+-            Chunk chunk = world.getChunk(chunkPosx.x, chunkPosx.z);
++            Chunk chunk2 = world.getChunk(chunkPosx.x, chunkPosx.z);
+ 
+-            for(ChunkSection chunksection : chunk.getSectionArray()) {
++            for(ChunkSection chunksection : chunk2.getSectionArray()) {
+                chunksection.getBiomeContainer().forEachValue(set::add);
+             }
+ 

@@ -1,0 +1,34 @@
+--- a/java/net/minecraft/server/world/ChunkHolder.java
++++ b/java/net/minecraft/server/world/ChunkHolder.java
+@@ -107,15 +107,15 @@
+    @Nullable
+    public WorldChunk getWorldChunk() {
+       CompletableFuture<Either<WorldChunk, ChunkHolder.Unloaded>> completablefuture = this.getTickingFuture();
+-      Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)completablefuture.getNow((Object)null);
+-      return either == null ? null : (WorldChunk)either.left().orElse((Object)null);
++      Either<WorldChunk, ChunkHolder.Unloaded> either = completablefuture.getNow(null);
++      return either == null ? null : (WorldChunk)either.left().orElse(null);
+    }
+ 
+    @Nullable
+    public WorldChunk method_41205() {
+       CompletableFuture<Either<WorldChunk, ChunkHolder.Unloaded>> completablefuture = this.getAccessibleFuture();
+-      Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)completablefuture.getNow((Object)null);
+-      return either == null ? null : (WorldChunk)either.left().orElse((Object)null);
++      Either<WorldChunk, ChunkHolder.Unloaded> either = completablefuture.getNow(null);
++      return either == null ? null : (WorldChunk)either.left().orElse(null);
+    }
+ 
+    @Nullable
+@@ -165,9 +165,9 @@
+    }
+ 
+    public void markForLightUpdate(LightType lightType, int y) {
+-      Either<Chunk, ChunkHolder.Unloaded> either = (Either)this.getValidFutureFor(ChunkStatus.FEATURES).getNow((Object)null);
++      Either<Chunk, ChunkHolder.Unloaded> either = this.getValidFutureFor(ChunkStatus.FEATURES).getNow(null);
+       if (either != null) {
+-         Chunk chunk = (Chunk)either.left().orElse((Object)null);
++         Chunk chunk = (Chunk)either.left().orElse(null);
+          if (chunk != null) {
+             chunk.setNeedsSaving(true);
+             WorldChunk worldchunk = this.getWorldChunk();

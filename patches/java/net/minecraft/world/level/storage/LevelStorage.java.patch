@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/world/level/storage/LevelStorage.java
++++ b/java/net/minecraft/world/level/storage/LevelStorage.java
+@@ -308,7 +308,6 @@
+    }
+ 
+    public static record LevelList(List<LevelStorage.LevelSave> levels) implements Iterable<LevelStorage.LevelSave> {
+-      final List<LevelStorage.LevelSave> levels;
+ 
+       public boolean isEmpty() {
+          return this.levels.isEmpty();
+@@ -528,4 +527,4 @@
+          this.lock.close();
+       }
+    }
+ }
