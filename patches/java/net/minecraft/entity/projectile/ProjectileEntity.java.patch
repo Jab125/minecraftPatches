@@ -1,0 +1,13 @@
+--- a/java/net/minecraft/entity/projectile/ProjectileEntity.java
++++ b/java/net/minecraft/entity/projectile/ProjectileEntity.java
+@@ -170,8 +170,8 @@
+       if (!entity.canBeHitByProjectile()) {
+          return false;
+       } else {
+-         Entity entity = this.getOwner();
+-         return entity == null || this.leftOwner || !entity.isConnectedThroughVehicle(entity);
++         Entity entity2 = this.getOwner();
++         return entity2 == null || this.leftOwner || !entity2.isConnectedThroughVehicle(entity);
+       }
+    }
+ 

@@ -1,0 +1,13 @@
+--- a/java/net/minecraft/state/property/Property.java
++++ b/java/net/minecraft/state/property/Property.java
+@@ -16,8 +16,8 @@
+    @Nullable
+    private Integer hashCodeCache;
+    private final Codec<T> codec = Codec.STRING.comapFlatMap((value) -> {
+-      return (DataResult)this.parse(value).map(DataResult::success).orElseGet(() -> {
+-         return (T)DataResult.error(() -> {
++      return this.parse(value).map(DataResult::success).orElseGet(() -> {
++         return DataResult.error(() -> {
+             return "Unable to read property: " + this + " with value: " + value;
+          });
+       });

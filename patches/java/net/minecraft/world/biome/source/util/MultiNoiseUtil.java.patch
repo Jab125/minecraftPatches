@@ -1,5 +1,14 @@
 --- a/java/net/minecraft/world/biome/source/util/MultiNoiseUtil.java
 +++ b/java/net/minecraft/world/biome/source/util/MultiNoiseUtil.java
+@@ -63,7 +63,7 @@
+       private final MultiNoiseUtil.SearchTree<T> tree;
+ 
+       public static <T> Codec<MultiNoiseUtil.Entries<T>> createCodec(MapCodec<T> entryCodec) {
+-         return Codecs.nonEmptyList(RecordCodecBuilder.create((instance) -> {
++         return Codecs.nonEmptyList(RecordCodecBuilder.<Pair<NoiseHypercube, T>>create((instance) -> {
+             return instance.group(MultiNoiseUtil.NoiseHypercube.CODEC.fieldOf("parameters").forGetter(Pair::getFirst), entryCodec.forGetter(Pair::getSecond)).apply(instance, Pair::of);
+          }).listOf()).xmap(MultiNoiseUtil.Entries::new, MultiNoiseUtil.Entries::getEntries);
+       }
 @@ -206,12 +206,6 @@
     }
  

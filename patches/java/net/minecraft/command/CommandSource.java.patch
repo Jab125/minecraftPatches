@@ -12,7 +12,7 @@
                 action.accept(t);
              }
 -         } else if (shouldSuggest(remaining, identifier.getNamespace()) || identifier.getNamespace().equals("minecraft") && shouldSuggest(remaining, identifier.getPath())) {
-+         } else if (shouldSuggest(remaining, identifier2.getNamespace()) || identifier2.getNamespace().equals("minecraft") && shouldSuggest(remaining, identifier.getPath())) {
++         } else if (shouldSuggest(remaining, identifier2.getNamespace()) || identifier2.getNamespace().equals("minecraft") && shouldSuggest(remaining, identifier2.getPath())) {
              action.accept(t);
           }
        }

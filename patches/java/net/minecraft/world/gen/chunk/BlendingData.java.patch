@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/world/gen/chunk/BlendingData.java
++++ b/java/net/minecraft/world/gen/chunk/BlendingData.java
+@@ -54,7 +54,7 @@
+    private final List<List<RegistryEntry<Biome>>> biomes;
+    private final transient double[][] collidableBlockDensities;
+    private static final Codec<double[]> DOUBLE_ARRAY_CODEC = Codec.DOUBLE.listOf().xmap(Doubles::toArray, Doubles::asList);
+-   public static final Codec<BlendingData> CODEC = RecordCodecBuilder.create((instance) -> {
++   public static final Codec<BlendingData> CODEC = RecordCodecBuilder.<BlendingData>create((instance) -> {
+       return instance.group(Codec.INT.fieldOf("min_section").forGetter((blendingData) -> {
+          return blendingData.oldHeightLimit.getBottomSectionCoord();
+       }), Codec.INT.fieldOf("max_section").forGetter((blendingData) -> {

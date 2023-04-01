@@ -1,0 +1,18 @@
+--- a/java/net/minecraft/world/chunk/UpgradeData.java
++++ b/java/net/minecraft/world/chunk/UpgradeData.java
+@@ -273,11 +273,11 @@
+       CHEST(Blocks.CHEST, Blocks.TRAPPED_CHEST) {
+          public BlockState getUpdatedState(BlockState oldState, Direction direction, BlockState otherState, WorldAccess world, BlockPos currentPos, BlockPos otherPos) {
+             if (otherState.isOf(oldState.getBlock()) && direction.getAxis().isHorizontal() && oldState.get(ChestBlock.CHEST_TYPE) == ChestType.SINGLE && otherState.get(ChestBlock.CHEST_TYPE) == ChestType.SINGLE) {
+-               Direction direction = oldState.get(ChestBlock.FACING);
+-               if (direction.getAxis() != direction.getAxis() && direction == otherState.get(ChestBlock.FACING)) {
+-                  ChestType chesttype = direction == direction.rotateYClockwise() ? ChestType.LEFT : ChestType.RIGHT;
++               Direction direction2 = oldState.get(ChestBlock.FACING);
++               if (direction.getAxis() != direction2.getAxis() && direction2 == otherState.get(ChestBlock.FACING)) {
++                  ChestType chesttype = direction == direction2.rotateYClockwise() ? ChestType.LEFT : ChestType.RIGHT;
+                   world.setBlockState(otherPos, otherState.with(ChestBlock.CHEST_TYPE, chesttype.getOpposite()), 18);
+-                  if (direction == Direction.NORTH || direction == Direction.EAST) {
++                  if (direction2 == Direction.NORTH || direction2 == Direction.EAST) {
+                      BlockEntity blockentity = world.getBlockEntity(currentPos);
+                      BlockEntity blockentity1 = world.getBlockEntity(otherPos);
+                      if (blockentity instanceof ChestBlockEntity && blockentity1 instanceof ChestBlockEntity) {

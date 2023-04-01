@@ -1,0 +1,13 @@
+--- a/java/net/minecraft/world/EntityView.java
++++ b/java/net/minecraft/world/EntityView.java
+@@ -61,8 +61,8 @@
+          } else {
+             ImmutableList.Builder<VoxelShape> builder = ImmutableList.builderWithExpectedSize(list.size());
+ 
+-            for(Entity entity : list) {
+-               builder.add(VoxelShapes.cuboid(entity.getBoundingBox()));
++            for(Entity entity2 : list) {
++               builder.add(VoxelShapes.cuboid(entity2.getBoundingBox()));
+             }
+ 
+             return builder.build();

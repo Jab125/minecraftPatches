@@ -18,3 +18,15 @@
           }
  
           return new NbtIntArray(aint);
+@@ -129,9 +129,9 @@
+    }
+ 
+    public NbtInt set(int i, NbtInt nbtInt) {
+-      int i = this.value[i];
++      int j = this.value[i];
+       this.value[i] = nbtInt.intValue();
+-      return NbtInt.of(i);
++      return NbtInt.of(j);
+    }
+ 
+    public void add(int i, NbtInt nbtInt) {

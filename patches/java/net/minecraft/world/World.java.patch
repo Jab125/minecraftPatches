@@ -1,0 +1,13 @@
+--- a/java/net/minecraft/world/World.java
++++ b/java/net/minecraft/world/World.java
+@@ -916,8 +916,8 @@
+ 
+    public BlockPos getRandomPosInChunk(int x, int y, int z, int i) {
+       this.lcgBlockSeed = this.lcgBlockSeed * 3 + 1013904223;
+-      int i = this.lcgBlockSeed >> 2;
+-      return new BlockPos(x + (i & 15), y + (i >> 16 & i), z + (i >> 8 & 15));
++      int j = this.lcgBlockSeed >> 2;
++      return new BlockPos(x + (j & 15), y + (j >> 16 & i), z + (j >> 8 & 15));
+    }
+ 
+    public boolean isSavingDisabled() {

@@ -1,0 +1,58 @@
+--- a/java/net/minecraft/server/world/ServerWorld.java
++++ b/java/net/minecraft/server/world/ServerWorld.java
+@@ -308,9 +308,9 @@
+                   entity.checkDespawn();
+                   profiler.pop();
+                   if (this.chunkManager.threadedAnvilChunkStorage.getTicketManager().shouldTickEntities(entity.getChunkPos().toLong())) {
+-                     Entity entity = entity.getVehicle();
+-                     if (entity != null) {
+-                        if (!entity.isRemoved() && entity.hasPassenger(entity)) {
++                     Entity entity2 = entity.getVehicle();
++                     if (entity2 != null) {
++                        if (!entity2.isRemoved() && entity2.hasPassenger(entity)) {
+                            return;
+                         }
+ 
+@@ -661,8 +661,8 @@
+       entity.tick();
+       this.getProfiler().pop();
+ 
+-      for(Entity entity : entity.getPassengerList()) {
+-         this.tickPassenger(entity, entity);
++      for(Entity entity2 : entity.getPassengerList()) {
++         this.tickPassenger(entity, entity2);
+       }
+ 
+    }
+@@ -1233,9 +1233,9 @@
+          writer3.write(crashreport.asString());
+       }
+ 
+-      Path path = path.resolve("chunks.csv");
++      Path path2 = path.resolve("chunks.csv");
+ 
+-      try (Writer writer4 = Files.newBufferedWriter(path)) {
++      try (Writer writer4 = Files.newBufferedWriter(path2)) {
+          threadedanvilchunkstorage.dump(writer4);
+       }
+ 
+@@ -1245,15 +1245,15 @@
+          this.entityManager.dump(writer5);
+       }
+ 
+-      Path path2 = path.resolve("entities.csv");
++      Path path3 = path.resolve("entities.csv");
+ 
+-      try (Writer writer1 = Files.newBufferedWriter(path2)) {
++      try (Writer writer1 = Files.newBufferedWriter(path3)) {
+          dumpEntities(writer1, this.getEntityLookup().iterate());
+       }
+ 
+-      Path path3 = path.resolve("block_entities.csv");
++      Path path4 = path.resolve("block_entities.csv");
+ 
+-      try (Writer writer2 = Files.newBufferedWriter(path3)) {
++      try (Writer writer2 = Files.newBufferedWriter(path4)) {
+          this.dumpBlockEntities(writer2);
+       }
+ 
