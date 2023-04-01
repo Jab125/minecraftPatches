@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/registry/tag/TagKey.java
++++ b/java/net/minecraft/registry/tag/TagKey.java
+@@ -39,7 +39,7 @@
+    }
+ 
+    public <E> Optional<TagKey<E>> tryCast(RegistryKey<? extends Registry<E>> registryRef) {
+-      return this.isOf(registryRef) ? Optional.of(this) : Optional.empty();
++      return this.isOf(registryRef) ? Optional.of((TagKey<E>) this) : Optional.empty();
+    }
+ 
+    public String toString() {

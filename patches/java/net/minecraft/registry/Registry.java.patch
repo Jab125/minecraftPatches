@@ -1,0 +1,58 @@
+--- a/java/net/minecraft/registry/Registry.java
++++ b/java/net/minecraft/registry/Registry.java
+@@ -29,14 +29,14 @@
+ 
+    default Codec<T> getCodec() {
+       Codec<T> codec = Identifier.CODEC.flatXmap((id) -> {
+-         return (DataResult)Optional.ofNullable(this.get(id)).map(DataResult::success).orElseGet(() -> {
+-            return (T)DataResult.error(() -> {
++         return Optional.ofNullable(this.get(id)).map(DataResult::success).orElseGet(() -> {
++            return DataResult.error(() -> {
+                return "Unknown registry key in " + this.getKey() + ": " + id;
+             });
+          });
+       }, (value) -> {
+-         return (DataResult)this.getKey((T)value).map(RegistryKey::getValue).map(DataResult::success).orElseGet(() -> {
+-            return (T)DataResult.error(() -> {
++         return this.getKey((T)value).map(RegistryKey::getValue).map(DataResult::success).orElseGet(() -> {
++            return DataResult.error(() -> {
+                return "Unknown registry element in " + this.getKey() + ":" + value;
+             });
+          });
+@@ -49,14 +49,14 @@
+ 
+    default Codec<RegistryEntry<T>> createEntryCodec() {
+       Codec<RegistryEntry<T>> codec = Identifier.CODEC.flatXmap((id) -> {
+-         return (DataResult)this.getEntry(RegistryKey.of(this.getKey(), id)).map(DataResult::success).orElseGet(() -> {
+-            return (T)DataResult.error(() -> {
++         return this.getEntry(RegistryKey.of(this.getKey(), id)).map(DataResult::success).orElseGet(() -> {
++            return DataResult.error(() -> {
+                return "Unknown registry key in " + this.getKey() + ": " + id;
+             });
+          });
+       }, (entry) -> {
+-         return (DataResult)entry.getKey().map(RegistryKey::getValue).map(DataResult::success).orElseGet(() -> {
+-            return (T)DataResult.error(() -> {
++         return entry.getKey().map(RegistryKey::getValue).map(DataResult::success).orElseGet(() -> {
++            return DataResult.error(() -> {
+                return "Unknown registry element in " + this.getKey() + ":" + entry;
+             });
+          });
+@@ -192,7 +192,7 @@
+ 
+          @Nullable
+          public RegistryEntry<T> get(int i) {
+-            return (RegistryEntry)Registry.this.getEntry(i).orElse((T)null);
++            return (RegistryEntry)Registry.this.getEntry(i).orElse(null);
+          }
+ 
+          public int size() {
+@@ -201,7 +201,7 @@
+ 
+          public Iterator<RegistryEntry<T>> iterator() {
+             return Registry.this.streamEntries().map((entry) -> {
+-               return entry;
++               return (RegistryEntry<T>)entry;
+             }).iterator();
+          }
+       };

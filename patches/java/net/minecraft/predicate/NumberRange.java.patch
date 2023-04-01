@@ -1,0 +1,18 @@
+--- a/java/net/minecraft/predicate/NumberRange.java
++++ b/java/net/minecraft/predicate/NumberRange.java
+@@ -64,12 +64,12 @@
+    protected static <T extends Number, R extends NumberRange<T>> R fromJson(@Nullable JsonElement json, R fallback, BiFunction<JsonElement, String, T> asNumber, NumberRange.Factory<T, R> factory) {
+       if (json != null && !json.isJsonNull()) {
+          if (JsonHelper.isNumber(json)) {
+-            T t2 = asNumber.apply((T)json, "value");
++            T t2 = asNumber.apply(json, "value");
+             return factory.create(t2, t2);
+          } else {
+             JsonObject jsonobject = JsonHelper.asObject(json, "value");
+-            T t = jsonobject.has("min") ? asNumber.apply((T)jsonobject.get("min"), "min") : null;
+-            T t1 = jsonobject.has("max") ? asNumber.apply((T)jsonobject.get("max"), "max") : null;
++            T t = jsonobject.has("min") ? asNumber.apply(jsonobject.get("min"), "min") : null;
++            T t1 = jsonobject.has("max") ? asNumber.apply(jsonobject.get("max"), "max") : null;
+             return factory.create(t, t1);
+          }
+       } else {

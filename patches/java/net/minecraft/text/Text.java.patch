@@ -1,0 +1,50 @@
+--- a/java/net/minecraft/text/Text.java
++++ b/java/net/minecraft/text/Text.java
+@@ -66,13 +66,13 @@
+    OrderedText asOrderedText();
+ 
+    default <T> Optional<T> visit(StringVisitable.StyledVisitor<T> styledVisitor, Style style) {
+-      Style style = this.getStyle().withParent(style);
+-      Optional<T> optional = this.getContent().visit(styledVisitor, style);
++      Style style2 = this.getStyle().withParent(style);
++      Optional<T> optional = this.getContent().visit(styledVisitor, style2);
+       if (optional.isPresent()) {
+          return optional;
+       } else {
+          for(Text text : this.getSiblings()) {
+-            Optional<T> optional1 = text.visit(styledVisitor, style);
++            Optional<T> optional1 = text.visit(styledVisitor, style2);
+             if (optional1.isPresent()) {
+                return optional1;
+             }
+@@ -292,8 +292,8 @@
+          }
+       }
+ 
+-      private static Object optimizeArgument(Object text) {
+-         if (text instanceof Text text) {
++      private static Object optimizeArgument(Object object) {
++         if (object instanceof Text text) {
+             if (text.getStyle().isEmpty() && text.getSiblings().isEmpty()) {
+                TextContent textcontent = text.getContent();
+                if (textcontent instanceof LiteralTextContent) {
+@@ -303,7 +303,7 @@
+             }
+          }
+ 
+-         return text;
++         return object;
+       }
+ 
+       private Optional<Text> getSeparator(Type type, JsonDeserializationContext context, JsonObject json) {
+@@ -331,8 +331,8 @@
+          if (!text.getSiblings().isEmpty()) {
+             JsonArray jsonarray = new JsonArray();
+ 
+-            for(Text text : text.getSiblings()) {
+-               jsonarray.add(this.serialize(text, Text.class, jsonSerializationContext));
++            for(Text text2 : text.getSiblings()) {
++               jsonarray.add(this.serialize(text2, Text.class, jsonSerializationContext));
+             }
+ 
+             jsonobject.add("extra", jsonarray);

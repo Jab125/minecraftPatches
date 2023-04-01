@@ -1,0 +1,14 @@
+--- a/java/net/minecraft/util/annotation/ClientFieldsAreNonnullByDefault.java
++++ b/java/net/minecraft/util/annotation/ClientFieldsAreNonnullByDefault.java
+@@ -3,11 +3,9 @@
+ import java.lang.annotation.ElementType;
+ import java.lang.annotation.Retention;
+ import java.lang.annotation.RetentionPolicy;
+-import javax.annotation.meta.TypeQualifierDefault;
+ import org.jetbrains.annotations.NotNull;
+ 
+ @NotNull
+-@TypeQualifierDefault({ElementType.FIELD})
+ @Retention(RetentionPolicy.RUNTIME)
+ public @interface ClientFieldsAreNonnullByDefault {
+ }

@@ -1,5 +1,14 @@
 --- a/java/net/minecraft/registry/RegistryKey.java
 +++ b/java/net/minecraft/registry/RegistryKey.java
+@@ -26,7 +26,7 @@
+    }
+ 
+    private static <T> RegistryKey<T> of(Identifier registry, Identifier value) {
+-      return INSTANCES.computeIfAbsent(new RegistryKey.RegistryIdPair(registry, value), (pair) -> {
++      return (RegistryKey<T>) INSTANCES.computeIfAbsent(new RegistryKey.RegistryIdPair(registry, value), (pair) -> {
+          return new RegistryKey(pair.registry, pair.id);
+       });
+    }
 @@ -57,7 +57,5 @@
     }
  

@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/unused/packageinfo/PackageInfo6185.java
++++ b/java/net/minecraft/unused/packageinfo/PackageInfo6185.java
+@@ -1,12 +0,0 @@
+-package net.minecraft.unused.packageinfo;
+-
+-import javax.annotation.ParametersAreNonnullByDefault;
+-import net.minecraft.util.annotation.ClientFieldsAreNonnullByDefault;
+-import net.minecraft.util.annotation.ClientMethodsReturnNonnullByDefault;
+-
+-// $FF: synthetic class
+-@ParametersAreNonnullByDefault
+-@ClientMethodsReturnNonnullByDefault
+-@ClientFieldsAreNonnullByDefault
+-interface PackageInfo6185 {
+-}

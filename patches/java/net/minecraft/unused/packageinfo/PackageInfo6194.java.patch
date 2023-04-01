@@ -1,0 +1,13 @@
+--- a/java/net/minecraft/unused/packageinfo/PackageInfo6194.java
++++ b/java/net/minecraft/unused/packageinfo/PackageInfo6194.java
+@@ -1,10 +0,0 @@
+-package net.minecraft.unused.packageinfo;
+-
+-import javax.annotation.ParametersAreNonnullByDefault;
+-import net.minecraft.util.annotation.MethodsReturnNonnullByDefault;
+-
+-// $FF: synthetic class
+-@ParametersAreNonnullByDefault
+-@MethodsReturnNonnullByDefault
+-interface PackageInfo6194 {
+-}

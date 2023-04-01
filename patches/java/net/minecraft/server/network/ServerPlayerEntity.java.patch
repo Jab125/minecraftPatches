@@ -1,0 +1,34 @@
+--- a/java/net/minecraft/server/network/ServerPlayerEntity.java
++++ b/java/net/minecraft/server/network/ServerPlayerEntity.java
+@@ -303,7 +303,7 @@
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+       super.readCustomDataFromNbt(nbt);
+       if (nbt.contains("warden_spawn_tracker", 10)) {
+-         SculkShriekerWarningManager.CODEC.parse(new Dynamic(NbtOps.INSTANCE, nbt.get("warden_spawn_tracker"))).resultOrPartial(LOGGER::error).ifPresent((sculkShriekerWarningManager) -> {
++         SculkShriekerWarningManager.CODEC.parse(new Dynamic<>(NbtOps.INSTANCE, nbt.get("warden_spawn_tracker"))).resultOrPartial(LOGGER::error).ifPresent((sculkShriekerWarningManager) -> {
+             this.sculkShriekerWarningManager = sculkShriekerWarningManager;
+          });
+       }
+@@ -652,8 +652,8 @@
+       }
+    }
+ 
+-   private void updateScoreboardScore(String playerName, String team, ScoreboardCriterion[] criterions) {
+-      Team team = this.getScoreboard().getPlayerTeam(team);
++   private void updateScoreboardScore(String playerName, String teamName, ScoreboardCriterion[] criterions) {
++      Team team = this.getScoreboard().getPlayerTeam(teamName);
+       if (team != null) {
+          int i = team.getColor().getColorIndex();
+          if (i >= 0 && i < criterions.length) {
+@@ -1334,9 +1334,9 @@
+    }
+ 
+    public void setCameraEntity(@Nullable Entity entity) {
+-      Entity entity = this.getCameraEntity();
++      Entity entity2 = this.getCameraEntity();
+       this.cameraEntity = (Entity)(entity == null ? this : entity);
+-      if (entity != this.cameraEntity) {
++      if (entity2 != this.cameraEntity) {
+          World world = this.cameraEntity.getWorld();
+          if (world instanceof ServerWorld) {
+             ServerWorld serverworld = (ServerWorld)world;

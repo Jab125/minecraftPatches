@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/util/StringIdentifiable.java
++++ b/java/net/minecraft/util/StringIdentifiable.java
+@@ -25,7 +25,7 @@
+    }
+ 
+    static <E extends Enum<E> & StringIdentifiable> StringIdentifiable.Codec<E> createCodec(Supplier<E[]> enumValues, Function<String, String> valueNameTransformer) {
+-      E[] ae = (Enum[])enumValues.get();
++      E[] ae = enumValues.get();
+       if (ae.length > 16) {
+          Map<String, E> map = Arrays.stream(ae).collect(Collectors.toMap((enum_) -> {
+             return valueNameTransformer.apply(enum_.asString());

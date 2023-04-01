@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/Entity.java
++++ b/java/net/minecraft/entity/Entity.java
+@@ -1763,7 +1763,7 @@
+       } else if (!entity.couldAcceptPassenger()) {
+          return false;
+       } else {
+-         for(Entity entity = entity; entity.vehicle != null; entity = entity.vehicle) {
++         for(Entity entity2 = entity; entity2.vehicle != null; entity2 = entity2.vehicle) {
+             if (entity.vehicle == this) {
+                return false;
+             }
