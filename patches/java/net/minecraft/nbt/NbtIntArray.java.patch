@@ -1,0 +1,20 @@
+--- a/java/net/minecraft/nbt/NbtIntArray.java
++++ b/java/net/minecraft/nbt/NbtIntArray.java
+@@ -14,12 +14,12 @@
+    public static final NbtType<NbtIntArray> TYPE = new NbtType.OfVariableSize<NbtIntArray>() {
+       public NbtIntArray read(DataInput dataInput, int i, NbtTagSizeTracker nbtTagSizeTracker) throws IOException {
+          nbtTagSizeTracker.add(24L);
+-         int i = dataInput.readInt();
+-         nbtTagSizeTracker.add(4L * (long)i);
+-         int[] aint = new int[i];
++         int j = dataInput.readInt();
++         nbtTagSizeTracker.add(4L * (long)j);
++         int[] aint = new int[j];
+ 
+-         for(int j = 0; j < i; ++j) {
+-            aint[j] = dataInput.readInt();
++         for(int k = 0; k < j; ++k) {
++            aint[k] = dataInput.readInt();
+          }
+ 
+          return new NbtIntArray(aint);

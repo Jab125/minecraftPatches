@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/registry/RegistryWrapper.java
++++ b/java/net/minecraft/registry/RegistryWrapper.java
+@@ -131,7 +131,7 @@
+          }));
+          return new RegistryWrapper.WrapperLookup() {
+             public <T> Optional<RegistryWrapper.Impl<T>> getOptionalWrapper(RegistryKey<? extends Registry<? extends T>> registryRef) {
+-               return Optional.ofNullable(map.get(registryRef));
++               return Optional.ofNullable((Impl<T>) map.get(registryRef));
+             }
+          };
+       }

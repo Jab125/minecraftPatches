@@ -1,0 +1,17 @@
+--- a/java/net/minecraft/util/math/BlockPos.java
++++ b/java/net/minecraft/util/math/BlockPos.java
+@@ -175,10 +175,10 @@
+       if (i == 0) {
+          return this;
+       } else {
+-         int i = axis == Direction.Axis.X ? i : 0;
+-         int j = axis == Direction.Axis.Y ? i : 0;
+-         int k = axis == Direction.Axis.Z ? i : 0;
+-         return new BlockPos(this.getX() + i, this.getY() + j, this.getZ() + k);
++         int j = axis == Direction.Axis.X ? i : 0;
++         int k = axis == Direction.Axis.Y ? i : 0;
++         int l = axis == Direction.Axis.Z ? i : 0;
++         return new BlockPos(this.getX() + j, this.getY() + k, this.getZ() + l);
+       }
+    }
+ 

@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/util/math/Direction.java
++++ b/java/net/minecraft/util/math/Direction.java
+@@ -467,9 +467,9 @@
+    }
+ 
+    public static Direction get(Direction.AxisDirection direction, Direction.Axis axis) {
+-      for(Direction direction : ALL) {
+-         if (direction.getDirection() == direction && direction.getAxis() == axis) {
+-            return direction;
++      for(Direction direction2 : ALL) {
++         if (direction2.getDirection() == direction && direction2.getAxis() == axis) {
++            return direction2;
+          }
+       }
+ 

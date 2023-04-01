@@ -1,0 +1,46 @@
+--- a/java/net/minecraft/nbt/NbtLongArray.java
++++ b/java/net/minecraft/nbt/NbtLongArray.java
+@@ -15,12 +15,12 @@
+    public static final NbtType<NbtLongArray> TYPE = new NbtType.OfVariableSize<NbtLongArray>() {
+       public NbtLongArray read(DataInput dataInput, int i, NbtTagSizeTracker nbtTagSizeTracker) throws IOException {
+          nbtTagSizeTracker.add(24L);
+-         int i = dataInput.readInt();
+-         nbtTagSizeTracker.add(8L * (long)i);
+-         long[] along = new long[i];
++         int j = dataInput.readInt();
++         nbtTagSizeTracker.add(8L * (long)j);
++         long[] along = new long[j];
+ 
+-         for(int j = 0; j < i; ++j) {
+-            along[j] = dataInput.readLong();
++         for(int k = 0; k < j; ++k) {
++            along[k] = dataInput.readLong();
+          }
+ 
+          return new NbtLongArray(along);
+@@ -133,10 +133,10 @@
+       return NbtLong.of(this.value[i]);
+    }
+ 
+-   public NbtLong method_10606(int i, NbtLong nbtLong) {
+-      long i = this.value[i];
++   public NbtLong set(int i, NbtLong nbtLong) {
++      long l = this.value[i];
+       this.value[i] = nbtLong.longValue();
+-      return NbtLong.of(i);
++      return NbtLong.of(l);
+    }
+ 
+    public void add(int i, NbtLong nbtLong) {
+@@ -162,9 +162,9 @@
+    }
+ 
+    public NbtLong remove(int i) {
+-      long i = this.value[i];
++      long l = this.value[i];
+       this.value = ArrayUtils.remove(this.value, i);
+-      return NbtLong.of(i);
++      return NbtLong.of(l);
+    }
+ 
+    public byte getHeldType() {

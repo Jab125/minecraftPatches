@@ -1,0 +1,18 @@
+--- a/java/net/minecraft/command/CommandSource.java
++++ b/java/net/minecraft/command/CommandSource.java
+@@ -76,13 +76,13 @@
+       boolean flag = remaining.indexOf(58) > -1;
+ 
+       for(T t : candidates) {
+-         Identifier identifier = identifier.apply(t);
++         Identifier identifier2 = identifier.apply(t);
+          if (flag) {
+             String s = identifier.toString();
+             if (shouldSuggest(remaining, s)) {
+                action.accept(t);
+             }
+-         } else if (shouldSuggest(remaining, identifier.getNamespace()) || identifier.getNamespace().equals("minecraft") && shouldSuggest(remaining, identifier.getPath())) {
++         } else if (shouldSuggest(remaining, identifier2.getNamespace()) || identifier2.getNamespace().equals("minecraft") && shouldSuggest(remaining, identifier.getPath())) {
+             action.accept(t);
+          }
+       }

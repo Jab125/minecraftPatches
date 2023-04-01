@@ -1,0 +1,23 @@
+--- a/java/net/minecraft/nbt/NbtList.java
++++ b/java/net/minecraft/nbt/NbtList.java
+@@ -20,15 +20,15 @@
+             throw new RuntimeException("Tried to read NBT tag with too high complexity, depth > 512");
+          } else {
+             byte b0 = dataInput.readByte();
+-            int i = dataInput.readInt();
+-            if (b0 == 0 && i > 0) {
++            int j = dataInput.readInt();
++            if (b0 == 0 && j > 0) {
+                throw new RuntimeException("Missing type on ListTag");
+             } else {
+-               nbtTagSizeTracker.add(4L * (long)i);
++               nbtTagSizeTracker.add(4L * (long)j);
+                NbtType<?> nbttype = NbtTypes.byId(b0);
+-               List<NbtElement> list = Lists.newArrayListWithCapacity(i);
++               List<NbtElement> list = Lists.newArrayListWithCapacity(j);
+ 
+-               for(int j = 0; j < i; ++j) {
++               for(int k = 0; k < j; ++k) {
+                   list.add(nbttype.read(dataInput, i + 1, nbtTagSizeTracker));
+                }
+ 

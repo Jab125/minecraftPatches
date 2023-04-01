@@ -9,6 +9,15 @@
           return new RegistryKey(pair.registry, pair.id);
        });
     }
+@@ -45,7 +45,7 @@
+    }
+ 
+    public <E> Optional<RegistryKey<E>> tryCast(RegistryKey<? extends Registry<E>> registryRef) {
+-      return this.isOf(registryRef) ? Optional.of(this) : Optional.empty();
++      return this.isOf(registryRef) ? Optional.of((RegistryKey<E>) this) : Optional.empty();
+    }
+ 
+    public Identifier getValue() {
 @@ -57,7 +57,5 @@
     }
  

@@ -1,0 +1,33 @@
+--- a/java/net/minecraft/nbt/NbtByteArray.java
++++ b/java/net/minecraft/nbt/NbtByteArray.java
+@@ -14,9 +14,9 @@
+    public static final NbtType<NbtByteArray> TYPE = new NbtType.OfVariableSize<NbtByteArray>() {
+       public NbtByteArray read(DataInput dataInput, int i, NbtTagSizeTracker nbtTagSizeTracker) throws IOException {
+          nbtTagSizeTracker.add(24L);
+-         int i = dataInput.readInt();
+-         nbtTagSizeTracker.add(1L * (long)i);
+-         byte[] abyte = new byte[i];
++         int j = dataInput.readInt();
++         nbtTagSizeTracker.add(1L * (long)j);
++         byte[] abyte = new byte[j];
+          dataInput.readFully(abyte);
+          return new NbtByteArray(abyte);
+       }
+@@ -122,7 +122,7 @@
+       return NbtByte.of(b0);
+    }
+ 
+-   public void method_10531(int i, NbtByte nbtByte) {
++   public void add(int i, NbtByte nbtByte) {
+       this.value = ArrayUtils.add(this.value, i, nbtByte.byteValue());
+    }
+ 
+@@ -144,7 +144,7 @@
+       }
+    }
+ 
+-   public NbtByte method_10536(int i) {
++   public NbtByte remove(int i) {
+       byte b0 = this.value[i];
+       this.value = ArrayUtils.remove(this.value, i);
+       return NbtByte.of(b0);

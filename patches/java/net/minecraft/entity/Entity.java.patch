@@ -9,3 +9,18 @@
              if (entity.vehicle == this) {
                 return false;
              }
+@@ -2523,11 +2523,11 @@
+       if (this.world instanceof ServerWorld) {
+          this.refreshPositionAndAngles(destX, destY, destZ, this.getYaw(), this.getPitch());
+          this.streamSelfAndPassengers().forEach((entity) -> {
+-            UnmodifiableIterator unmodifiableiterator = entity.passengerList.iterator();
++            UnmodifiableIterator<Entity> unmodifiableiterator = entity.passengerList.iterator();
+ 
+             while(unmodifiableiterator.hasNext()) {
+-               Entity entity = (Entity)unmodifiableiterator.next();
+-               entity.updatePassengerPosition(entity, Entity::refreshPositionAfterTeleport);
++               Entity entity2 = unmodifiableiterator.next();
++               entity.updatePassengerPosition(entity2, Entity::refreshPositionAfterTeleport);
+             }
+ 
+          });

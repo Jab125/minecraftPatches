@@ -1,0 +1,20 @@
+--- a/java/net/minecraft/util/math/DirectionTransformation.java
++++ b/java/net/minecraft/util/math/DirectionTransformation.java
+@@ -141,13 +141,13 @@
+          this.mappings = Maps.newEnumMap(Direction.class);
+          Direction.Axis[] adirection$axis = Direction.Axis.values();
+ 
+-         for(Direction direction : Direction.values()) {
+-            Direction.Axis direction$axis = direction.getAxis();
+-            Direction.AxisDirection direction$axisdirection = direction.getDirection();
++         for(Direction direction2 : Direction.values()) {
++            Direction.Axis direction$axis = direction2.getAxis();
++            Direction.AxisDirection direction$axisdirection = direction2.getDirection();
+             Direction.Axis direction$axis1 = adirection$axis[this.axisTransformation.map(direction$axis.ordinal())];
+             Direction.AxisDirection direction$axisdirection1 = this.shouldFlipDirection(direction$axis1) ? direction$axisdirection.getOpposite() : direction$axisdirection;
+             Direction direction1 = Direction.from(direction$axis1, direction$axisdirection1);
+-            this.mappings.put(direction, direction1);
++            this.mappings.put(direction2, direction1);
+          }
+       }
+ 
