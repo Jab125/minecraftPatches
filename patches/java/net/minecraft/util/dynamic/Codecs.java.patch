@@ -1,0 +1,79 @@
+--- a/java/net/minecraft/util/dynamic/Codecs.java
++++ b/java/net/minecraft/util/dynamic/Codecs.java
+@@ -171,7 +171,7 @@
+       return instance.group(Codec.STRING.fieldOf("name").forGetter(Property::getName), Codec.STRING.fieldOf("value").forGetter(Property::getValue), Codec.STRING.optionalFieldOf("signature").forGetter((property) -> {
+          return Optional.ofNullable(property.getSignature());
+       })).apply(instance, (key, value, signature) -> {
+-         return new Property(key, value, (String)signature.orElse((Object)null));
++         return new Property(key, value, signature.orElse(null));
+       });
+    });
+    @VisibleForTesting
+@@ -196,9 +196,9 @@
+    });
+    public static final Codec<GameProfile> GAME_PROFILE = RecordCodecBuilder.create((instance) -> {
+       return instance.group(Codec.mapPair(Uuids.CODEC.xmap(Optional::of, (optional) -> {
+-         return (UUID)optional.orElse((Object)null);
++         return optional.orElse(null);
+       }).optionalFieldOf("id", Optional.empty()), Codec.STRING.xmap(Optional::of, (optional) -> {
+-         return (String)optional.orElse((Object)null);
++         return optional.orElse(null);
+       }).optionalFieldOf("name", Optional.empty())).flatXmap(Codecs::createGameProfileFromPair, Codecs::createPairFromGameProfile).forGetter(Function.identity()), GAME_PROFILE_PROPERTY_MAP.optionalFieldOf("properties", new PropertyMap()).forGetter(GameProfile::getProperties)).apply(instance, (profile, properties) -> {
+          properties.forEach((key, property) -> {
+             profile.getProperties().put(key, property);
+@@ -217,23 +217,23 @@
+    }
+ 
+    public static <P, I> Codec<I> createCodecForPairObject(Codec<P> codec, String leftFieldName, String rightFieldName, BiFunction<P, P, DataResult<I>> combineFunction, Function<I, P> leftFunction, Function<I, P> rightFunction) {
+-      Codec<I> codec = Codec.list(codec).comapFlatMap((list) -> {
++      Codec<I> codec3 = Codec.list(codec).comapFlatMap((list) -> {
+          return Util.toArray(list, 2).flatMap((listx) -> {
+             P p = (P)listx.get(0);
+             P p1 = (P)listx.get(1);
+-            return (DataResult)combineFunction.apply(p, p1);
++            return combineFunction.apply(p, p1);
+          });
+       }, (pair) -> {
+          return ImmutableList.of(leftFunction.apply((I)pair), rightFunction.apply((I)pair));
+       });
+-      Codec<I> codec1 = RecordCodecBuilder.create((instance) -> {
++      Codec<I> codec1 = RecordCodecBuilder.<Pair<P, P>>create((instance) -> {
+          return instance.group(codec.fieldOf(leftFieldName).forGetter(Pair::getFirst), codec.fieldOf(rightFieldName).forGetter(Pair::getSecond)).apply(instance, Pair::of);
+       }).comapFlatMap((pair) -> {
+-         return (DataResult)combineFunction.apply((P)pair.getFirst(), (P)pair.getSecond());
++         return combineFunction.apply((P)pair.getFirst(), (P)pair.getSecond());
+       }, (pair) -> {
+          return Pair.of(leftFunction.apply((I)pair), rightFunction.apply((I)pair));
+       });
+-      Codec<I> codec2 = (new Codecs.Either(codec, codec1)).xmap((either) -> {
++      Codec<I> codec2 = (new Codecs.Either<>(codec3, codec1)).xmap((either) -> {
+          return either.map((object) -> {
+             return object;
+          }, (object) -> {
+@@ -323,7 +323,7 @@
+          public <T> DataResult<Pair<E, T>> apply(DynamicOps<T> ops, T input, DataResult<Pair<E, T>> result) {
+             return (DataResult)result.result().map((pair) -> {
+                return result.setLifecycle((Lifecycle)entryLifecycleGetter.apply((E)pair.getFirst()));
+-            }).orElse((T)result);
++            }).orElse(result);
+          }
+ 
+          public <T> DataResult<T> coApply(DynamicOps<T> ops, E input, DataResult<T> result) {
+@@ -389,7 +389,7 @@
+          }
+ 
+          public <T> DataResult<E> decode(DynamicOps<T> ops, MapLike<T> input) {
+-            return (DataResult)retriever.apply((T)ops);
++            return (DataResult)retriever.apply(ops);
+          }
+ 
+          public String toString() {
+@@ -535,7 +535,7 @@
+ 
+    static record Lazy<A>(Supplier<Codec<A>> delegate) implements Codec<A> {
+       Lazy {
+-         Supplier<Codec<A>> supplier1 = Suppliers.memoize(supplier::get);
++         Supplier<Codec<A>> supplier1 = Suppliers.memoize(delegate::get);
+       }
+ 
+       public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> ops, T input) {
