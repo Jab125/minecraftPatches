@@ -10,8 +10,3 @@
              }
  
              return new SaveLoading.LoadContext(new CurrentSettings(((SaveProperties)pair.getFirst()).getLevelInfo(), ((SaveProperties)pair.getFirst()).getGeneratorOptions(), ((DimensionOptionsRegistryHolder.DimensionsConfig)pair.getSecond()).dimensions()), context.dimensionsRegistryManager());
-@@ -274,4 +271,4 @@
-       }
- 
-    }
- }

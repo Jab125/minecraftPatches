@@ -1,0 +1,14 @@
+--- a/java/net/minecraft/entity/mob/EndermanEntity.java
++++ b/java/net/minecraft/entity/mob/EndermanEntity.java
+@@ -357,9 +357,9 @@
+ 
+    private boolean damageFromPotion(DamageSource source, PotionEntity potion, float amount) {
+       ItemStack itemstack = potion.getStack();
+-      Potion potion = PotionUtil.getPotion(itemstack);
++      Potion potion2 = PotionUtil.getPotion(itemstack);
+       List<StatusEffectInstance> list = PotionUtil.getPotionEffects(itemstack);
+-      boolean flag = potion == Potions.WATER && list.isEmpty();
++      boolean flag = potion2 == Potions.WATER && list.isEmpty();
+       return flag ? super.damage(source, amount) : false;
+    }
+ 

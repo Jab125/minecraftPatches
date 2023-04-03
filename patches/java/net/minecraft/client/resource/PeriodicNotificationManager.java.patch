@@ -11,8 +11,3 @@
  
        public Entry(long delay, long period, String title, String message) {
           this.delay = delay != 0L ? delay : period;
-@@ -158,4 +154,4 @@
- 
-       }
-    }
- }

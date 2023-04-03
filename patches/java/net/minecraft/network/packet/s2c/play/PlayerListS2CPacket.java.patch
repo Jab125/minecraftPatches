@@ -8,8 +8,3 @@
  
        Entry(ServerPlayerEntity player) {
           this(player.getUuid(), player.getGameProfile(), true, player.pingMilliseconds, player.interactionManager.getGameMode(), player.getPlayerListName(), Nullables.map(player.getSession(), PublicPlayerSession::toSerialized));
-@@ -161,4 +160,4 @@
-          return new PlayerListS2CPacket.Entry(this.profileId, this.gameProfile, this.listed, this.latency, this.gameMode, this.displayName, this.session);
-       }
-    }
- }

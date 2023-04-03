@@ -9,8 +9,3 @@
  
        public static <T> DataTracker.SerializedEntry<T> of(TrackedData<T> data, T value) {
           TrackedDataHandler<T> trackeddatahandler = data.getType();
-@@ -286,4 +284,4 @@
-          return new DataTracker.SerializedEntry<>(id, handler, handler.read(buf));
-       }
-    }
- }

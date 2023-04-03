@@ -10,8 +10,3 @@
        public static final MapCodec<Biome.Weather> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
           return instance.group(Codec.BOOL.fieldOf("has_precipitation").forGetter((weather) -> {
              return weather.hasPrecipitation;
-@@ -378,4 +375,4 @@
-          })).apply(instance, Biome.Weather::new);
-       });
-    }
- }

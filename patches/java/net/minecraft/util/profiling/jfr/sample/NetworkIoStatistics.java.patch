@@ -1,6 +1,6 @@
 --- a/java/net/minecraft/util/profiling/jfr/sample/NetworkIoStatistics.java
 +++ b/java/net/minecraft/util/profiling/jfr/sample/NetworkIoStatistics.java
-@@ -72,12 +72,10 @@
+@@ -72,8 +72,6 @@
     }
  
     public static record PacketStatistics(long totalCount, long totalSize) {
@@ -9,7 +9,3 @@
        static final Comparator<NetworkIoStatistics.PacketStatistics> COMPARATOR = Comparator.comparing(NetworkIoStatistics.PacketStatistics::totalSize).thenComparing(NetworkIoStatistics.PacketStatistics::totalCount).reversed();
  
        NetworkIoStatistics.PacketStatistics add(NetworkIoStatistics.PacketStatistics statistics) {
-          return new NetworkIoStatistics.PacketStatistics(this.totalCount + statistics.totalCount, this.totalSize + statistics.totalSize);
-       }
-    }
- }

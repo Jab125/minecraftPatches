@@ -1,0 +1,18 @@
+--- a/java/net/minecraft/entity/vehicle/AbstractMinecartEntity.java
++++ b/java/net/minecraft/entity/vehicle/AbstractMinecartEntity.java
+@@ -154,13 +154,13 @@
+          BlockPos blockpos = this.getBlockPos();
+          BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+          ImmutableList<EntityPose> immutablelist = passenger.getPoses();
+-         UnmodifiableIterator e = immutablelist.iterator();
++         UnmodifiableIterator<EntityPose> e = immutablelist.iterator();
+ 
+          while(e.hasNext()) {
+             EntityPose entitypose = (EntityPose)e.next();
+             EntityDimensions entitydimensions = passenger.getDimensions(entitypose);
+             float f = Math.min(entitydimensions.width, 1.0F) / 2.0F;
+-            UnmodifiableIterator g = ((ImmutableList)DISMOUNT_FREE_Y_SPACES_NEEDED.get(entitypose)).iterator();
++            UnmodifiableIterator<Integer> g = DISMOUNT_FREE_Y_SPACES_NEEDED.get(entitypose).iterator();
+ 
+             while(g.hasNext()) {
+                int i = g.next();

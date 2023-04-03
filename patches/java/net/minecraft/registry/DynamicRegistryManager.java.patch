@@ -36,8 +36,3 @@
           });
        }
  
-@@ -107,4 +106,4 @@
-          return this.registries.entrySet().stream().map(DynamicRegistryManager.Entry::of);
-       }
-    }
- }

@@ -10,8 +10,3 @@
        public static final Codec<VillagerGossips.GossipEntry> CODEC = RecordCodecBuilder.create((instance) -> {
           return instance.group(Uuids.INT_STREAM_CODEC.fieldOf("Target").forGetter(VillagerGossips.GossipEntry::target), VillageGossipType.CODEC.fieldOf("Type").forGetter(VillagerGossips.GossipEntry::type), Codecs.POSITIVE_INT.fieldOf("Value").forGetter(VillagerGossips.GossipEntry::value)).apply(instance, VillagerGossips.GossipEntry::new);
        });
-@@ -246,4 +243,4 @@
-          this.associatedGossip.removeInt(gossipType);
-       }
-    }
- }

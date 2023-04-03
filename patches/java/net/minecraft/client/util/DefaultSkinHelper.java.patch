@@ -1,6 +1,6 @@
 --- a/java/net/minecraft/client/util/DefaultSkinHelper.java
 +++ b/java/net/minecraft/client/util/DefaultSkinHelper.java
-@@ -34,11 +34,9 @@
+@@ -34,8 +34,6 @@
     }
  
     static record Skin(Identifier texture, DefaultSkinHelper.Model model) {
@@ -9,6 +9,3 @@
  
        public Skin(String texture, DefaultSkinHelper.Model model) {
           this(new Identifier(texture), model);
-       }
-    }
- }

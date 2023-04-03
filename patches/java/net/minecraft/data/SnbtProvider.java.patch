@@ -12,8 +12,3 @@
     }
  
     static class CompressionException extends RuntimeException {
-@@ -148,4 +143,4 @@
-    public interface Tweaker {
-       NbtCompound write(String name, NbtCompound nbt);
-    }
- }

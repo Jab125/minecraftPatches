@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/mob/PiglinEntity.java
++++ b/java/net/minecraft/entity/mob/PiglinEntity.java
+@@ -202,7 +202,7 @@
+    }
+ 
+    public Brain<PiglinEntity> getBrain() {
+-      return super.getBrain();
++      return (Brain<PiglinEntity>) super.getBrain();
+    }
+ 
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {

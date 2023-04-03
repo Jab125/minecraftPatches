@@ -20,8 +20,3 @@
  
        public Context(DynamicRegistryManager dynamicRegistryManager, ChunkGenerator chunkGenerator, BiomeSource biomeSource, NoiseConfig noiseConfig, StructureTemplateManager structureTemplateManager, long seed, ChunkPos chunkPos, HeightLimitView world, Predicate<RegistryEntry<Biome>> biomePredicate) {
           this(dynamicRegistryManager, chunkGenerator, biomeSource, noiseConfig, structureTemplateManager, createChunkRandom(seed, chunkPos), seed, chunkPos, world, biomePredicate);
-@@ -203,4 +196,4 @@
-          });
-       }
-    }
- }

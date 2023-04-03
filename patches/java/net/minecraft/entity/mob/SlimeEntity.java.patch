@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/mob/SlimeEntity.java
++++ b/java/net/minecraft/entity/mob/SlimeEntity.java
+@@ -171,7 +171,7 @@
+    }
+ 
+    public EntityType<? extends SlimeEntity> getType() {
+-      return super.getType();
++      return (EntityType<? extends SlimeEntity>) super.getType();
+    }
+ 
+    public void remove(Entity.RemovalReason reason) {

@@ -9,8 +9,3 @@
  
        public boolean hasExpired() {
           return Util.getMeasuringTimeMs() - this.startingMs > 3000L;
-@@ -144,4 +142,4 @@
-          return false;
-       }
-    }
- }

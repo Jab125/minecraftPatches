@@ -10,8 +10,3 @@
  
        public Holder(T sprite, int mipLevel) {
           this(sprite, TextureStitcher.applyMipLevel(sprite.getWidth(), mipLevel), TextureStitcher.applyMipLevel(sprite.getHeight(), mipLevel));
-@@ -225,4 +222,4 @@
- 
-       Identifier getId();
-    }
- }

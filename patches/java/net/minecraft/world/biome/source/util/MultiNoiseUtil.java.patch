@@ -22,8 +22,3 @@
  
        @VisibleForTesting
        protected long[] getNoiseValueList() {
-@@ -486,4 +480,4 @@
-          }
-       }
-    }
- }

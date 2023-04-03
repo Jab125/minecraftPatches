@@ -44,8 +44,3 @@
  
        public void close() {
           this.resourceManager.close();
-@@ -1768,4 +1766,4 @@
- 
-    public static record ServerResourcePackProperties(String url, String hash, boolean isRequired, @Nullable Text prompt) {
-    }
- }

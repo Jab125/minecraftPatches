@@ -8,8 +8,3 @@
  
        public Implementation {
           method_41301(fs, list, gs);
-@@ -286,4 +285,4 @@
-    public interface Visitor<I> {
-       I visit(I value);
-    }
- }

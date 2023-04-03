@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/passive/FrogEntity.java
++++ b/java/net/minecraft/entity/passive/FrogEntity.java
+@@ -98,7 +98,7 @@
+    }
+ 
+    public Brain<FrogEntity> getBrain() {
+-      return super.getBrain();
++      return (Brain<FrogEntity>) super.getBrain();
+    }
+ 
+    protected void initDataTracker() {

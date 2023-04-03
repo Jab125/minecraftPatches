@@ -8,8 +8,3 @@
  
        public static StructuresToConfiguredStructuresFix.Mapping create(String mapping) {
           return new StructuresToConfiguredStructuresFix.Mapping(Map.of(), mapping);
-@@ -147,4 +146,4 @@
-          return builder.build();
-       }
-    }
- }

@@ -9,8 +9,3 @@
  
        public void close() {
           this.atlas.clear();
-@@ -76,4 +74,4 @@
-          this.atlasTexture.upload(this.stitchResult);
-       }
-    }
- }

@@ -12,8 +12,3 @@
  
        public float getAdvance() {
           return (float)(this.width / 2 + 1);
-@@ -251,4 +246,4 @@
-          });
-       }
-    }
- }

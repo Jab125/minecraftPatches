@@ -38,8 +38,3 @@
  
              list.add(new Entry(key, dimensionOptions));
           });
-@@ -211,4 +210,4 @@
-          return (new DynamicRegistryManager.ImmutableImpl(List.of(this.dimensions))).toImmutable();
-       }
-    }
- }

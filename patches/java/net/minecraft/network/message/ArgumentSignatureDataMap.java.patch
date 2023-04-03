@@ -18,8 +18,3 @@
  
        public Entry(PacketByteBuf buf) {
           this(buf.readString(16), MessageSignatureData.fromBuf(buf));
-@@ -60,4 +58,4 @@
-          MessageSignatureData.write(buf, this.signature);
-       }
-    }
- }

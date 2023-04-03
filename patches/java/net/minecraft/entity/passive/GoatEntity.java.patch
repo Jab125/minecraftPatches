@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/passive/GoatEntity.java
++++ b/java/net/minecraft/entity/passive/GoatEntity.java
+@@ -159,7 +159,7 @@
+    }
+ 
+    public Brain<GoatEntity> getBrain() {
+-      return super.getBrain();
++      return (Brain<GoatEntity>) super.getBrain();
+    }
+ 
+    protected void mobTick() {

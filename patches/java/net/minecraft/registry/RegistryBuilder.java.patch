@@ -25,8 +25,3 @@
  
        public static RegistryBuilder.Registries of(DynamicRegistryManager dynamicRegistryManager, Stream<RegistryKey<? extends Registry<?>>> registryRefs) {
           RegistryBuilder.AnyOwner registrybuilder$anyowner = new RegistryBuilder.AnyOwner();
-@@ -291,4 +283,4 @@
-          });
-       }
-    }
- }

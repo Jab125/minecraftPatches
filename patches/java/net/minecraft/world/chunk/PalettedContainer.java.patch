@@ -9,8 +9,3 @@
  
        public void importFrom(Palette<T> palette, PaletteStorage storage) {
           for(int i = 0; i < storage.getSize(); ++i) {
-@@ -410,4 +408,4 @@
-          return dataprovider.factory() == ID_LIST ? i : dataprovider.bits();
-       }
-    }
- }

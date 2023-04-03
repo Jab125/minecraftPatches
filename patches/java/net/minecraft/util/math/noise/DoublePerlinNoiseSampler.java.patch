@@ -9,8 +9,3 @@
        public static final Codec<DoublePerlinNoiseSampler.NoiseParameters> CODEC = RecordCodecBuilder.create((instance) -> {
           return instance.group(Codec.INT.fieldOf("firstOctave").forGetter(DoublePerlinNoiseSampler.NoiseParameters::firstOctave), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(DoublePerlinNoiseSampler.NoiseParameters::amplitudes)).apply(instance, DoublePerlinNoiseSampler.NoiseParameters::new);
        });
-@@ -112,4 +110,4 @@
-          }));
-       }
-    }
- }

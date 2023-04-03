@@ -34,8 +34,3 @@
  
        public boolean isEmpty() {
           return this.levels.isEmpty();
-@@ -528,4 +527,4 @@
-          this.lock.close();
-       }
-    }
- }

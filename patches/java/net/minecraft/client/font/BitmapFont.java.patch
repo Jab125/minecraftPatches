@@ -14,8 +14,3 @@
  
        public float getAdvance() {
           return (float)this.advance;
-@@ -176,4 +169,4 @@
-          return i + 1;
-       }
-    }
- }

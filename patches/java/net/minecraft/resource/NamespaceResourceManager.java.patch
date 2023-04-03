@@ -35,8 +35,3 @@
  
        public void removeFiltered(Collection<Identifier> ids) {
           if (this.filter != null) {
-@@ -354,4 +344,4 @@
-          return this.filter != null && this.filter.test(id);
-       }
-    }
- }

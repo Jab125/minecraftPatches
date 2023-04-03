@@ -8,8 +8,3 @@
  
        public int getVertexBufferSize() {
           return this.vertexCount * this.format.getVertexSizeByte();
-@@ -482,4 +481,4 @@
-          this.cameraZ = cameraZ;
-       }
-    }
- }

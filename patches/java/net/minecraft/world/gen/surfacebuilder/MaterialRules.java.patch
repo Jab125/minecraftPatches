@@ -39,8 +39,3 @@
        static final CodecHolder<MaterialRules.WaterMaterialCondition> CODEC = CodecHolder.of(RecordCodecBuilder.mapCodec((instance) -> {
           return instance.group(Codec.INT.fieldOf("offset").forGetter(MaterialRules.WaterMaterialCondition::offset), Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(MaterialRules.WaterMaterialCondition::surfaceDepthMultiplier), Codec.BOOL.fieldOf("add_stone_depth").forGetter(MaterialRules.WaterMaterialCondition::addStoneDepth)).apply(instance, MaterialRules.WaterMaterialCondition::new);
        }));
-@@ -748,4 +737,4 @@
-          return new WaterPredicate();
-       }
-    }
- }

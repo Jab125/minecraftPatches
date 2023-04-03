@@ -12,8 +12,3 @@
        public static final Codec<UnstitchAtlasSource.Region> CODEC = RecordCodecBuilder.create((instance) -> {
           return instance.group(Identifier.CODEC.fieldOf("sprite").forGetter(UnstitchAtlasSource.Region::sprite), Codec.DOUBLE.fieldOf("x").forGetter(UnstitchAtlasSource.Region::x), Codec.DOUBLE.fieldOf("y").forGetter(UnstitchAtlasSource.Region::y), Codec.DOUBLE.fieldOf("width").forGetter(UnstitchAtlasSource.Region::width), Codec.DOUBLE.fieldOf("height").forGetter(UnstitchAtlasSource.Region::height)).apply(instance, UnstitchAtlasSource.Region::new);
        });
-@@ -110,4 +105,4 @@
-          this.sprite.close();
-       }
-    }
- }
