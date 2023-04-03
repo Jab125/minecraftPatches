@@ -1,0 +1,20 @@
+--- a/java/net/minecraft/world/event/listener/VibrationListener.java
++++ b/java/net/minecraft/world/event/listener/VibrationListener.java
+@@ -30,7 +30,7 @@
+ 
+ public class VibrationListener implements GameEventListener {
+    @VisibleForTesting
+-   public static final Object2IntMap<GameEvent> FREQUENCIES = Object2IntMaps.unmodifiable(Util.make(new Object2IntOpenHashMap(), (frequencies) -> {
++   public static final Object2IntMap<GameEvent> FREQUENCIES = Object2IntMaps.unmodifiable(Util.make(new Object2IntOpenHashMap<>(), (frequencies) -> {
+       frequencies.put(GameEvent.STEP, 1);
+       frequencies.put(GameEvent.ITEM_INTERACT_FINISH, 2);
+       frequencies.put(GameEvent.FLAP, 2);
+@@ -96,7 +96,7 @@
+          }), Codecs.NONNEGATIVE_INT.fieldOf("event_delay").orElse(0).forGetter((listener) -> {
+             return listener.delay;
+          })).apply(instance, (positionSource, range, vibration, selector, delay) -> {
+-            return new VibrationListener(positionSource, range, callback, (Vibration)vibration.orElse((Object)null), selector, delay);
++            return new VibrationListener(positionSource, range, callback, (Vibration)vibration.orElse(null), selector, delay);
+          });
+       });
+    }

@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/world/gen/heightprovider/WeightedListHeightProvider.java
++++ b/java/net/minecraft/world/gen/heightprovider/WeightedListHeightProvider.java
+@@ -8,7 +8,7 @@
+ 
+ public class WeightedListHeightProvider extends HeightProvider {
+    public static final Codec<WeightedListHeightProvider> WEIGHTED_LIST_CODEC = RecordCodecBuilder.create((instance) -> {
+-      return instance.group(DataPool.createCodec(HeightProvider.CODEC).fieldOf("distribution").forGetter((weightedListHeightProvider) -> {
++      return instance.group(DataPool.createCodecData(HeightProvider.CODEC).fieldOf("distribution").forGetter((weightedListHeightProvider) -> {
+          return weightedListHeightProvider.weightedList;
+       })).apply(instance, WeightedListHeightProvider::new);
+    });

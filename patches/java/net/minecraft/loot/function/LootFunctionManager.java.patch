@@ -1,0 +1,21 @@
+--- a/java/net/minecraft/loot/function/LootFunctionManager.java
++++ b/java/net/minecraft/loot/function/LootFunctionManager.java
+@@ -60,15 +60,15 @@
+          }
+ 
+       });
+-      Map<Identifier, LootFunction> map = builder.build();
++      Map<Identifier, LootFunction> map2 = builder.build();
+       LootTableReporter loottablereporter = new LootTableReporter(LootContextTypes.GENERIC, this.lootConditionManager::get, this.lootManager::getTable);
+-      map.forEach((id, function) -> {
++      map2.forEach((id, function) -> {
+          function.validate(loottablereporter);
+       });
+       loottablereporter.getMessages().forEach((name, message) -> {
+          LOGGER.warn("Found item modifier validation problem in {}: {}", name, message);
+       });
+-      this.functions = map;
++      this.functions = map2;
+    }
+ 
+    public Set<Identifier> getFunctionIds() {

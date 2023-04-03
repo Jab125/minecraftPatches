@@ -1,0 +1,28 @@
+--- a/java/net/minecraft/block/entity/HopperBlockEntity.java
++++ b/java/net/minecraft/block/entity/HopperBlockEntity.java
+@@ -131,20 +131,20 @@
+    }
+ 
+    private static boolean insert(World world, BlockPos pos, BlockState state, Inventory inventory) {
+-      Inventory inventory = getOutputInventory(world, pos, state);
+-      if (inventory == null) {
++      Inventory inventory2 = getOutputInventory(world, pos, state);
++      if (inventory2 == null) {
+          return false;
+       } else {
+          Direction direction = state.get(HopperBlock.FACING).getOpposite();
+-         if (isInventoryFull(inventory, direction)) {
++         if (isInventoryFull(inventory2, direction)) {
+             return false;
+          } else {
+             for(int i = 0; i < inventory.size(); ++i) {
+                if (!inventory.getStack(i).isEmpty()) {
+                   ItemStack itemstack = inventory.getStack(i).copy();
+-                  ItemStack itemstack1 = transfer(inventory, inventory, inventory.removeStack(i, 1), direction);
++                  ItemStack itemstack1 = transfer(inventory, inventory2, inventory.removeStack(i, 1), direction);
+                   if (itemstack1.isEmpty()) {
+-                     inventory.markDirty();
++                     inventory2.markDirty();
+                      return true;
+                   }
+ 

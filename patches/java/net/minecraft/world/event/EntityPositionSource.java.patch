@@ -1,0 +1,22 @@
+--- a/java/net/minecraft/world/event/EntityPositionSource.java
++++ b/java/net/minecraft/world/event/EntityPositionSource.java
+@@ -44,8 +44,8 @@
+    }
+ 
+    private void findEntityInWorld(World world) {
+-      ((Optional)this.source.map(Optional::of, (entityId) -> {
+-         return Optional.ofNullable((Entity)entityId.map((uuid) -> {
++      (this.source.map(Optional::of, (entityId) -> {
++         return Optional.ofNullable(entityId.map((uuid) -> {
+             Entity entity;
+             if (world instanceof ServerWorld serverworld) {
+                entity = serverworld.getEntity(uuid);
+@@ -70,7 +70,7 @@
+ 
+    int getEntityId() {
+       return this.source.map(Entity::getId, (entityId) -> {
+-         return (Integer)entityId.map((uuid) -> {
++         return entityId.map((uuid) -> {
+             throw new IllegalStateException("Unable to get entityId from uuid");
+          }, Function.identity());
+       });

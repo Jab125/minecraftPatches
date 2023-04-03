@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/block/entity/SculkShriekerBlockEntity.java
++++ b/java/net/minecraft/block/entity/SculkShriekerBlockEntity.java
+@@ -71,7 +71,7 @@
+       }
+ 
+       if (nbt.contains("listener", 10)) {
+-         VibrationListener.createCodec(this).parse(new Dynamic(NbtOps.INSTANCE, nbt.getCompound("listener"))).resultOrPartial(LOGGER::error).ifPresent((vibrationListener) -> {
++         VibrationListener.createCodec(this).parse(new Dynamic<>(NbtOps.INSTANCE, nbt.getCompound("listener"))).resultOrPartial(LOGGER::error).ifPresent((vibrationListener) -> {
+             this.vibrationListener = vibrationListener;
+          });
+       }

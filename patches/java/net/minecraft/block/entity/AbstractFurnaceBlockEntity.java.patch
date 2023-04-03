@@ -1,0 +1,22 @@
+--- a/java/net/minecraft/block/entity/AbstractFurnaceBlockEntity.java
++++ b/java/net/minecraft/block/entity/AbstractFurnaceBlockEntity.java
+@@ -187,8 +187,8 @@
+ 
+    }
+ 
+-   private static void addFuel(Map<Item, Integer> fuelTimes, ItemConvertible item, int fuelTime) {
+-      Item item = item.asItem();
++   private static void addFuel(Map<Item, Integer> fuelTimes, ItemConvertible itemConvertible, int fuelTime) {
++      Item item = itemConvertible.asItem();
+       if (isNonFlammableWood(item)) {
+          if (SharedConstants.isDevelopment) {
+             throw (IllegalStateException)Util.throwOrPause(new IllegalStateException("A developer tried to explicitly make fire resistant item " + item.getName((ItemStack)null).getString() + " a furnace fuel. That will not work!"));
+@@ -244,7 +244,7 @@
+       if (blockEntity.isBurning() || flag3 && flag2) {
+          Recipe<?> recipe;
+          if (flag2) {
+-            recipe = blockEntity.matchGetter.getFirstMatch(blockEntity, world).orElse((AbstractCookingRecipe)null);
++            recipe = blockEntity.matchGetter.getFirstMatch(blockEntity, world).orElse(null);
+          } else {
+             recipe = null;
+          }

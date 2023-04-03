@@ -1,0 +1,24 @@
+--- a/java/net/minecraft/loot/condition/LootConditionManager.java
++++ b/java/net/minecraft/loot/condition/LootConditionManager.java
+@@ -49,17 +49,17 @@
+          }
+ 
+       });
+-      Map<Identifier, LootCondition> map = builder.build();
+-      LootTableReporter loottablereporter = new LootTableReporter(LootContextTypes.GENERIC, map::get, (id) -> {
++      Map<Identifier, LootCondition> map2 = builder.build();
++      LootTableReporter loottablereporter = new LootTableReporter(LootContextTypes.GENERIC, map2::get, (id) -> {
+          return null;
+       });
+-      map.forEach((id, condition) -> {
++      map2.forEach((id, condition) -> {
+          condition.validate(loottablereporter.withCondition("{" + id + "}", id));
+       });
+       loottablereporter.getMessages().forEach((name, message) -> {
+          LOGGER.warn("Found validation problem in {}: {}", name, message);
+       });
+-      this.conditions = map;
++      this.conditions = map2;
+    }
+ 
+    public Set<Identifier> getIds() {

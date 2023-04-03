@@ -1,0 +1,19 @@
+--- a/java/net/minecraft/block/entity/PistonBlockEntity.java
++++ b/java/net/minecraft/block/entity/PistonBlockEntity.java
+@@ -236,12 +236,12 @@
+       Box box = entity.getBoundingBox();
+       Box box1 = VoxelShapes.fullCube().getBoundingBox().offset(pos);
+       if (box.intersects(box1)) {
+-         Direction direction = direction.getOpposite();
+-         double d0 = getIntersectionSize(box1, direction, box) + 0.01D;
+-         double d1 = getIntersectionSize(box1, direction, box.intersection(box1)) + 0.01D;
++         Direction direction2 = direction.getOpposite();
++         double d0 = getIntersectionSize(box1, direction2, box) + 0.01D;
++         double d1 = getIntersectionSize(box1, direction2, box.intersection(box1)) + 0.01D;
+          if (Math.abs(d0 - d1) < 0.01D) {
+             d0 = Math.min(d0, amount) + 0.01D;
+-            moveEntity(direction, entity, d0, direction);
++            moveEntity(direction, entity, d0, direction2);
+          }
+       }
+ 

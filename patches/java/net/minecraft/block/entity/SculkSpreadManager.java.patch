@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/block/entity/SculkSpreadManager.java
++++ b/java/net/minecraft/block/entity/SculkSpreadManager.java
+@@ -108,7 +108,7 @@
+    public void readNbt(NbtCompound nbt) {
+       if (nbt.contains("cursors", 9)) {
+          this.cursors.clear();
+-         List<SculkSpreadManager.Cursor> list = (List)SculkSpreadManager.Cursor.CODEC.listOf().parse(new Dynamic(NbtOps.INSTANCE, nbt.getList("cursors", 10))).resultOrPartial(LOGGER::error).orElseGet(ArrayList::new);
++         List<SculkSpreadManager.Cursor> list = SculkSpreadManager.Cursor.CODEC.listOf().parse(new Dynamic<>(NbtOps.INSTANCE, nbt.getList("cursors", 10))).resultOrPartial(LOGGER::error).orElseGet(ArrayList::new);
+          int i = Math.min(list.size(), 32);
+ 
+          for(int j = 0; j < i; ++j) {

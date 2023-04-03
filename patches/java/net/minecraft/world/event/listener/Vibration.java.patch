@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/world/event/listener/Vibration.java
++++ b/java/net/minecraft/world/event/listener/Vibration.java
+@@ -20,7 +20,7 @@
+       }), Uuids.INT_STREAM_CODEC.optionalFieldOf("projectile_owner").forGetter((vibration) -> {
+          return Optional.ofNullable(vibration.projectileOwnerUuid());
+       })).apply(instance, (event, distance, pos, uuid, projectileOwnerUuid) -> {
+-         return new Vibration(event, distance, pos, (UUID)uuid.orElse((Object)null), (UUID)projectileOwnerUuid.orElse((Object)null));
++         return new Vibration(event, distance, pos, (UUID)uuid.orElse(null), (UUID)projectileOwnerUuid.orElse(null));
+       });
+    });
+ 

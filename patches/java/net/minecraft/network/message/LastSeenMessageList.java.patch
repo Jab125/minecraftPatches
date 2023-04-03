@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/network/message/LastSeenMessageList.java
++++ b/java/net/minecraft/network/message/LastSeenMessageList.java
+@@ -45,7 +45,7 @@
+       public static final LastSeenMessageList.Indexed EMPTY = new LastSeenMessageList.Indexed(List.of());
+ 
+       public Indexed(PacketByteBuf buf) {
+-         this(buf.readCollection(PacketByteBuf.getMaxValidator(ArrayList::new, 20), MessageSignatureData.Indexed::fromBuf));
++         this(buf.<MessageSignatureData.Indexed, List<MessageSignatureData.Indexed>>readCollection(PacketByteBuf.getMaxValidator(ArrayList::new, 20), MessageSignatureData.Indexed::fromBuf));
+       }
+ 
+       public void write(PacketByteBuf buf) {

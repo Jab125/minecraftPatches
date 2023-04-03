@@ -20,3 +20,18 @@
           } else {
              return new SessionLock(filechannel, filelock);
           }
+@@ -66,12 +66,12 @@
+    }
+ 
+    public static boolean isLocked(Path path) throws IOException {
+-      Path path = path.resolve("session.lock");
++      Path path2 = path.resolve("session.lock");
+ 
+       try {
+          boolean flag;
+          try (
+-            FileChannel filechannel = FileChannel.open(path, StandardOpenOption.WRITE);
++            FileChannel filechannel = FileChannel.open(path2, StandardOpenOption.WRITE);
+             FileLock filelock = filechannel.tryLock();
+          ) {
+             flag = filelock == null;

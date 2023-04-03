@@ -1,5 +1,14 @@
 --- a/java/net/minecraft/network/message/ArgumentSignatureDataMap.java
 +++ b/java/net/minecraft/network/message/ArgumentSignatureDataMap.java
+@@ -13,7 +13,7 @@
+    private static final int MAX_ARGUMENT_NAME_LENGTH = 16;
+ 
+    public ArgumentSignatureDataMap(PacketByteBuf buf) {
+-      this(buf.readCollection(PacketByteBuf.getMaxValidator(ArrayList::new, 8), ArgumentSignatureDataMap.Entry::new));
++      this(buf.<Entry, List<Entry>>readCollection(PacketByteBuf.getMaxValidator(ArrayList::new, 8), Entry::new));
+    }
+ 
+    @Nullable
 @@ -48,8 +48,6 @@
     }
  

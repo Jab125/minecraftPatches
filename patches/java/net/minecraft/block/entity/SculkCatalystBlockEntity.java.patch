@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/block/entity/SculkCatalystBlockEntity.java
++++ b/java/net/minecraft/block/entity/SculkCatalystBlockEntity.java
+@@ -45,9 +45,9 @@
+          if (i instanceof LivingEntity) {
+             LivingEntity livingentity = (LivingEntity)i;
+             if (!livingentity.isExperienceDroppingDisabled()) {
+-               int i = livingentity.getXpToDrop();
+-               if (livingentity.shouldDropXp() && i > 0) {
+-                  this.spreadManager.spread(BlockPos.ofFloored(emitterPos.offset(Direction.UP, 0.5D)), i);
++               int j = livingentity.getXpToDrop();
++               if (livingentity.shouldDropXp() && j > 0) {
++                  this.spreadManager.spread(BlockPos.ofFloored(emitterPos.offset(Direction.UP, 0.5D)), j);
+                   this.triggerCriteria(livingentity);
+                }
+ 

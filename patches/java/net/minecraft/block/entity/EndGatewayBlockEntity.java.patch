@@ -1,0 +1,34 @@
+--- a/java/net/minecraft/block/entity/EndGatewayBlockEntity.java
++++ b/java/net/minecraft/block/entity/EndGatewayBlockEntity.java
+@@ -164,7 +164,7 @@
+ 
+          if (blockEntity.exitPortalPos != null) {
+             BlockPos blockpos1 = blockEntity.exactTeleport ? blockEntity.exitPortalPos : findBestPortalExitPos(world, blockEntity.exitPortalPos);
+-            Entity entity;
++            Entity entity2;
+             if (entity instanceof EnderPearlEntity) {
+                Entity entity1 = ((EnderPearlEntity)entity).getOwner();
+                if (entity1 instanceof ServerPlayerEntity) {
+@@ -172,17 +172,17 @@
+                }
+ 
+                if (entity1 != null) {
+-                  entity = entity1;
++                  entity2 = entity1;
+                   entity.discard();
+                } else {
+-                  entity = entity;
++                  entity2 = entity;
+                }
+             } else {
+-               entity = entity.getRootVehicle();
++               entity2 = entity.getRootVehicle();
+             }
+ 
+-            entity.resetPortalCooldown();
+-            entity.teleport((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY(), (double)blockpos1.getZ() + 0.5D);
++            entity2.resetPortalCooldown();
++            entity2.teleport((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY(), (double)blockpos1.getZ() + 0.5D);
+          }
+ 
+          startTeleportCooldown(world, pos, state, blockEntity);

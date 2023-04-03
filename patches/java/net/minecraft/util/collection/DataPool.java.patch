@@ -1,0 +1,20 @@
+--- a/java/net/minecraft/util/collection/DataPool.java
++++ b/java/net/minecraft/util/collection/DataPool.java
+@@ -12,7 +12,7 @@
+       return Weighted.Present.createCodec(dataCodec).listOf().xmap(DataPool::new, Pool::getEntries);
+    }
+ 
+-   public static <E> Codec<DataPool<E>> createCodec(Codec<E> dataCodec) {
++   public static <E> Codec<DataPool<E>> createCodecData(Codec<E> dataCodec) {
+       return Codecs.nonEmptyList(Weighted.Present.createCodec(dataCodec).listOf()).xmap(DataPool::new, Pool::getEntries);
+    }
+ 
+@@ -24,7 +24,7 @@
+       return new DataPool.Builder<>();
+    }
+ 
+-   public static <E> DataPool<E> empty() {
++   public static <E> DataPool<E> emptyData() {
+       return new DataPool<>(List.of());
+    }
+ 

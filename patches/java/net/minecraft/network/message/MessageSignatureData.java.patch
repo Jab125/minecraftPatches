@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/network/message/MessageSignatureData.java
++++ b/java/net/minecraft/network/message/MessageSignatureData.java
+@@ -17,7 +17,7 @@
+    public static final int SIZE = 256;
+ 
+    public MessageSignatureData {
+-      Preconditions.checkState(bs.length == 256, "Invalid message signature size");
++      Preconditions.checkState(data.length == 256, "Invalid message signature size");
+    }
+ 
+    public static MessageSignatureData fromBuf(PacketByteBuf buf) {

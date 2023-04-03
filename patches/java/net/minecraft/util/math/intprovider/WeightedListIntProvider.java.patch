@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/util/math/intprovider/WeightedListIntProvider.java
++++ b/java/net/minecraft/util/math/intprovider/WeightedListIntProvider.java
+@@ -9,7 +9,7 @@
+ 
+ public class WeightedListIntProvider extends IntProvider {
+    public static final Codec<WeightedListIntProvider> CODEC = RecordCodecBuilder.create((instance) -> {
+-      return instance.group(DataPool.createCodec(IntProvider.VALUE_CODEC).fieldOf("distribution").forGetter((provider) -> {
++      return instance.group(DataPool.createCodecData(IntProvider.VALUE_CODEC).fieldOf("distribution").forGetter((provider) -> {
+          return provider.weightedList;
+       })).apply(instance, WeightedListIntProvider::new);
+    });

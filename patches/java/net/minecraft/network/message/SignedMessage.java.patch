@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/network/message/SignedMessage.java
++++ b/java/net/minecraft/network/message/SignedMessage.java
+@@ -23,7 +23,7 @@
+       }), MessageBody.CODEC.forGetter(SignedMessage::signedBody), Codecs.TEXT.optionalFieldOf("unsigned_content").forGetter((message) -> {
+          return Optional.ofNullable(message.unsignedContent);
+       }), FilterMask.CODEC.optionalFieldOf("filter_mask", FilterMask.PASS_THROUGH).forGetter(SignedMessage::filterMask)).apply(instance, (link, signature, signedBody, unsignedContent, filterMask) -> {
+-         return new SignedMessage(link, (MessageSignatureData)signature.orElse((Object)null), signedBody, (Text)unsignedContent.orElse((Object)null), filterMask);
++         return new SignedMessage(link, (MessageSignatureData)signature.orElse(null), signedBody, (Text)unsignedContent.orElse(null), filterMask);
+       });
+    });
+    private static final UUID NIL_UUID = Util.NIL_UUID;

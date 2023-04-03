@@ -1,0 +1,10 @@
+--- a/java/net/minecraft/world/event/PositionSourceType.java
++++ b/java/net/minecraft/world/event/PositionSourceType.java
+@@ -29,6 +29,6 @@
+ 
+    static <T extends PositionSource> void write(T positionSource, PacketByteBuf buf) {
+       buf.writeIdentifier(Registries.POSITION_SOURCE_TYPE.getId(positionSource.getType()));
+-      positionSource.getType().writeToBuf(buf, positionSource);
++      ((PositionSourceType<T>)positionSource.getType()).writeToBuf(buf, positionSource);
+    }
+ }
