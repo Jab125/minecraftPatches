@@ -1,0 +1,13 @@
+--- a/java/net/minecraft/util/collection/Int2ObjectBiMap.java
++++ b/java/net/minecraft/util/collection/Int2ObjectBiMap.java
+@@ -158,8 +158,8 @@
+    }
+ 
+    public void clear() {
+-      Arrays.fill(this.values, (Object)null);
+-      Arrays.fill(this.idToValues, (Object)null);
++      Arrays.fill(this.values, null);
++      Arrays.fill(this.idToValues, null);
+       this.nextId = 0;
+       this.size = 0;
+    }

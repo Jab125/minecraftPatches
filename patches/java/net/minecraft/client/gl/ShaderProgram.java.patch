@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/gl/ShaderProgram.java
++++ b/java/net/minecraft/client/gl/ShaderProgram.java
+@@ -410,7 +410,7 @@
+       JsonObject jsonobject = JsonHelper.asObject(json, "sampler");
+       String s = JsonHelper.getString(jsonobject, "name");
+       if (!JsonHelper.hasString(jsonobject, "file")) {
+-         this.samplers.put(s, (Object)null);
++         this.samplers.put(s, null);
+          this.samplerNames.add(s);
+       } else {
+          this.samplerNames.add(s);

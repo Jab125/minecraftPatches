@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/render/WorldRenderer.java
++++ b/java/net/minecraft/client/render/WorldRenderer.java
+@@ -483,7 +483,7 @@
+          if (this.client.getResourcePackManager().getEnabledNames().size() > 1) {
+             Text text = (Text)this.client.getResourceManager().streamResourcePacks().findFirst().map((resourcePack) -> {
+                return Text.literal(resourcePack.getName());
+-            }).orElse((Object)null);
++            }).orElse(null);
+             this.client.options.getGraphicsMode().setValue(GraphicsMode.FANCY);
+             this.client.onResourceReloadFailure(worldrenderer$programinitexception, text);
+          } else {

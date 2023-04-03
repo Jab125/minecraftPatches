@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/util/function/ValueLists.java
++++ b/java/net/minecraft/util/function/ValueLists.java
+@@ -40,7 +40,7 @@
+          throw new IllegalArgumentException("Empty value list");
+       } else {
+          T[] at = (T[])((Object[])values.clone());
+-         Arrays.fill(at, (Object)null);
++         Arrays.fill(at, null);
+ 
+          for(T t : values) {
+             int j = valueToIndexFunction.applyAsInt(t);

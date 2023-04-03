@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/data/server/BiomeParametersProvider.java
++++ b/java/net/minecraft/data/server/BiomeParametersProvider.java
+@@ -54,7 +54,7 @@
+       Optional<JsonElement> optional = codec.encodeStart(ops, biomeSource).resultOrPartial((error) -> {
+          LOGGER.error("Couldn't serialize element {}: {}", path, error);
+       });
+-      return optional.isPresent() ? DataProvider.writeToPath(writer, (JsonElement)optional.get(), path) : CompletableFuture.completedFuture((Object)null);
++      return optional.isPresent() ? DataProvider.writeToPath(writer, (JsonElement)optional.get(), path) : CompletableFuture.completedFuture(null);
+    }
+ 
+    private Path resolvePath(Identifier id) {

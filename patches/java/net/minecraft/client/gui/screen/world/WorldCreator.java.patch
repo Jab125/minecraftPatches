@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/gui/screen/world/WorldCreator.java
++++ b/java/net/minecraft/client/gui/screen/world/WorldCreator.java
+@@ -47,7 +47,7 @@
+    public WorldCreator(Path savesDirectory, GeneratorOptionsHolder generatorOptionsHolder, Optional<RegistryKey<WorldPreset>> defaultWorldType, OptionalLong seed) {
+       this.savesDirectory = savesDirectory;
+       this.generatorOptionsHolder = generatorOptionsHolder;
+-      this.worldType = new WorldCreator.WorldType((RegistryEntry)getWorldPreset(generatorOptionsHolder, defaultWorldType).orElse((Object)null));
++      this.worldType = new WorldCreator.WorldType((RegistryEntry)getWorldPreset(generatorOptionsHolder, defaultWorldType).orElse(null));
+       this.updateWorldTypeLists();
+       this.seed = seed.isPresent() ? Long.toString(seed.getAsLong()) : "";
+       this.generateStructures = generatorOptionsHolder.generatorOptions().shouldGenerateStructures();

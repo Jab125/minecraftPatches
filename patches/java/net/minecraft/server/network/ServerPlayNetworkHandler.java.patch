@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/server/network/ServerPlayNetworkHandler.java
++++ b/java/net/minecraft/server/network/ServerPlayNetworkHandler.java
+@@ -1718,7 +1718,7 @@
+       this.messageChainTaskQueue.append((executor) -> {
+          this.player.setSession(session);
+          this.server.getPlayerManager().sendToAll(new PlayerListS2CPacket(EnumSet.of(PlayerListS2CPacket.Action.INITIALIZE_CHAT), List.of(this.player)));
+-         return CompletableFuture.completedFuture((Object)null);
++         return CompletableFuture.completedFuture(null);
+       });
+    }
+ 

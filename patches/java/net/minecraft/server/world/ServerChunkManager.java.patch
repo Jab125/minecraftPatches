@@ -1,5 +1,39 @@
 --- a/java/net/minecraft/server/world/ServerChunkManager.java
 +++ b/java/net/minecraft/server/world/ServerChunkManager.java
+@@ -163,11 +163,11 @@
+          if (chunkholder == null) {
+             return null;
+          } else {
+-            Either<Chunk, ChunkHolder.Unloaded> either = (Either)chunkholder.getValidFutureFor(ChunkStatus.FULL).getNow((Object)null);
++            Either<Chunk, ChunkHolder.Unloaded> either = (Either)chunkholder.getValidFutureFor(ChunkStatus.FULL).getNow(null);
+             if (either == null) {
+                return null;
+             } else {
+-               Chunk chunk1 = (Chunk)either.left().orElse((Object)null);
++               Chunk chunk1 = (Chunk)either.left().orElse(null);
+                if (chunk1 != null) {
+                   this.putInCache(i, chunk1, ChunkStatus.FULL);
+                   if (chunk1 instanceof WorldChunk) {
+@@ -183,8 +183,8 @@
+ 
+    private void initChunkCaches() {
+       Arrays.fill(this.chunkPosCache, ChunkPos.MARKER);
+-      Arrays.fill(this.chunkStatusCache, (Object)null);
+-      Arrays.fill(this.chunkCache, (Object)null);
++      Arrays.fill(this.chunkStatusCache, null);
++      Arrays.fill(this.chunkCache, null);
+    }
+ 
+    public CompletableFuture<Either<Chunk, ChunkHolder.Unloaded>> getChunkFutureSyncOnMainThread(int chunkX, int chunkZ, ChunkStatus leastStatus, boolean create) {
+@@ -286,7 +286,7 @@
+       } else if (!this.world.shouldTickBlocksInChunk(pos)) {
+          return false;
+       } else {
+-         Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)chunkholder.getTickingFuture().getNow((Object)null);
++         Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)chunkholder.getTickingFuture().getNow(null);
+          return either != null && either.left().isPresent();
+       }
+    }
 @@ -506,8 +506,6 @@
     }
  

@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/world/ChunkSerializer.java
++++ b/java/net/minecraft/world/ChunkSerializer.java
+@@ -144,7 +144,7 @@
+       ChunkStatus.ChunkType chunkstatus$chunktype = getChunkType(nbt);
+       BlendingData blendingdata;
+       if (nbt.contains("blending_data", 10)) {
+-         blendingdata = (BlendingData)BlendingData.CODEC.parse(new Dynamic(NbtOps.INSTANCE, nbt.getCompound("blending_data"))).resultOrPartial(LOGGER::error).orElse((Object)null);
++         blendingdata = (BlendingData)BlendingData.CODEC.parse(new Dynamic(NbtOps.INSTANCE, nbt.getCompound("blending_data"))).resultOrPartial(LOGGER::error).orElse(null);
+       } else {
+          blendingdata = null;
+       }

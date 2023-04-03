@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/sound/BubbleColumnSoundPlayer.java
++++ b/java/net/minecraft/client/sound/BubbleColumnSoundPlayer.java
+@@ -21,7 +21,7 @@
+       World world = this.player.world;
+       BlockState blockstate = (BlockState)world.getStatesInBoxIfLoaded(this.player.getBoundingBox().expand(0.0D, (double)-0.4F, 0.0D).contract(1.0E-6D)).filter((state) -> {
+          return state.isOf(Blocks.BUBBLE_COLUMN);
+-      }).findFirst().orElse((Object)null);
++      }).findFirst().orElse(null);
+       if (blockstate != null) {
+          if (!this.hasPlayedForCurrentColumn && !this.firstTick && blockstate.isOf(Blocks.BUBBLE_COLUMN) && !this.player.isSpectator()) {
+             boolean flag = blockstate.get(BubbleColumnBlock.DRAG);

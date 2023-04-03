@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/server/world/ThreadedAnvilChunkStorage.java
++++ b/java/net/minecraft/server/world/ThreadedAnvilChunkStorage.java
+@@ -926,7 +926,7 @@
+ 
+    private static String getFutureStatus(CompletableFuture<Either<WorldChunk, ChunkHolder.Unloaded>> future) {
+       try {
+-         Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)future.getNow((Object)null);
++         Either<WorldChunk, ChunkHolder.Unloaded> either = (Either)future.getNow(null);
+          return either != null ? (String)either.map((chunk) -> {
+             return "done";
+          }, (unloaded) -> {

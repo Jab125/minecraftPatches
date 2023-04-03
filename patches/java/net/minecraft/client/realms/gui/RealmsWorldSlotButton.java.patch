@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/realms/gui/RealmsWorldSlotButton.java
++++ b/java/net/minecraft/client/realms/gui/RealmsWorldSlotButton.java
+@@ -94,7 +94,7 @@
+ 
+    private Pair<Text, Text> getActionPromptAndMessage(RealmsServer server, String text, boolean empty, boolean minigame, RealmsWorldSlotButton.Action action) {
+       if (action == RealmsWorldSlotButton.Action.NOTHING) {
+-         return Pair.of((Object)null, Text.literal(text));
++         return Pair.of(null, Text.literal(text));
+       } else {
+          Text text;
+          if (minigame) {

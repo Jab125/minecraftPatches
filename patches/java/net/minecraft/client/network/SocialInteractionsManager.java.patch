@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/network/SocialInteractionsManager.java
++++ b/java/net/minecraft/client/network/SocialInteractionsManager.java
+@@ -19,7 +19,7 @@
+    private final UserApiService userApiService;
+    private final Map<String, UUID> playerNameByUuid = Maps.newHashMap();
+    private boolean blockListLoaded;
+-   private CompletableFuture<?> blockListLoader = CompletableFuture.completedFuture((Object)null);
++   private CompletableFuture<?> blockListLoader = CompletableFuture.completedFuture(null);
+ 
+    public SocialInteractionsManager(MinecraftClient client, UserApiService userApiService) {
+       this.client = client;

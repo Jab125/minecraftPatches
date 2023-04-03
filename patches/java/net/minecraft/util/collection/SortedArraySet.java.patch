@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/util/collection/SortedArraySet.java
++++ b/java/net/minecraft/util/collection/SortedArraySet.java
+@@ -164,7 +164,7 @@
+    }
+ 
+    public void clear() {
+-      Arrays.fill(this.elements, 0, this.size, (Object)null);
++      Arrays.fill(this.elements, 0, this.size, null);
+       this.size = 0;
+    }
+ 

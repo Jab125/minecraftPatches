@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/render/entity/feature/HorseMarkingFeatureRenderer.java
++++ b/java/net/minecraft/client/render/entity/feature/HorseMarkingFeatureRenderer.java
+@@ -15,7 +15,7 @@
+ 
+ public class HorseMarkingFeatureRenderer extends FeatureRenderer<HorseEntity, HorseEntityModel<HorseEntity>> {
+    private static final Map<HorseMarking, Identifier> TEXTURES = (Map)Util.make(Maps.newEnumMap(HorseMarking.class), (textures) -> {
+-      textures.put(HorseMarking.NONE, (Object)null);
++      textures.put(HorseMarking.NONE, null);
+       textures.put(HorseMarking.WHITE, new Identifier("textures/entity/horse/horse_markings_white.png"));
+       textures.put(HorseMarking.WHITE_FIELD, new Identifier("textures/entity/horse/horse_markings_whitefield.png"));
+       textures.put(HorseMarking.WHITE_DOTS, new Identifier("textures/entity/horse/horse_markings_whitedots.png"));

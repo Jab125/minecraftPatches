@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/network/message/MessageChainTaskQueue.java
++++ b/java/net/minecraft/network/message/MessageChainTaskQueue.java
+@@ -10,7 +10,7 @@
+ 
+ public class MessageChainTaskQueue implements FutureQueue, AutoCloseable {
+    private static final Logger LOGGER = LogUtils.getLogger();
+-   private CompletableFuture<?> current = CompletableFuture.completedFuture((Object)null);
++   private CompletableFuture<?> current = CompletableFuture.completedFuture(null);
+    private final Executor executor;
+    private volatile boolean closed;
+ 

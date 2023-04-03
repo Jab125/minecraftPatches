@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/texture/ResourceTexture.java
++++ b/java/net/minecraft/client/texture/ResourceTexture.java
+@@ -87,7 +87,7 @@
+             TextureResourceMetadata textureresourcemetadata = null;
+ 
+             try {
+-               textureresourcemetadata = (TextureResourceMetadata)resource.getMetadata().decode(TextureResourceMetadata.READER).orElse((Object)null);
++               textureresourcemetadata = (TextureResourceMetadata)resource.getMetadata().decode(TextureResourceMetadata.READER).orElse(null);
+             } catch (RuntimeException runtimeexception) {
+                ResourceTexture.LOGGER.warn("Failed reading metadata of: {}", id, runtimeexception);
+             }

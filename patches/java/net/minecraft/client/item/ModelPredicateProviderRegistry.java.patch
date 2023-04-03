@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/item/ModelPredicateProviderRegistry.java
++++ b/java/net/minecraft/client/item/ModelPredicateProviderRegistry.java
+@@ -163,7 +163,7 @@
+       }));
+       register(Items.RECOVERY_COMPASS, new Identifier("angle"), new CompassAnglePredicateProvider((world, stack, entity) -> {
+          if (entity instanceof PlayerEntity playerentity) {
+-            return (GlobalPos)playerentity.getLastDeathPos().orElse((Object)null);
++            return (GlobalPos)playerentity.getLastDeathPos().orElse(null);
+          } else {
+             return null;
+          }

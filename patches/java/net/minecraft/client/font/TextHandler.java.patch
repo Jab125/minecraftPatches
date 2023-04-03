@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/font/TextHandler.java
++++ b/java/net/minecraft/client/font/TextHandler.java
+@@ -91,7 +91,7 @@
+       TextHandler.WidthLimitingVisitor texthandler$widthlimitingvisitor = new TextHandler.WidthLimitingVisitor((float)x);
+       return (Style)text.visit((style, textx) -> {
+          return TextVisitFactory.visitFormatted(textx, style, texthandler$widthlimitingvisitor) ? Optional.empty() : Optional.of(style);
+-      }, Style.EMPTY).orElse((Object)null);
++      }, Style.EMPTY).orElse(null);
+    }
+ 
+    @Nullable

@@ -68,6 +68,15 @@
           }
  
           public String toString() {
+@@ -455,7 +455,7 @@
+ 
+    private static DataResult<GameProfile> createGameProfileFromPair(Pair<Optional<UUID>, Optional<String>> pair) {
+       try {
+-         return DataResult.success(new GameProfile((UUID)((Optional)pair.getFirst()).orElse((Object)null), (String)((Optional)pair.getSecond()).orElse((Object)null)));
++         return DataResult.success(new GameProfile((UUID)((Optional)pair.getFirst()).orElse(null), (String)((Optional)pair.getSecond()).orElse(null)));
+       } catch (Throwable throwable) {
+          return DataResult.error(throwable::getMessage);
+       }
 @@ -535,7 +535,7 @@
  
     static record Lazy<A>(Supplier<Codec<A>> delegate) implements Codec<A> {

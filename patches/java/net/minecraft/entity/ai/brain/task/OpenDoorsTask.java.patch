@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/ai/brain/task/OpenDoorsTask.java
++++ b/java/net/minecraft/entity/ai/brain/task/OpenDoorsTask.java
+@@ -29,7 +29,7 @@
+    private static final double REACH_DISTANCE = 2.0D;
+ 
+    public static Task<LivingEntity> create() {
+-      MutableObject<PathNode> mutableobject = new MutableObject((Object)null);
++      MutableObject<PathNode> mutableobject = new MutableObject(null);
+       MutableInt mutableint = new MutableInt(0);
+       return TaskTriggerer.task((context) -> {
+          return context.group(context.queryMemoryValue(MemoryModuleType.PATH), context.queryMemoryOptional(MemoryModuleType.DOORS_TO_CLOSE), context.queryMemoryOptional(MemoryModuleType.MOBS)).apply(context, (path, doorsToClose, mobs) -> {

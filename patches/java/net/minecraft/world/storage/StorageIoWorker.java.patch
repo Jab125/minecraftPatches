@@ -1,0 +1,29 @@
+--- a/java/net/minecraft/world/storage/StorageIoWorker.java
++++ b/java/net/minecraft/world/storage/StorageIoWorker.java
+@@ -158,7 +158,7 @@
+          return this.run(() -> {
+             try {
+                this.storage.sync();
+-               return Either.left((Object)null);
++               return Either.left(null);
+             } catch (Exception exception) {
+                LOGGER.warn("Failed to synchronize chunks", exception);
+                return Either.right(exception);
+@@ -166,7 +166,7 @@
+          });
+       }) : completablefuture.thenCompose((void_) -> {
+          return this.run(() -> {
+-            return Either.left((Object)null);
++            return Either.left(null);
+          });
+       });
+    }
+@@ -183,7 +183,7 @@
+                this.storage.scanChunk(pos, scanner);
+             }
+ 
+-            return Either.left((Object)null);
++            return Either.left(null);
+          } catch (Exception exception1) {
+             LOGGER.warn("Failed to bulk scan chunk {}", pos, exception1);
+             return Either.right(exception1);

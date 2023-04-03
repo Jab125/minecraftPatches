@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/client/gui/hud/DebugHud.java
++++ b/java/net/minecraft/client/gui/hud/DebugHud.java
+@@ -351,7 +351,7 @@
+          }
+       }
+ 
+-      return (WorldChunk)this.chunkFuture.getNow((Object)null);
++      return (WorldChunk)this.chunkFuture.getNow(null);
+    }
+ 
+    private WorldChunk getClientChunk() {

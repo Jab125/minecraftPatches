@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/block/entity/SkullBlockEntity.java
++++ b/java/net/minecraft/block/entity/SkullBlockEntity.java
+@@ -135,7 +135,7 @@
+          userCache.findByNameAsync(owner.getName(), (profile) -> {
+             Util.getMainWorkerExecutor().execute(() -> {
+                Util.ifPresentOrElse(profile, (profilex) -> {
+-                  Property property = (Property)Iterables.getFirst(profilex.getProperties().get("textures"), (Object)null);
++                  Property property = (Property)Iterables.getFirst(profilex.getProperties().get("textures"), null);
+                   if (property == null) {
+                      MinecraftSessionService minecraftsessionservice = sessionService;
+                      if (minecraftsessionservice == null) {

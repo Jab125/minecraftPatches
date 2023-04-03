@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/item/trim/ArmorTrim.java
++++ b/java/net/minecraft/item/trim/ArmorTrim.java
+@@ -100,7 +100,7 @@
+    public static Optional<ArmorTrim> getTrim(DynamicRegistryManager registryManager, ItemStack stack) {
+       if (stack.isIn(ItemTags.TRIMMABLE_ARMOR) && stack.getNbt() != null && stack.getNbt().contains("Trim")) {
+          NbtCompound nbtcompound = stack.getSubNbt("Trim");
+-         ArmorTrim armortrim = (ArmorTrim)CODEC.parse(RegistryOps.of(NbtOps.INSTANCE, registryManager), nbtcompound).resultOrPartial(LOGGER::error).orElse((Object)null);
++         ArmorTrim armortrim = (ArmorTrim)CODEC.parse(RegistryOps.of(NbtOps.INSTANCE, registryManager), nbtcompound).resultOrPartial(LOGGER::error).orElse(null);
+          return Optional.ofNullable(armortrim);
+       } else {
+          return Optional.empty();
