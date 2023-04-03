@@ -1,0 +1,35 @@
+--- a/java/net/minecraft/world/event/listener/VibrationSelector.java
++++ b/java/net/minecraft/world/event/listener/VibrationSelector.java
+@@ -36,18 +36,18 @@
+       if (this.current.isEmpty()) {
+          return true;
+       } else {
+-         Pair<Vibration, Long> pair = (Pair)this.current.get();
++         Pair<Vibration, Long> pair = this.current.get();
+          long i = pair.getRight();
+          if (tick != i) {
+             return false;
+          } else {
+-            Vibration vibration = (Vibration)pair.getLeft();
+-            if (vibration.distance() < vibration.distance()) {
++            Vibration vibration2 = pair.getLeft();
++            if (vibration.distance() < vibration2.distance()) {
+                return true;
+-            } else if (vibration.distance() > vibration.distance()) {
++            } else if (vibration.distance() > vibration2.distance()) {
+                return false;
+             } else {
+-               return VibrationListener.getFrequency(vibration.gameEvent()) > VibrationListener.getFrequency(vibration.gameEvent());
++               return VibrationListener.getFrequency(vibration.gameEvent()) > VibrationListener.getFrequency(vibration2.gameEvent());
+             }
+          }
+       }
+@@ -57,7 +57,7 @@
+       if (this.current.isEmpty()) {
+          return Optional.empty();
+       } else {
+-         return ((Pair)this.current.get()).getRight() < currentTick ? Optional.of((Vibration)((Pair)this.current.get()).getLeft()) : Optional.empty();
++         return this.current.get().getRight() < currentTick ? Optional.of((Vibration)((Pair)this.current.get()).getLeft()) : Optional.empty();
+       }
+    }
+ 

@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/LivingEntity.java
++++ b/java/net/minecraft/entity/LivingEntity.java
+@@ -1382,7 +1382,7 @@
+       return this.experienceDroppingDisabled;
+    }
+ 
+-   protected Vec3d getAttackPos() {
++   public Vec3d getAttackPos() {
+       Entity entity = this.getVehicle();
+       if (entity instanceof AttackPosOffsettingMount attackposoffsettingmount) {
+          return this.getPos().add(0.0D, attackposoffsettingmount.getPassengerAttackYOffset(), 0.0D);

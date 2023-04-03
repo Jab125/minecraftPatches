@@ -1,0 +1,38 @@
+--- a/java/net/minecraft/entity/passive/CamelEntity.java
++++ b/java/net/minecraft/entity/passive/CamelEntity.java
+@@ -136,7 +136,7 @@
+ 
+    protected void mobTick() {
+       this.world.getProfiler().push("camelBrain");
+-      Brain<?> brain = this.getBrain();
++      Brain<CamelEntity> brain = (Brain<CamelEntity>) this.getBrain();
+       brain.tick((ServerWorld)this.world, this);
+       this.world.getProfiler().pop();
+       this.world.getProfiler().push("camelActivityUpdate");
+@@ -427,7 +427,7 @@
+       }
+    }
+ 
+-   private double method_45346(boolean bl, float f) {
++   private double method_45346(boolean bl, float q) {
+       double d0 = this.getMountedHeightOffset();
+       float f = this.getScaleFactor() * 1.43F;
+       float f1 = f - this.getScaleFactor() * 0.2F;
+@@ -446,7 +446,7 @@
+             f3 = bl ? 0.6F : 0.35F;
+          }
+ 
+-         float f4 = MathHelper.clamp((float)this.getLastPoseTickDelta() + f, 0.0F, (float)i);
++         float f4 = MathHelper.clamp((float)this.getLastPoseTickDelta() + q, 0.0F, (float)i);
+          boolean flag2 = f4 < (float)j;
+          float f5 = flag2 ? f4 / (float)j : (f4 - (float)j) / (float)(i - j);
+          float f6 = f - f3 * f1;
+@@ -454,7 +454,7 @@
+       }
+ 
+       if (flag1 && !flag) {
+-         d0 += (double)f2;
++         d0 += f2;
+       }
+ 
+       return d0;

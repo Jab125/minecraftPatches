@@ -1,0 +1,15 @@
+--- a/java/net/minecraft/entity/EntityType.java
++++ b/java/net/minecraft/entity/EntityType.java
+@@ -553,9 +553,9 @@
+             NbtList nbtlist = nbt.getList("Passengers", 10);
+ 
+             for(int i = 0; i < nbtlist.size(); ++i) {
+-               Entity entity = loadEntityWithPassengers(nbtlist.getCompound(i), world, entityProcessor);
+-               if (entity != null) {
+-                  entity.startRiding(entity, true);
++               Entity entity2 = loadEntityWithPassengers(nbtlist.getCompound(i), world, entityProcessor);
++               if (entity2 != null) {
++                  entity2.startRiding(entity, true);
+                }
+             }
+          }

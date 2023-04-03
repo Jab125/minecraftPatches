@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/vehicle/BoatEntity.java
++++ b/java/net/minecraft/entity/vehicle/BoatEntity.java
+@@ -892,7 +892,7 @@
+       private final String name;
+       private final Block baseBlock;
+       public static final StringIdentifiable.Codec<BoatEntity.Type> CODEC = StringIdentifiable.createCodec(BoatEntity.Type::values);
+-      private static final IntFunction<BoatEntity.Type> BY_ID = ValueLists.createIdToValueFunction(Enum::ordinal, values(), ValueLists.OutOfBoundsHandling.ZERO);
++      private static final IntFunction<BoatEntity.Type> BY_ID = ValueLists.createIdToValueFunction(Type::ordinal, values(), ValueLists.OutOfBoundsHandling.ZERO);
+ 
+       private Type(Block baseBlock, String name) {
+          this.name = name;

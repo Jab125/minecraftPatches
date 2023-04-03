@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/mob/MobEntity.java
++++ b/java/net/minecraft/entity/mob/MobEntity.java
+@@ -1112,7 +1112,7 @@
+          if (itemstack.getItem() instanceof SpawnEggItem) {
+             if (this.world instanceof ServerWorld) {
+                SpawnEggItem spawneggitem = (SpawnEggItem)itemstack.getItem();
+-               Optional<MobEntity> optional = spawneggitem.spawnBaby(player, this, this.getType(), (ServerWorld)this.world, this.getPos(), itemstack);
++               Optional<MobEntity> optional = spawneggitem.spawnBaby(player, this, (EntityType<? extends MobEntity>)this.getType(), (ServerWorld)this.world, this.getPos(), itemstack);
+                optional.ifPresent((entity) -> {
+                   this.onPlayerSpawnedChild(player, entity);
+                });

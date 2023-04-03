@@ -1,0 +1,31 @@
+--- a/java/net/minecraft/entity/passive/AllayEntity.java
++++ b/java/net/minecraft/entity/passive/AllayEntity.java
+@@ -115,7 +115,7 @@
+    }
+ 
+    public Brain<AllayEntity> getBrain() {
+-      return super.getBrain();
++      return (Brain<AllayEntity>) super.getBrain();
+    }
+ 
+    public static DefaultAttributeContainer.Builder createAllayAttributes() {
+@@ -161,8 +161,8 @@
+    }
+ 
+    public boolean damage(DamageSource source, float amount) {
+-      Entity optional = source.getAttacker();
+-      if (optional instanceof PlayerEntity playerentity) {
++      Entity attacker = source.getAttacker();
++      if (attacker instanceof PlayerEntity playerentity) {
+          Optional<UUID> optional = this.getBrain().getOptionalRegisteredMemory(MemoryModuleType.LIKED_PLAYER);
+          if (optional.isPresent() && playerentity.getUuid().equals(optional.get())) {
+             return false;
+@@ -436,7 +436,7 @@
+       super.readCustomDataFromNbt(nbt);
+       this.readInventory(nbt);
+       if (nbt.contains("listener", 10)) {
+-         VibrationListener.createCodec(this.listenerCallback).parse(new Dynamic(NbtOps.INSTANCE, nbt.getCompound("listener"))).resultOrPartial(LOGGER::error).ifPresent((vibrationListener) -> {
++         VibrationListener.createCodec(this.listenerCallback).parse(new Dynamic<>(NbtOps.INSTANCE, nbt.getCompound("listener"))).resultOrPartial(LOGGER::error).ifPresent((vibrationListener) -> {
+             this.gameEventHandler.setListener(vibrationListener, this.world);
+          });
+       }
