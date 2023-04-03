@@ -1,0 +1,17 @@
+--- a/java/net/minecraft/entity/mob/ShulkerEntity.java
++++ b/java/net/minecraft/entity/mob/ShulkerEntity.java
+@@ -329,11 +329,11 @@
+       if (this.isInvalidPosition(pos)) {
+          return false;
+       } else {
+-         Direction direction = direction.getOpposite();
+-         if (!this.world.isDirectionSolid(pos.offset(direction), this, direction)) {
++         Direction direction2 = direction.getOpposite();
++         if (!this.world.isDirectionSolid(pos.offset(direction), this, direction2)) {
+             return false;
+          } else {
+-            Box box = calculateBoundingBox(direction, 1.0F).offset(pos).contract(1.0E-6D);
++            Box box = calculateBoundingBox(direction2, 1.0F).offset(pos).contract(1.0E-6D);
+             return this.world.isSpaceEmpty(this, box);
+          }
+       }

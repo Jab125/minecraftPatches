@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/passive/SheepEntity.java
++++ b/java/net/minecraft/entity/passive/SheepEntity.java
+@@ -80,7 +80,7 @@
+       map.put(DyeColor.RED, Blocks.RED_WOOL);
+       map.put(DyeColor.BLACK, Blocks.BLACK_WOOL);
+    });
+-   private static final Map<DyeColor, float[]> COLORS = Maps.newEnumMap(Arrays.stream(DyeColor.values()).collect(Collectors.toMap((color) -> {
++   private static final Map<DyeColor, float[]> COLORS = Maps.<DyeColor, float[]>newEnumMap(Arrays.stream(DyeColor.values()).collect(Collectors.toMap((color) -> {
+       return color;
+    }, SheepEntity::getDyedColor)));
+    private int eatGrassTimer;
