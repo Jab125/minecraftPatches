@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/passive/SnifferEntity.java
++++ b/java/net/minecraft/entity/passive/SnifferEntity.java
+@@ -367,7 +367,7 @@
+    }
+ 
+    public Brain<SnifferEntity> getBrain() {
+-      return super.getBrain();
++      return (Brain<SnifferEntity>) super.getBrain();
+    }
+ 
+    protected Brain.Profile<SnifferEntity> createBrainProfile() {
