@@ -1,0 +1,11 @@
+--- a/java/net/minecraft/entity/passive/TadpoleEntity.java
++++ b/java/net/minecraft/entity/passive/TadpoleEntity.java
+@@ -61,7 +61,7 @@
+    }
+ 
+    public Brain<TadpoleEntity> getBrain() {
+-      return super.getBrain();
++      return (Brain<TadpoleEntity>) super.getBrain();
+    }
+ 
+    protected SoundEvent getFlopSound() {
